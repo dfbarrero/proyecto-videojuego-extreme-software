@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Personajes;
-import Armas.*;
+
 
 /**
  *
@@ -13,23 +13,15 @@ import Armas.*;
 public abstract class Personaje {
     
     //Atributos
-    protected Arma arma;
     protected int pv;
     protected String nombre;
     protected int destreza;
 
     //Constructor
 
-    public Personaje(String nombre,int pv,int destreza,Arma arma) {
+    public Personaje(String nombre,int pv,int destreza) {
         this.nombre = nombre;
         this.pv = pv;
-        this.destreza = destreza;
-        this.arma = arma;
-    }
-
-    public Personaje(String nombre,int pv,  int destreza) {
-        this.pv = pv;
-        this.nombre = nombre;
         this.destreza = destreza;
     }
     
@@ -49,9 +41,7 @@ public abstract class Personaje {
     public String getNombre() {
         return nombre;
     }
-    public Arma getArma() {
-        return arma;
-    }
+
     public int getPv() {
         return pv;
     }
@@ -66,9 +56,7 @@ public abstract class Personaje {
     public void setPv(int pv) {
         this.pv = pv;
     }
-    public void setArma(Arma arma) {
-        this.arma = arma;
-    }
+
 
     //Extra
     public boolean estaDerrotado(){
@@ -82,7 +70,7 @@ public abstract class Personaje {
 
     @Override
     public String toString() {
-        return "Personaje{" + "arma=" + arma + ", pv=" + pv + ", nombre=" + nombre + ", destreza=" + destreza + '}';
+        return "Personaje{" + ", pv=" + pv + ", nombre=" + nombre + ", destreza=" + destreza + '}';
     }
     
     
