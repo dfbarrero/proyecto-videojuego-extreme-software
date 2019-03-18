@@ -14,7 +14,6 @@ import org.newdawn.slick.state.*;
 public class Playing extends BasicGameState {
 
     public Playing(int playing) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
