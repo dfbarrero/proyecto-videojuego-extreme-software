@@ -30,6 +30,7 @@ public abstract class Item
         this.id = id;
     }
     
+    @Override
     public abstract String toString();
     
 }
