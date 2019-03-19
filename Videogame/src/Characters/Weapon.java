@@ -11,8 +11,8 @@ package Characters;
  */
 public abstract class Weapon extends Item
 {
-    private int damage;
-    private int id;
+    protected int damage;
+    
     public Weapon(String id, int damage)
     {
         super(id);
