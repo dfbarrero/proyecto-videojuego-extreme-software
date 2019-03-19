@@ -29,7 +29,7 @@ public class Box extends Weapon {
     public int getArrows() {
         return arrows;
     }
-    public void setArrows) {
+    public void setArrows(int arrows) {
         this.arrows = arrows;
     }
 }
