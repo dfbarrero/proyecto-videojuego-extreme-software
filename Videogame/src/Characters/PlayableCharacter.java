@@ -12,14 +12,14 @@ package Characters;
 public class PlayableCharacter extends Character
 {
     private String pCName;      //Name of the Playable Character
-    private Item[] inventory;   //This array will serve as the inventory
+    private Inventory inventory;   //This array will serve as the inventory
     private int health;
     
     public PlayableCharacter(String id, int xPos, int yPos, String pCName)
     {
         super(id, xPos, yPos);
         this.pCName = pCName;
-        this.inventory = new Item[10];
+        this.inventory = new Inventory();
         this.health = 100;
     }
     
