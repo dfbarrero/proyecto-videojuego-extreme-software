@@ -16,12 +16,12 @@ public class Box extends Weapon {
         this.arrows=arrows;
     }
     @Override
-    public void use)
+    public void use()
     {
         arrows--;
     }
     @Override
-    public boolean available
+    public boolean available()
     {
         if(arrows>0) return true;
         else return false;
