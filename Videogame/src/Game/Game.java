@@ -17,12 +17,12 @@ import org.newdawn.slick.state.*;
  */
 public class Game extends StateBasedGame{
     
-    public static final String gamename = "XD";
+    public static final String gamename = "3xtremE";
     public static final int menu = 0;
     public static final int playing = 1;
     
     public Game(String name) {
-        super(gamename);
+        super(gamename);XD
         this.addState((GameState) new PrincipalMenu(menu));
         this.addState((GameState) new Playing(playing));
     }
