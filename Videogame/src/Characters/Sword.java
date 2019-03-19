@@ -42,6 +42,6 @@ public class Sword extends Weapon
     {
         return "Name: "+name
               +"\nDurability: "+durability
-              +"\nDamage"+damage;
+              +"\nDamage: "+damage;
     }
 }
