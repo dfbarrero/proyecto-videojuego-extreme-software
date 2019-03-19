@@ -8,12 +8,15 @@ package Characters;
  *
  * @author jgome
  */
-public class Bow extends Weapon {
-    int arrows;
-    public Bow(String id, int damage, int arrows)
+public class Bow extends Weapon
+{
+    private String name;
+    private int arrows;
+    public Bow(String id, int damage, int arrows, String name)
     {
         super(id, damage);
-        this.arrows=arrows;
+        this.arrows = arrows;
+        this.name = name;
     }
     @Override
     public void use()
