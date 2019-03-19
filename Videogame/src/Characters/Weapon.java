@@ -9,11 +9,10 @@ package Characters;
  *
  * @author Javier Muñoz
  */
-public class Weapon extends Item
+public abstract class Weapon extends Item
 {
     private int damage;
-    public abstract void use();
-    public abstract boolean available();
+    private int id;
     public Weapon(String id, int damage)
     {
         super(id);
@@ -27,5 +26,9 @@ public class Weapon extends Item
     public void setDamage(int damage) {
         this.damage = damage;
     }
+    
+    public abstract void use();
+    
+    public abstract boolean available();
     
 }
