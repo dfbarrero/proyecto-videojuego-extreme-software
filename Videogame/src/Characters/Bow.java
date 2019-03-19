@@ -8,11 +8,11 @@ package Characters;
  *
  * @author jgome
  */
-public class Box extends Weapon {
-    int arrows
-    public Arco(int damage, String id, int arrows)
+public class Bow extends Weapon {
+    int arrows;
+    public Bow(String id, int damage, int arrows)
     {
-        super(damage, id);
+        super(id, damage);
         this.arrows=arrows;
     }
     @Override
