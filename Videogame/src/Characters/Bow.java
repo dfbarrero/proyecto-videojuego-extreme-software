@@ -23,8 +23,7 @@ public class Bow extends Weapon {
     @Override
     public boolean available()
     {
-        if(arrows>0) return true;
-        else return false;
+        return arrows>0;
     }
     public int getArrows() {
         return arrows;
