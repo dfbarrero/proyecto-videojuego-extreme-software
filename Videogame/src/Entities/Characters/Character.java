@@ -8,6 +8,11 @@ package Entities.Characters;
  *
  * @author Javier Muñoz
  */
+
+/*
+*Characters can be "npc", "pc" or "enemy" depending on their ID and work differently
+*depending on it, so make sure to assign the correct ID to every character.
+*/
 public abstract class Character implements CharacterInterface{
     protected String id;
     protected int xPos;
