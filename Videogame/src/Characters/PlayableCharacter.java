@@ -12,6 +12,8 @@ package Characters;
 public class PlayableCharacter extends Character
 {
     private String pCName;//Name of the Playable Character
+    private Item[] inventory;
+    
     public PlayableCharacter(String id, int xPos, int yPos, String pCName)
     {
         super(id, xPos, yPos);
