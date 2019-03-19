@@ -19,6 +19,7 @@ public class Key extends Item
         this.name = name;
     }
     
+    @Override
     public String toString()
     {
         return "This is a key. It has a name tag: "+name;
