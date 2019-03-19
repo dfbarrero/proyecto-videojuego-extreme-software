@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Characters;
+package Entities.Items;
 
 /**
  *
  * @author Javier Muñoz
  */
-public class Item
+public abstract class Item
 {
+    /*
+    *Items can be "weapons" or "keys" depending on their ID and work differently
+    *depending on it, so make sure to assign the correct ID to every item.
+    */
     private String id;
     
     public Item(String id)
@@ -25,5 +29,7 @@ public class Item
     public void setId(String id) {
         this.id = id;
     }
+    
+    public abstract String toString();
     
 }
