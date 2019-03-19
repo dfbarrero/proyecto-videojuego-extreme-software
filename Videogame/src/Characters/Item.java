@@ -7,7 +7,7 @@ package Characters;
 
 /**
  *
- * @author Javi
+ * @author Javier Muñoz
  */
 public class Item {
     private String id;
