@@ -9,8 +9,7 @@ package Characters;
  *
  * @author Javier Muñoz
  */
-public class Weapon extends Item
-{
+public abstract class Weapon extends Item {
     private int damage;
     public abstract void use();
     public abstract boolean available();
