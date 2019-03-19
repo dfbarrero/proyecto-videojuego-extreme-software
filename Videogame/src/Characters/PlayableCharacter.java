@@ -11,18 +11,20 @@ package Characters;
  */
 public class PlayableCharacter extends Character
 {
-    private String pCName;//Name of the Playable Character
-    private Item[] inventory;
+    private String pCName;      //Name of the Playable Character
+    private Item[] inventory;   //This array will serve as the inventory
+    private int health;
     
     public PlayableCharacter(String id, int xPos, int yPos, String pCName)
     {
         super(id, xPos, yPos);
         this.pCName = pCName;
         this.inventory = new Item[10];
+        this.health = 100;
     }
     
     @Override
-    public String toString()
+    public String toString()    //This will return the player in a String format
     {
         return "xPos: "+xPos
               +"\nyPos: "+yPos
@@ -30,7 +32,13 @@ public class PlayableCharacter extends Character
               +"\nName: "+pCName;
     }
 
-    public String getID() {
+    public String getID()
+    {
         return id;
+    }
+    
+    public boolean isDead()
+    {
+        return health <=0;
     }
 }
