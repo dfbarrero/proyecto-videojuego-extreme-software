@@ -9,7 +9,7 @@ package Characters;
  *
  * @author Javier Muñoz
  */
-public class Item
+public abstract class Item
 {
     private String id;
     
@@ -25,5 +25,7 @@ public class Item
     public void setId(String id) {
         this.id = id;
     }
+    
+    public abstract String toString();
     
 }
