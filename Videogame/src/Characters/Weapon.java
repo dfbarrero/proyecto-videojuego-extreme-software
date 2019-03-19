@@ -12,7 +12,8 @@ package Characters;
 public class Weapon extends Item
 {
     private int damage;
-    
+    public abstract void usar();
+    public abstract boolean disponible();
     public Weapon(String id, int damage)
     {
         super(id);
