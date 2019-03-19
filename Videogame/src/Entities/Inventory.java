@@ -5,6 +5,8 @@
  */
 package Entities;
 
+import Entities.Items.Item;
+
 /**
  *
  * @author Javier Muñoz
