@@ -10,9 +10,9 @@ package Characters;
  */
 public class Sword extends Weapon{
     int endurance;
-    public Sword(int damage, String id, int resistencia)
+    public Sword(String id, int damage, int durability)
     {
-        super(damage, id);
+        super(id, damage);
         this.endurance=endurance;
     }
     @Override
