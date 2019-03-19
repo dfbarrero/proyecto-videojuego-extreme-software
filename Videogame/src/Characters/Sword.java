@@ -15,7 +15,7 @@ public class Sword extends Weapon
     public Sword(String id, int damage, int durability, String name)
     {
         super("weapon", damage);
-        this.durability = this.durability;
+        this.durability = durability;
         this.name = name;
     }
     @Override
@@ -26,13 +26,22 @@ public class Sword extends Weapon
     @Override
     public boolean available()
     {
-        if(durability>0) return true;
-        else return false;
+        return durability>0;
     }
-    public void setDurability(int durability) {
+    public void setDurability(int durability)
+    {
         this.durability = durability;
     }
-    public int getDurability() {
+    public int getDurability()
+    {
         return durability;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "Name: "+name
+              +"\nDurability: "+durability
+              +"\nDamage"+damage;
     }
 }
