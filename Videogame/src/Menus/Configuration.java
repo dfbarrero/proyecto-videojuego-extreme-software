@@ -3,17 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Playing;
+package Menus;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+
 /**
  *
  * @author razvanvc
  */
-public class Playing extends BasicGameState {
+public class Configuration extends BasicGameState {
 
-    public Playing(int playing) {
+    
+    
+    public Configuration(int configuration) {
     }
 
     @Override
@@ -24,18 +28,17 @@ public class Playing extends BasicGameState {
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in Play Stage",100,100);
     }
 
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        
     }
     
     @Override
     //Return the state of the menu (0)
     public int getID() {
-        return 1;
+        return 2;
     }
-
 }
