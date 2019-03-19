@@ -11,13 +11,14 @@ package Entities.Characters;
  */
 public class PlayableCharacter extends Character
 {
-    private String pCName;      //Name of the Playable Character
-    private Inventory inventory;   //This array will serve as the inventory
+    //Interaction with NPCs and enemies need to be implemented.
+    private String pCName;
+    private Inventory inventory;
     private int health;
     
     public PlayableCharacter(String id, int xPos, int yPos, String pCName)
     {
-        super(id, xPos, yPos);
+        super("pc", xPos, yPos);
         this.pCName = pCName;
         this.inventory = new Inventory();
         this.health = 100;
