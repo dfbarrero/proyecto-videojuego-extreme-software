@@ -43,6 +43,6 @@ public class Bow extends Weapon
     {
         return "Name: "+name
               +"\nAmmo: "+arrows
-              +"\nDamage"+damage;
+              +"\nDamage: "+damage;
     }
 }
