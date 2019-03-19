@@ -23,7 +23,7 @@ public class Inventory
                                   //it will do nothing.
     {
         int slot = freeSlot();
-        if (slot>=0 && slot<maxInvSize-1)
+        if (slot>=0 && slot<getMaxInvSize()-1)
         {
             items[slot] = item;
         }
@@ -32,7 +32,7 @@ public class Inventory
     public Item dropItem(int position) //This method lets you drop an item from 
                                        //your inv. given a position in it.
     {
-        Item droppedItem = items[position];
+        Item droppedItem = getItems()[position];
         items[position] = null;
         return droppedItem;
     }
@@ -41,20 +41,20 @@ public class Inventory
                                             //from your inv. with another one or
                                             //simply change the position of the item.
     {
-        if(items[pos2] == null)
+        if(getItems()[pos2] == null)
         {
-            items[pos2] = items[pos1];
+            items[pos2] = getItems()[pos1];
             items[pos1] = null;
         }
-        else if(items[pos1] == null)
+        else if(getItems()[pos1] == null)
         {
-           items[pos1] = items[pos2];
+           items[pos1] = getItems()[pos2];
            items[pos2] = null; 
         }
         else
         {
-            Item temp1 = items[pos1];
-            Item temp2 = items[pos2];
+            Item temp1 = getItems()[pos1];
+            Item temp2 = getItems()[pos2];
             items[pos1] = temp2;
             items[pos2] = temp1;
         }
@@ -62,7 +62,7 @@ public class Inventory
     
     public Item getSelectedItem(int position)//Returns the position of the selected item
     {
-        return items[position];
+        return getItems()[position];
     }
     
     public int freeSlot()//This method looks for an empty space on the inv. and
@@ -71,9 +71,9 @@ public class Inventory
         boolean found = false;
         int i = 0;
         int freeSlot = -1;
-        while(i<items.length||!found)
+        while(i<getItems().length||!found)
         {
-            if(items[i]==null)
+            if(getItems()[i]==null)
             {
                 found = true;
                 freeSlot = i;
@@ -82,4 +82,20 @@ public class Inventory
         }
         return freeSlot;
     }
+
+    public int getMaxInvSize()
+    {
+        return maxInvSize;
+    }
+
+    public void setMaxInvSize(int maxInvSize)
+    {
+        this.maxInvSize = maxInvSize;
+    }
+
+    public Item[] getItems()
+    {
+        return items;
+    }
+    
 }
