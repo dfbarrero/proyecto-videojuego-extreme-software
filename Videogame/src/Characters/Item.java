@@ -11,6 +11,10 @@ package Characters;
  */
 public abstract class Item
 {
+    /*
+    *Items can be "weapons" or "keys" depending on their ID and work differently
+    *depending on it, so make sure to assign the correct ID to every item.
+    */
     private String id;
     
     public Item(String id)
