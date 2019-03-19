@@ -27,5 +27,4 @@ public class Weapon extends Item
         this.damage = damage;
     }
     
-    
 }
