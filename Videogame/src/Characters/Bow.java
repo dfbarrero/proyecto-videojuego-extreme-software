@@ -14,7 +14,7 @@ public class Bow extends Weapon
     private int arrows;
     public Bow(String id, int damage, int arrows, String name)
     {
-        super(id, damage);
+        super("weapon", damage);
         this.arrows = arrows;
         this.name = name;
     }
@@ -28,10 +28,21 @@ public class Bow extends Weapon
     {
         return arrows>0;
     }
-    public int getArrows() {
+    
+    public int getArrows()
+    {
         return arrows;
     }
-    public void setArrows(int arrows) {
+    
+    public void setArrows(int arrows)
+    {
         this.arrows = arrows;
+    }
+    
+    public String toString()
+    {
+        return "Name: "+name
+              +"\nAmmo: "+arrows
+              +"\nDamage"+damage;
     }
 }
