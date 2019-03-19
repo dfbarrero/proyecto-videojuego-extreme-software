@@ -8,28 +8,29 @@ package Characters;
  *
  * @author jgome
  */
-public class Sword extends Weapon{
-    int endurance;
+public class Sword extends Weapon
+{
+    int durability;
     public Sword(String id, int damage, int durability)
     {
         super(id, damage);
-        this.endurance=endurance;
+        this.durability=this.durability;
     }
     @Override
     public void use()
     {
-        endurance--;
+        durability--;
     }
     @Override
     public boolean available()
     {
-        if(endurance>0) return true;
+        if(durability>0) return true;
         else return false;
     }
-    public void setEndurance(int endurance) {
-        this.endurance = endurance;
+    public void setDurability(int durability) {
+        this.durability = durability;
     }
-    public int getEndurance() {
-        return endurance;
+    public int getDurability() {
+        return durability;
     }
 }
