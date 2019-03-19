@@ -18,6 +18,7 @@ public class PlayableCharacter extends Character
     {
         super(id, xPos, yPos);
         this.pCName = pCName;
+        this.inventory = new Item[10];
     }
     
     @Override
