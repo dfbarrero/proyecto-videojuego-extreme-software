@@ -17,7 +17,7 @@ import org.newdawn.slick.state.*;
  */
 public class Game extends StateBasedGame{
     
-    public static final String gamename = "XD";
+    public static final String gamename = "3xtremE";
     public static final int menu = 0;
     public static final int playing = 1;
     
@@ -39,7 +39,7 @@ public class Game extends StateBasedGame{
         AppGameContainer appgc;
         try{
             appgc = new AppGameContainer (new Game(gamename));
-            appgc.setDisplayMode(640, 360, true);
+            appgc.setDisplayMode(1080, 720, false);
             appgc.start();
         }catch(SlickException e){
             e.printStackTrace();
