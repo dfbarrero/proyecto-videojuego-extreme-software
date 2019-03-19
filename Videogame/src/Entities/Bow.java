@@ -3,45 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Characters;
+package Entities;
 /**
  *
  * @author jgome
  */
-public class Sword extends Weapon
+public class Bow extends Weapon
 {
-    private int durability;
     private String name;
-    public Sword(String id, int damage, int durability, String name)
+    private int arrows;
+    public Bow(String id, int damage, int arrows, String name)
     {
         super("weapon", damage);
-        this.durability = durability;
+        this.arrows = arrows;
         this.name = name;
     }
     @Override
     public void use()
     {
-        durability--;
+        arrows--;
     }
     @Override
     public boolean available()
     {
-        return durability>0;
-    }
-    public void setDurability(int durability)
-    {
-        this.durability = durability;
-    }
-    public int getDurability()
-    {
-        return durability;
+        return arrows>0;
     }
     
-    @Override
+    public int getArrows()
+    {
+        return arrows;
+    }
+    
+    public void setArrows(int arrows)
+    {
+        this.arrows = arrows;
+    }
+    
     public String toString()
     {
         return "Name: "+name
-              +"\nDurability: "+durability
+              +"\nAmmo: "+arrows
               +"\nDamage: "+damage;
     }
 }
