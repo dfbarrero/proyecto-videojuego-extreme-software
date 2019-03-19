@@ -10,11 +10,13 @@ package Characters;
  */
 public class Sword extends Weapon
 {
-    int durability;
-    public Sword(String id, int damage, int durability)
+    private int durability;
+    private String name;
+    public Sword(String id, int damage, int durability, String name)
     {
-        super(id, damage);
-        this.durability=this.durability;
+        super("weapon", damage);
+        this.durability = this.durability;
+        this.name = name;
     }
     @Override
     public void use()
