@@ -16,12 +16,32 @@ public class Map {
     private int PosX;
     private int PosY;
     private Image background;
+    private int[] Limitx, Limity;
     public Map(int x, int y, String route) throws SlickException
     {
+        Limitx=new int[2];
+        Limity=new int[2];
         this.PosX=x;
         this.PosY=y;
         this.background=new Image(route);     
     }
+
+    public int[] getLimitx() {
+        return Limitx;
+    }
+
+    public void setLimitx(int[] Limitx) {
+        this.Limitx = Limitx;
+    }
+
+    public int[] getLimity() {
+        return Limity;
+    }
+
+    public void setLimity(int[] Limity) {
+        this.Limity = Limity;
+    }
+    
     public void setPosX(int PosX) {
         this.PosX = PosX;
     }
