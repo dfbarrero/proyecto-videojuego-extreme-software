@@ -5,6 +5,8 @@
  */
 package Menus;
 
+import static Game.Game.playing;
+import Playing.Playing;
 import java.awt.Font;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -86,8 +88,23 @@ public class PrincipalMenu extends BasicGameState{
                 case QUIT:
                     exit = true;
                     break;
+                case START:
+                    sbg.enterState(1);
+                    break;
+                case SAVE:
+                    sbg.enterState(2);
+                    break;
+                case LOAD:
+                    sbg.enterState(3);
+                    break;
+                case OPTIONS:
+                    sbg.enterState(4);
+                    break;
+                    
+                    
             }
         }
+        
     }
     
     @Override

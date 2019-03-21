@@ -5,8 +5,7 @@
  */
 package Game;
 
-import Menus.PrincipalMenu;
-import Menus.Configuration;
+import Menus.*;
 import Playing.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -20,20 +19,27 @@ public class Game extends StateBasedGame{
     public static final String gamename = "3xtremE";
     public static final int menu = 0;
     public static final int playing = 1;
-    public static final int configuration = 2;
+    public static final int loadpage = 2;
+    public static final int savepage = 3;
+    public static final int optionpage = 4;
+    
     
     public Game(String name) {
         super(gamename);
         this.addState((GameState) new PrincipalMenu(menu));
         this.addState((GameState) new Playing(playing));
-        this.addState((GameState) new Configuration(configuration));
+        this.addState((GameState) new LoadPage(loadpage));
+        this.addState((GameState) new SavePage(savepage));
+        this.addState((GameState) new OptionsPage(optionpage));
     }
     
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
         this.getState(menu).init(gc, this);
         this.getState(playing).init(gc, this);
-        this.getState(configuration).init(gc, this);
+        this.getState(loadpage).init(gc, this);
+        this.getState(savepage).init(gc, this);
+        this.getState(optionpage).init(gc, this);
         this.enterState(menu);
     }
     

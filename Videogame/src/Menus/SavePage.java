@@ -5,39 +5,33 @@
  */
 package Menus;
 
-import org.lwjgl.input.Mouse;
+import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.*;
-import org.newdawn.slick.state.*;
-
+import org.newdawn.slick.state.StateBasedGame;
 /**
  *
  * @author razvanvc
  */
-public class Configuration extends BasicGameState {
+public class SavePage extends BasicGameState{
 
-    
-    
-    public Configuration(int configuration) {
+    public SavePage(int state) {
     }
 
     @Override
-    //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        
     }
 
     @Override
-    //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        g.drawString("Your in save page",100,100);
     }
 
     @Override
-    //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         
     }
-    
     @Override
-    //Return the state of the menu (0)
     public int getID() {
         return 2;
     }
