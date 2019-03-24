@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Menus;
+package States;
 
-import static Game.Game.playing;
-import Playing.Playing;
 import java.awt.Font;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -21,17 +19,17 @@ public class PrincipalMenu extends BasicGameState{
     public String mouse = "No input yet!";
     Image play;
     private int playersChoice = 0;
-    private static final int NOCHOICES = 5;
+    private static final int NOCHOICES = 4;
     private static final int START = 0;
-    private static final int SAVE = 1;
-    private static final int LOAD = 2;
-    private static final int OPTIONS = 3;
-    private static final int QUIT = 4;
-    private String[] playersOptions = new String[NOCHOICES];
+    private static final int LOAD = 1;
+    private static final int OPTIONS = 2;
+    private static final int QUIT = 3;
+    private final String[] playersOptions = new String[NOCHOICES];
     private boolean exit = false;
     private Font font;
-    private TrueTypeFont playersOptionsTTF, foo;
-    private Color notChosen = new Color(153, 204, 255);
+    private TrueTypeFont playersOptionsTTF;
+    private final Color notChosen = new Color(153, 204, 255);
+    protected static int lastStage;
     
     
     public PrincipalMenu(int state) {
@@ -42,12 +40,12 @@ public class PrincipalMenu extends BasicGameState{
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         //play = new Image("res/play button.png");
         playersOptions[0] = "Start";
-        playersOptions[1] = "Save";
-        playersOptions[2] = "Load";
-        playersOptions[3] = "Options";
-        playersOptions[4] = "Quit";
+        playersOptions[1] = "Load";
+        playersOptions[2] = "Options";
+        playersOptions[3] = "Quit";
         font = new Font("Verdana", Font.BOLD, 40);
         playersOptionsTTF = new TrueTypeFont(font, true);
+        lastStage = sbg.getCurrentStateID();
     }
 
     @Override
@@ -91,18 +89,16 @@ public class PrincipalMenu extends BasicGameState{
                 case START:
                     sbg.enterState(1);
                     break;
-                case SAVE:
-                    sbg.enterState(2);
-                    break;
                 case LOAD:
                     sbg.enterState(3);
                     break;
                 case OPTIONS:
                     sbg.enterState(4);
-                    break;
-                    
-                    
+                    break;    
             }
+        }
+        if (input.isKeyPressed(Input.KEY_ESCAPE) && lastStage == 1){
+            sbg.enterState(1);
         }
         
     }
