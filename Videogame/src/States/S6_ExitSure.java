@@ -5,7 +5,7 @@
  */
 package States;
 
-import static States.EscPage.lastStage;
+import static States.S0_MainMenu.lastStage;
 import java.awt.Font;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -20,32 +20,27 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author razvanvc
  */
-public class SureExit extends BasicGameState{
+public class S6_ExitSure extends BasicGameState{
 
     private int playersChoice = 0;
     private static final int YES = 0;
     private static final int NO = 1;
     private static final int NOCHOICES = 2;
     private final String[] playersOptions = new String[NOCHOICES];
-    private final String[] optionsExit = new String[2];
-    private boolean exit = false;
     private java.awt.Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);
-    protected static int lastStage;
-    private boolean sure = false;
     
-    public SureExit(int state) {
+    public S6_ExitSure(int state) {
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        optionsExit[0] = "Yes";
-        optionsExit[1] = "No";
+        playersOptions[0] = "Yes";
+        playersOptions[1] = "No";
         
         font = new Font("Verdana", Font.BOLD, 40);
         playersOptionsTTF = new TrueTypeFont(font, true);
-        lastStage = sbg.getCurrentStateID();
     }
 
     @Override
@@ -81,7 +76,9 @@ public class SureExit extends BasicGameState{
                     gc.exit();
                     break;
                 case NO:
-                    sbg.enterState(5);
+                    if (lastStage == 1){
+                        sbg.enterState(5);
+                    }else{ sbg.enterState(0);}
                     break;
                     
             }
@@ -95,9 +92,9 @@ public class SureExit extends BasicGameState{
     private void renderExit(){
         for (int i = 0; i < NOCHOICES; i++){
             if (playersChoice == i){
-                playersOptionsTTF.drawString(100, i*50+200, optionsExit[i]);
+                playersOptionsTTF.drawString(100, i*50+200, playersOptions[i]);
             } else {
-                playersOptionsTTF.drawString(100, i * 50 + 200, optionsExit[i], notChosen);
+                playersOptionsTTF.drawString(100, i * 50 + 200, playersOptions[i], notChosen);
             }
         }
     }

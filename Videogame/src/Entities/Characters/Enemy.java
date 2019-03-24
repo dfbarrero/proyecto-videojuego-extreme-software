@@ -9,8 +9,7 @@ package Entities.Characters;
  *
  * @author Javier Muñoz
  */
-public class Enemy extends Character
-{
+public class Enemy extends Character {
     //Enemy interactions with the player yet to be implemented.
     private String name;
     private Inventory inventory;

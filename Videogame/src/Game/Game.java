@@ -27,13 +27,13 @@ public class Game extends StateBasedGame{
     
     public Game(String name) {
         super(gamename);
-        this.addState((GameState) new PrincipalMenu(menu));
-        this.addState((GameState) new Playing(playing));
-        this.addState((GameState) new LoadPage(loadpage));
-        this.addState((GameState) new SavePage(savepage));
-        this.addState((GameState) new OptionsPage(optionpage));
-        this.addState((GameState) new EscPage(escpage));
-        this.addState((GameState) new SureExit(sureexit));
+        this.addState((GameState) new S0_MainMenu(menu));
+        this.addState((GameState) new S1_Playing(playing));
+        this.addState((GameState) new S3_LoadPage(loadpage));
+        this.addState((GameState) new S2_SavePage(savepage));
+        this.addState((GameState) new S4_OptionsPage(optionpage));
+        this.addState((GameState) new S5_EscPage(escpage));
+        this.addState((GameState) new S6_ExitSure(sureexit));
     }
     
     /**
@@ -65,5 +65,4 @@ public class Game extends StateBasedGame{
             e.printStackTrace();
         }
     }
-
 }

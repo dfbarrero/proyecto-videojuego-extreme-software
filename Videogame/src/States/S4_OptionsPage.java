@@ -5,67 +5,59 @@
  */
 package States;
 
+import static States.S0_MainMenu.lastStage;
 import java.awt.Font;
-import org.lwjgl.input.Mouse;
-import org.newdawn.slick.*;
-import org.newdawn.slick.state.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
 /**
  *
  * @author razvanvc
  */
-public class PrincipalMenu extends BasicGameState{
+public class S4_OptionsPage extends BasicGameState{
 
-    public String mouse = "No input yet!";
-    Image play;
     private int playersChoice = 0;
     private static final int NOCHOICES = 4;
-    private static final int START = 0;
-    private static final int LOAD = 1;
-    private static final int OPTIONS = 2;
-    private static final int QUIT = 3;
-    private final String[] playersOptions = new String[NOCHOICES];
-    private boolean exit = false;
-    private Font font;
+    private static final int GRAFICS = 0;
+    private static final int SOUND = 1;
+    private static final int LANGUAGE = 2;
+    private static final int BACK = 3;
     private TrueTypeFont playersOptionsTTF;
+    private String[] playersOptions=new String[NOCHOICES];
     private final Color notChosen = new Color(153, 204, 255);
-    protected static int lastStage;
-    
-    
-    public PrincipalMenu(int state) {
+    private Font font;
+
+    public S4_OptionsPage(int state) {
     }
+
     
+    
+
     @Override
-    //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        //play = new Image("res/play button.png");
-        playersOptions[0] = "Start";
-        playersOptions[1] = "Load";
-        playersOptions[2] = "Options";
-        playersOptions[3] = "Quit";
+        playersOptions[0] = "Grafics";
+        playersOptions[1] = "Sound";
+        playersOptions[2] = "Language";
+        playersOptions[3] = "Back";
         font = new Font("Verdana", Font.BOLD, 40);
         playersOptionsTTF = new TrueTypeFont(font, true);
-        lastStage = sbg.getCurrentStateID();
     }
 
     @Override
-    //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString(mouse, 950, 10);//muestra la posicion de raton
-        //g.drawImage(play, 300, 100);
+        g.drawString("Your in option page",100,100);
         renderPlayersOptions();
-        if (exit) {
-            gc.exit();}
+        
     }
 
     @Override
-    //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        //Consigue la posicion del raton
-        int xpos = Mouse.getX();
-        int ypos = Mouse.getY();
-        mouse = xpos + " " + ypos; //cambia la variable de la posicion del raton
-        
         Input input = gc.getInput();
         if (input.isKeyPressed(Input.KEY_DOWN)) {
             if (playersChoice == (NOCHOICES - 1)) {
@@ -83,32 +75,25 @@ public class PrincipalMenu extends BasicGameState{
         }
         if (input.isKeyPressed(Input.KEY_ENTER)) {
             switch (playersChoice) {
-                case QUIT:
-                    exit = true;
+                case GRAFICS:
+                    sbg.enterState(5);
                     break;
-                case START:
-                    sbg.enterState(1);
+                case SOUND:
+                    sbg.enterState(5);
                     break;
-                case LOAD:
-                    sbg.enterState(3);
+                case LANGUAGE:
+                    sbg.enterState(6);
                     break;
-                case OPTIONS:
-                    sbg.enterState(4);
-                    break;    
-            }
+                case BACK:
+                    sbg.enterState(lastStage);
+                    break;
+            }   
         }
-        if (input.isKeyPressed(Input.KEY_ESCAPE) && lastStage == 1){
-            sbg.enterState(1);
-        }
-        
     }
-    
     @Override
-    //Return the state of the menu (0)
     public int getID() {
-        return 0;
+        return 4;
     }
-    
     private void renderPlayersOptions() {
         for (int i = 0; i < NOCHOICES; i++) {
             if (playersChoice == i) {
@@ -118,4 +103,5 @@ public class PrincipalMenu extends BasicGameState{
             }
         }
     }
+    
 }

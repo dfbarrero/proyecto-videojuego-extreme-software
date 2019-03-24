@@ -12,9 +12,9 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author razvanvc
  */
-public class SavePage extends BasicGameState{
+public class S2_SavePage extends BasicGameState{
 
-    public SavePage(int state) {
+    public S2_SavePage(int state) {
     }
 
     @Override
