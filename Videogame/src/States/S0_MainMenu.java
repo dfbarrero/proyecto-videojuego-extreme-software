@@ -6,6 +6,14 @@
 package States;
 
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -31,7 +39,10 @@ public class S0_MainMenu extends BasicGameState{
     private final Color notChosen = new Color(153, 204, 255);
     private final Color background = new Color(0, 0, 255);
     public static int lastStage;
-    
+    public static Sound sound;
+    // Se obtiene un Clip de sonido
+    public static Clip MainMenuMusic;
+    private boolean playingMuscic = true;
     
     
     public S0_MainMenu(int state) {
@@ -50,17 +61,29 @@ public class S0_MainMenu extends BasicGameState{
         font = new Font("Verdana", Font.BOLD, 40);
         playersOptionsTTF = new TrueTypeFont(font, true);
         lastStage = sbg.getCurrentStateID();
+        //sound = new Sound("music/01_MainMenu.wav");
+        
+        try {
+            MainMenuMusic = AudioSystem.getClip();
+            MainMenuMusic.open(AudioSystem.getAudioInputStream(new File("music/01_MainMenu.wav")));
+        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.drawString(mouse, 950, 10);//muestra la posicion de raton
-        //g.drawImage(play, 300, 100);
         renderPlayersOptions();
-        if (exit) {
-            gc.exit();}
+        // Comienza la reproducción
+        MainMenuMusic.start();
+        
+        if (!playingMuscic){
+            MainMenuMusic.stop();
+        }
     }
+    
 
     @Override
     //Make possible the movement
@@ -92,6 +115,7 @@ public class S0_MainMenu extends BasicGameState{
                     break;
                 case START:
                     sbg.enterState(1);
+                    playingMuscic = false;
                     break;
                 case LOAD:
                     sbg.enterState(3);

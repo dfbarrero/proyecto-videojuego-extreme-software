@@ -72,7 +72,7 @@ public class Game extends StateBasedGame{
             appgc = new AppGameContainer (new Game(gamename));
             int height = appgc.getScreenHeight();
             int lenght = appgc.getScreenWidth();
-            appgc.setDisplayMode(lenght,height, true);
+            appgc.setDisplayMode(lenght,height, false);
             appgc.start();
             
             
