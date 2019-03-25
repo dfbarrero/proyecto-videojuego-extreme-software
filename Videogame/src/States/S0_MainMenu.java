@@ -29,6 +29,7 @@ public class S0_MainMenu extends BasicGameState{
     private Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);
+    private final Color background = new Color(0, 0, 255);
     public static int lastStage;
     
     
@@ -41,6 +42,7 @@ public class S0_MainMenu extends BasicGameState{
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         //play = new Image("res/play button.png");
+        
         playersOptions[0] = "Start";
         playersOptions[1] = "Load";
         playersOptions[2] = "Options";

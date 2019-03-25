@@ -76,13 +76,13 @@ public class S4_OptionsPage extends BasicGameState{
         if (input.isKeyPressed(Input.KEY_ENTER)) {
             switch (playersChoice) {
                 case GRAFICS:
-                    sbg.enterState(5);
+                    sbg.enterState(7);
                     break;
                 case SOUND:
-                    sbg.enterState(5);
+                    sbg.enterState(8);
                     break;
                 case LANGUAGE:
-                    sbg.enterState(6);
+                    sbg.enterState(9);
                     break;
                 case BACK:
                     sbg.enterState(lastStage);

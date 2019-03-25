@@ -23,6 +23,10 @@ public class Game extends StateBasedGame{
     public static final int optionpage = 4;
     public static final int escpage = 5;
     public static final int sureexit = 6;
+    public static final int graphics = 7;
+    public static final int audio = 8;
+    public static final int language = 9;
+    
     
     
     public Game(String name) {
@@ -34,6 +38,9 @@ public class Game extends StateBasedGame{
         this.addState((GameState) new S4_OptionsPage(optionpage));
         this.addState((GameState) new S5_EscPage(escpage));
         this.addState((GameState) new S6_ExitSure(sureexit));
+        this.addState((GameState) new S7_Graphics(graphics));
+        this.addState((GameState) new S8_Audio(audio));
+        this.addState((GameState) new S9_Language(language));
     }
     
     /**
@@ -51,6 +58,10 @@ public class Game extends StateBasedGame{
         this.getState(optionpage).init(gc, this);
         this.getState(escpage).init(gc, this);
         this.getState(sureexit).init(gc, this);
+        this.getState(graphics).init(gc, this);
+        this.getState(audio).init(gc, this);
+        this.getState(language).init(gc, this);
+        
         this.enterState(menu);
     }
     
@@ -59,8 +70,12 @@ public class Game extends StateBasedGame{
         AppGameContainer appgc;
         try{
             appgc = new AppGameContainer (new Game(gamename));
-            appgc.setDisplayMode(1080, 720, false);
+            int height = appgc.getScreenHeight();
+            int lenght = appgc.getScreenWidth();
+            appgc.setDisplayMode(lenght,height, true);
             appgc.start();
+            
+            
         }catch(SlickException e){
             e.printStackTrace();
         }

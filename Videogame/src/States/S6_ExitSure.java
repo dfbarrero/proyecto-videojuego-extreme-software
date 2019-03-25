@@ -78,7 +78,9 @@ public class S6_ExitSure extends BasicGameState{
                 case NO:
                     if (lastStage == 1){
                         sbg.enterState(5);
-                    }else{ sbg.enterState(0);}
+                    } else{
+                        sbg.enterState(0);
+                    }
                     break;
                     
             }
