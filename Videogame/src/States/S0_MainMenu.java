@@ -5,6 +5,7 @@
  */
 package States;
 
+import MusicPlayer.MusicPlayer;
 import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
@@ -39,10 +40,9 @@ public class S0_MainMenu extends BasicGameState{
     private final Color notChosen = new Color(153, 204, 255);
     private final Color background = new Color(0, 0, 255);
     public static int lastStage;
-    public static Sound sound;
-    // Se obtiene un Clip de sonido
-    public static Clip MainMenuMusic;
+    
     private boolean playingMuscic = true;
+    public MusicPlayer musicplayer = new MusicPlayer();
     
     
     public S0_MainMenu(int state) {
@@ -62,13 +62,8 @@ public class S0_MainMenu extends BasicGameState{
         playersOptionsTTF = new TrueTypeFont(font, true);
         lastStage = sbg.getCurrentStateID();
         //sound = new Sound("music/01_MainMenu.wav");
-        
-        try {
-            MainMenuMusic = AudioSystem.getClip();
-            MainMenuMusic.open(AudioSystem.getAudioInputStream(new File("music/01_MainMenu.wav")));
-        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
-            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        musicplayer.playTrack(1);
+              
     }
 
     @Override
@@ -77,11 +72,9 @@ public class S0_MainMenu extends BasicGameState{
         g.drawString(mouse, 950, 10);//muestra la posicion de raton
         renderPlayersOptions();
         // Comienza la reproducción
-        MainMenuMusic.start();
-        
         if (!playingMuscic){
-            MainMenuMusic.stop();
-        }
+            musicplayer.stopTrack(1);
+        }  
     }
     
 
