@@ -24,6 +24,7 @@ public class S1_Playing extends BasicGameState {
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        
     }
 
     @Override

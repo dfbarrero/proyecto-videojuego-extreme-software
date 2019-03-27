@@ -59,6 +59,11 @@ public class S4_OptionsPage extends BasicGameState{
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
+        
+        if (input.isKeyPressed(Input.KEY_ESCAPE)) {
+           sbg.enterState(lastStage);
+        }
+        
         if (input.isKeyPressed(Input.KEY_DOWN)) {
             if (playersChoice == (NOCHOICES - 1)) {
                 playersChoice = 0;

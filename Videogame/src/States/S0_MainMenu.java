@@ -5,16 +5,8 @@
  */
 package States;
 
-import MusicPlayer.MusicPlayer;
+import MusicPlayer.*;
 import java.awt.Font;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -61,9 +53,8 @@ public class S0_MainMenu extends BasicGameState{
         font = new Font("Verdana", Font.BOLD, 40);
         playersOptionsTTF = new TrueTypeFont(font, true);
         lastStage = sbg.getCurrentStateID();
-        //sound = new Sound("music/01_MainMenu.wav");
         musicplayer.playTrack(1);
-              
+        //musicplayer.setVolume(); Implement function (dont work yet)
     }
 
     @Override
@@ -71,12 +62,7 @@ public class S0_MainMenu extends BasicGameState{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.drawString(mouse, 950, 10);//muestra la posicion de raton
         renderPlayersOptions();
-        // Comienza la reproducción
-        if (!playingMuscic){
-            musicplayer.stopTrack(1);
-        }  
     }
-    
 
     @Override
     //Make possible the movement

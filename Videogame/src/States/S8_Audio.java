@@ -5,8 +5,10 @@
  */
 package States;
 
+import static States.S0_MainMenu.lastStage;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -35,7 +37,10 @@ public class S8_Audio extends BasicGameState{
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        
+        Input input = gc.getInput();
+        if (input.isKeyPressed(Input.KEY_ESCAPE)) {
+           sbg.enterState(4);
+        }
     }
     @Override
     //Return the state of the menu (0)
