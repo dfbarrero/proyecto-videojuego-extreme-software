@@ -6,6 +6,8 @@
 package Game;
 
 import States.*;
+import org.lwjgl.opengl.Display.*;
+import static org.lwjgl.opengl.Display.setResizable;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -68,16 +70,21 @@ public class Game extends StateBasedGame{
     
     public static void main(String[] args) {
         AppGameContainer appgc;
+        ScalableGame scg;
         try{
             appgc = new AppGameContainer (new Game(gamename));
+            int widght = appgc.getScreenWidth();
             int height = appgc.getScreenHeight();
-            int lenght = appgc.getScreenWidth();
-            appgc.setDisplayMode(lenght,height, false);
+//            scg = new ScalableGame(new Game(gamename),widght,height);
+//            scg.init(appgc);
+            appgc.setDisplayMode(widght,height, false);
             appgc.start();
+            
             
             
         }catch(SlickException e){
             e.printStackTrace();
+            
         }
     }
 }
