@@ -26,7 +26,6 @@ public class S0_MainMenu extends BasicGameState{
     private static final int OPTIONS = 2;
     private static final int QUIT = 3;
     private final String[] playersOptions = new String[NOCHOICES];
-    private boolean exit = false;
     private Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);

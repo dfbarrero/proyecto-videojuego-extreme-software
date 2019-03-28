@@ -8,6 +8,7 @@ package States;
 
 import java.awt.Font;
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -16,6 +17,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import Game.*;
 
 /**
  *
@@ -40,16 +42,19 @@ public class S7_Graphics extends BasicGameState {
     private static final int R_1440P = 5;
     private static final int R_1600P = 6;
     private static final int R_4K = 7;
+    
 
     
     
-    private final String[] playersOptions = new String[NOCHOICES];
+    private final String[] playersOptions = new String[DEFAULT];
     
     private Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);
     private final Color background = new Color(0, 0, 255);
     private String mouse;
+    private String choice1;
+
     
     private final String[] playersResolutions = new String[DEFAULT];
     
@@ -86,8 +91,8 @@ public class S7_Graphics extends BasicGameState {
         
         //g.drawString(mouse, 950, 10);//muestra la posicion de raton
         renderPlayersOptions();
-        renderResolutions(0);
-        
+        renderResolutions(playersResolution);
+        g.drawString(choice1, 100, 120);
     }
 
     @Override
@@ -99,6 +104,8 @@ public class S7_Graphics extends BasicGameState {
         }
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
+        renderResolutions(playersResolution);
+        choice1 = "Player Resolution: " + playersResolution + "Players Choice: " + playersChoice;
         //mouse = xpos + " " + ypos; //cambia la variable de la posicion del raton
         
         if (input.isKeyPressed(Input.KEY_DOWN)) {
@@ -123,36 +130,51 @@ public class S7_Graphics extends BasicGameState {
                 case RESOLUTION:
                     break;
                 case FULLSCREEN:
-                    break;
-//                case OPTIONS:
-//                    break;    
+                    break;    
             }
         }
-        if (playersChoice == 0 && input.isKeyPressed(Input.KEY_RIGHT)){
+        
+        if (playersChoice == RESOLUTION && input.isKeyPressed(Input.KEY_LEFT)){
             if (playersResolution == 0) {
-                playersResolution = NOCHOICES - 1;
-                renderResolutions(playersResolution);
+                playersResolution = DEFAULT - 1;
+                
             } else {
                 playersResolution--;
-                renderResolutions(playersResolution);
+                
             }
-//            
-//            switch (playersResolution){
-//                case R_720P:
-//                    renderResolutions(1);
-//                    break;
-//                case R_800P:
-//                    renderResolutions(2);
-//                    break;    
-//            }
         }
-        if (playersChoice == 0 && input.isKeyPressed(Input.KEY_LEFT)){
-            if (playersResolution == (NOCHOICES - 1)) {
+        
+        if (playersChoice == RESOLUTION && input.isKeyPressed(Input.KEY_RIGHT)){
+            if (playersResolution == (DEFAULT - 1)) {
                 playersResolution = 0;
-                renderResolutions(playersResolution);
+                //renderResolutions(playersResolution);
             } else {
                 playersResolution++;
-                renderResolutions(playersResolution);
+                //renderResolutions(playersResolution);
+                
+            }
+        }
+        
+        if (playersChoice == 0 && input.isKeyDown(Input.KEY_ENTER)) {//.isKeyPressed()
+            gc.sleep(100);
+            switch (playersResolution) {
+                case R_720P:
+                    sbg.enterState(0);
+                    break;
+                case R_800P:
+                    break;
+                case R_900P:
+                    break;    
+                case R_1080P:
+                    break;
+                case R_1200P:
+                    break;
+                case R_1440P:
+                    break; 
+                case R_1600P:
+                    break;
+                case R_4K:
+                    break;
             }
         }
     }
@@ -173,12 +195,15 @@ public class S7_Graphics extends BasicGameState {
         }
     }
     private void renderResolutions(int resolution){
-        if (playersChoice == 0) {
+        
+        for (int i = 0; i < DEFAULT; i++) {
+            
+            if (playersChoice == 0) {
                 playersOptionsTTF.drawString(400, 200, playersResolutions[resolution]);
                 
             } else {
                 playersOptionsTTF.drawString(400, 200, playersResolutions[resolution], notChosen);
             }
-        
+        }
     }
 }
