@@ -158,8 +158,9 @@ public class S7_Graphics extends BasicGameState {
         if (playersChoice == 0 && input.isKeyDown(Input.KEY_ENTER)) {//.isKeyPressed()
             gc.sleep(100);
             switch (playersResolution) {
+                //PROPERTYES mirar configuracion
                 case R_720P:
-                    sbg.enterState(0);
+                    gc.setFullscreen(true);
                     break;
                 case R_800P:
                     break;

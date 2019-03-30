@@ -6,6 +6,12 @@
 package Game;
 
 import States.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lwjgl.opengl.Display.*;
 import static org.lwjgl.opengl.Display.setResizable;
 import org.newdawn.slick.*;
@@ -70,21 +76,32 @@ public class Game extends StateBasedGame{
     
     public static void main(String[] args) {
         AppGameContainer appgc;
-        ScalableGame scg;
+        
+        //We charge the PROPERTIES file and take from there some values
+        Properties prop=new Properties();
+        FileInputStream ip;
+        
+        
         try{
+            ip = new FileInputStream("/Users/razvanvc/Documents/GitHub/proyecto-videojuego-extreme-software/Videogame/src/ReadPropertyFile/config.properties");
+            prop.load(ip);
+        
+            int wight;
+            int high;
+            boolean fullscreen;
+            wight = Integer.parseInt(prop.getProperty("width"));
+            high = Integer.parseInt(prop.getProperty("high"));
+            fullscreen = Boolean.parseBoolean(prop.getProperty("fullscreen"));
+            
             appgc = new AppGameContainer (new Game(gamename));
-            int widght = appgc.getScreenWidth();
-            int height = appgc.getScreenHeight();
-//            scg = new ScalableGame(new Game(gamename),widght,height);
-//            scg.init(appgc);
-            appgc.setDisplayMode(widght,height, false);
+            
+            appgc.setDisplayMode(wight,high, fullscreen);
             appgc.start();
             
+
             
-            
-        }catch(SlickException e){
+        }catch(SlickException | IOException e){
             e.printStackTrace();
-            
         }
     }
 }
