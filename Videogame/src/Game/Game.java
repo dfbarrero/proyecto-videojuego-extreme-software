@@ -7,6 +7,7 @@ package Game;
 
 import States.*;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -73,15 +74,19 @@ public class Game extends StateBasedGame{
     }
     
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         AppGameContainer appgc;
         
         //We charge the PROPERTIES file and take from there some values
         Properties prop=new Properties();
+        prop.setProperty("width", "800");
+        prop.setProperty("high", "600");
+        prop.setProperty("fullScreen", "false");
         FileInputStream ip;
         
         
         try{
+            
             ip = new FileInputStream("src/Game/config.properties");
             prop.load(ip);
         
@@ -97,8 +102,15 @@ public class Game extends StateBasedGame{
             
             appgc.setDisplayMode(wight,high, fullscreen);
             appgc.start();
-        }catch(SlickException | IOException e){
+        }catch(SlickException e){
             e.printStackTrace();
+        }catch(FileNotFoundException e){
+            ip = new FileInputStream("src/Game/config.properties");
+            prop.setProperty("width", "800");
+            prop.setProperty("high", "600");
+            prop.setProperty("fullScreen", "false");
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
