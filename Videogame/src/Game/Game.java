@@ -82,7 +82,7 @@ public class Game extends StateBasedGame{
         
         
         try{
-            ip = new FileInputStream("../src/ReadPropertyFile/config.properties");
+            ip = new FileInputStream("src/Game/config.properties");
             prop.load(ip);
         
             int wight;

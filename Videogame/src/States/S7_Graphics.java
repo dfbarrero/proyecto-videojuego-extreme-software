@@ -109,7 +109,7 @@ public class S7_Graphics extends BasicGameState {
         renderResolutions(playersResolution);
         g.drawString(choice1, 100, 120);
         try{
-            ip = new FileInputStream("/Users/razvanvc/Documents/GitHub/proyecto-videojuego-extreme-software/Videogame/src/ReadPropertyFile/config.properties");
+            ip = new FileInputStream("src/Game/config.properties");
             prop.load(ip);
             
             lastResolutionChoosen = Integer.parseInt(prop.getProperty("lastResolutionChoosen"));
