@@ -7,7 +7,6 @@ package Game;
 
 import States.*;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -83,12 +82,13 @@ public class Game extends StateBasedGame{
         
         
         try{
-            ip = new FileInputStream("/Users/razvanvc/Documents/GitHub/proyecto-videojuego-extreme-software/Videogame/src/ReadPropertyFile/config.properties");
+            ip = new FileInputStream("../src/ReadPropertyFile/config.properties");
             prop.load(ip);
         
             int wight;
             int high;
             boolean fullscreen;
+            
             wight = Integer.parseInt(prop.getProperty("width"));
             high = Integer.parseInt(prop.getProperty("high"));
             fullscreen = Boolean.parseBoolean(prop.getProperty("fullscreen"));
@@ -97,9 +97,6 @@ public class Game extends StateBasedGame{
             
             appgc.setDisplayMode(wight,high, fullscreen);
             appgc.start();
-            
-
-            
         }catch(SlickException | IOException e){
             e.printStackTrace();
         }

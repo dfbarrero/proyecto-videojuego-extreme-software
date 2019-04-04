@@ -45,7 +45,7 @@ public class S5_EscPage extends BasicGameState{
         playersOptions[3] = "Quit";
         lastStage = sbg.getCurrentStateID();
         
-        font = new Font("Verdana", Font.BOLD, 40);
+        font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);
     }
 

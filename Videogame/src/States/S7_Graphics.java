@@ -8,7 +8,6 @@ package States;
 
 import java.awt.Font;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -17,7 +16,13 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import Game.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,15 +38,16 @@ public class S7_Graphics extends BasicGameState {
     // private static final int OPTIONS = 3;
     
     private int playersResolution = 0;
-    private static final int DEFAULT = 8;
-    private static final int R_720P = 0;
-    private static final int R_800P = 1;
-    private static final int R_900P = 2;
-    private static final int R_1080P = 3;
-    private static final int R_1200P = 4;
-    private static final int R_1440P = 5;
-    private static final int R_1600P = 6;
-    private static final int R_4K = 7;
+    private static final int DEFAULT = 9;
+    private static final int R_720P = 1;
+    private static final int R_800P = 2;
+    private static final int R_900P = 3;
+    private static final int R_1080P = 4;
+    private static final int R_1200P = 5;
+    private static final int R_1440P = 6;
+    private static final int R_1600P = 7;
+    private static final int R_4K = 8;
+    private static final int R_DEFALT = 0;
     
 
     
@@ -54,6 +60,8 @@ public class S7_Graphics extends BasicGameState {
     private final Color background = new Color(0, 0, 255);
     private String mouse;
     private String choice1;
+    public boolean changesResolution;
+    public boolean otherChanges;
 
     
     private final String[] playersResolutions = new String[DEFAULT];
@@ -61,6 +69,12 @@ public class S7_Graphics extends BasicGameState {
     public S7_Graphics(int graphics) {
         
     }
+    Properties prop=new Properties();
+    FileInputStream ip;
+    int lastResolutionChoosen;
+        
+        
+        
 
     @Override
     //Initialice some stuff (dont know yet)
@@ -69,17 +83,18 @@ public class S7_Graphics extends BasicGameState {
         playersOptions[1] = "Fullscreen";
         playersOptions[2] = "Back";
         //playersOptions[2] = "Options";
-        playersResolutions[0] = "1280 x 720"; //720p
-        playersResolutions[1] = "1280 x 800"; //800p
-        playersResolutions[2] = "1600 x 900"; //900p
-        playersResolutions[3] = "1920 x 1080"; //1080p
-        playersResolutions[4] = "1920 x 1200"; //1200p
-        playersResolutions[5] = "2560 x 1440"; //1440p
-        playersResolutions[6] = "2560 x 1600"; //1600p
-        playersResolutions[7] = "3840 x 2160"; //4K
+        playersResolutions[0] = "800 x 600";//xp
+        playersResolutions[1] = "1280 x 720"; //720p
+        playersResolutions[2] = "1280 x 800"; //800p
+        playersResolutions[3] = "1600 x 900"; //900p
+        playersResolutions[4] = "1920 x 1080"; //1080p
+        playersResolutions[5] = "1920 x 1200"; //1200p
+        playersResolutions[6] = "2560 x 1440"; //1440p
+        playersResolutions[7] = "2560 x 1600"; //1600p
+        playersResolutions[8] = "3840 x 2160"; //4K
 
         
-        font = new Font("Verdana", Font.BOLD, 40);
+        font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);
         
     }
@@ -93,6 +108,15 @@ public class S7_Graphics extends BasicGameState {
         renderPlayersOptions();
         renderResolutions(playersResolution);
         g.drawString(choice1, 100, 120);
+        try{
+            ip = new FileInputStream("/Users/razvanvc/Documents/GitHub/proyecto-videojuego-extreme-software/Videogame/src/ReadPropertyFile/config.properties");
+            prop.load(ip);
+            
+            lastResolutionChoosen = Integer.parseInt(prop.getProperty("lastResolutionChoosen"));
+            
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
     }
 
     @Override
@@ -147,6 +171,7 @@ public class S7_Graphics extends BasicGameState {
         if (playersChoice == RESOLUTION && input.isKeyPressed(Input.KEY_RIGHT)){
             if (playersResolution == (DEFAULT - 1)) {
                 playersResolution = 0;
+                //playersResolution = lastResolutionChoosen;
                 //renderResolutions(playersResolution);
             } else {
                 playersResolution++;
@@ -160,21 +185,37 @@ public class S7_Graphics extends BasicGameState {
             switch (playersResolution) {
                 //PROPERTYES mirar configuracion
                 case R_720P:
-                    gc.setFullscreen(true);
+                    prop.setProperty("lastResolutionChoosen", "1");
+            {
+                try {
+                    prop.store(new FileOutputStream("config.properties"), null);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(S7_Graphics.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(S7_Graphics.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                     break;
                 case R_800P:
+                    prop.setProperty("lastResolutionChoosen", "2");
                     break;
                 case R_900P:
+                    prop.setProperty("lastResolutionChoosen", "3");
                     break;    
                 case R_1080P:
+                    prop.setProperty("lastResolutionChoosen", "4");
                     break;
                 case R_1200P:
+                    prop.setProperty("lastResolutionChoosen", "5");
                     break;
                 case R_1440P:
+                    prop.setProperty("lastResolutionChoosen", "6");
                     break; 
                 case R_1600P:
+                    prop.setProperty("lastResolutionChoosen", "7");
                     break;
                 case R_4K:
+                    prop.setProperty("lastResolutionChoosen", "8");
                     break;
             }
         }

@@ -49,7 +49,7 @@ public class S0_MainMenu extends BasicGameState{
         playersOptions[1] = "Load";
         playersOptions[2] = "Options";
         playersOptions[3] = "Quit";
-        font = new Font("Verdana", Font.BOLD, 40);
+        font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);
         lastStage = sbg.getCurrentStateID();
         musicplayer.playTrack(1);

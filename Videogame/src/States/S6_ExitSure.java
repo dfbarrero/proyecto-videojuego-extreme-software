@@ -39,7 +39,7 @@ public class S6_ExitSure extends BasicGameState{
         playersOptions[0] = "Yes";
         playersOptions[1] = "No";
         
-        font = new Font("Verdana", Font.BOLD, 40);
+        font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);
     }
 
