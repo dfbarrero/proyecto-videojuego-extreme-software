@@ -61,7 +61,15 @@ public class Mapa {
         }
     }
     public void actualizarPersonaje(float x, float y) {
-                Character.updatePos(x, y);
+        boolean collision;
+        Character.updatePos(x, y);
+    }
+    public void actualizarBloques(float x, float y)
+    {
+        for(int i=0;i<blocks.size();i++)
+        {
+            blocks.get(i).updatePos(x, y);
+        }
     }
     public void renderMap(GameContainer gc, double x, double y, Graphics grphcs, boolean ver_hitbox) {
         map.render((int) x, (int) y, 0, 0, gc.getWidth(), gc.getHeight());
