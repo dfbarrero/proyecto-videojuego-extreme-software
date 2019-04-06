@@ -84,21 +84,8 @@ public class Game extends StateBasedGame{
         
         FileInputStream ip;
         FileInputStream soconfig;
-        Properties soprop=new Properties();
-        soconfig = new FileInputStream("nbproject/project.properties");
         
-        try {
-            soprop.load(soconfig);
-            if (isWindows()) {
-                soprop.setProperty("run.jvmarg", "lwjgl-2.9.3/native/windows");
-		} else if (isMac()) {
-                    System.out.println(System.getProperty("os.name").toLowerCase());
-                soprop.setProperty("run.jvmarg", "lwjgl-2.9.3/native/macosx");}
-        } catch (IOException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        String classpath = "/lwjgl-2.9.3/native/macosx";
-//        System.setProperty("javac.classpath", "lwjgl-2.9.3/native/macosx");
+        //"lwjgl-2.9.3/native/macosx");
         
         
         //PATH
