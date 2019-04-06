@@ -9,6 +9,7 @@ import States.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import static java.lang.ProcessBuilder.Redirect.to;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ import org.newdawn.slick.state.*;
  * @author razvanvc
  */
 public class Game extends StateBasedGame{
+    private static String OS = System.getProperty("os.name").toLowerCase();
     
     public static final String gamename = "3xtremE";
     public static final int menu = 0;
@@ -79,10 +81,28 @@ public class Game extends StateBasedGame{
         
         //We charge the PROPERTIES file and take from there some values
         Properties prop=new Properties();
-        prop.setProperty("width", "800");
-        prop.setProperty("high", "600");
-        prop.setProperty("fullScreen", "false");
+        
         FileInputStream ip;
+        FileInputStream soconfig;
+        Properties soprop=new Properties();
+        soconfig = new FileInputStream("nbproject/project.properties");
+        
+        try {
+            soprop.load(soconfig);
+            if (isWindows()) {
+                soprop.setProperty("run.jvmarg", "lwjgl-2.9.3/native/windows");
+		} else if (isMac()) {
+                    System.out.println(System.getProperty("os.name").toLowerCase());
+                soprop.setProperty("run.jvmarg", "lwjgl-2.9.3/native/macosx");}
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        String classpath = "/lwjgl-2.9.3/native/macosx";
+//        System.setProperty("javac.classpath", "lwjgl-2.9.3/native/macosx");
+        
+        
+        //PATH
+        //-Djava.library.path="/Users/razvanvc/Documents/GitHub/proyecto-videojuego-extreme-software/Videogame/lwjgl-2.9.3/native/macosx"
         
         
         try{
@@ -111,6 +131,20 @@ public class Game extends StateBasedGame{
             prop.setProperty("fullScreen", "false");
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
-}
+
+        }
+        public static boolean isWindows() {
+
+		return (OS.contains("win"));
+
+	}
+
+	public static boolean isMac() {
+
+		return (OS.contains("mac"));
+
+	}
+    }
+
