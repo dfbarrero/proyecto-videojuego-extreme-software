@@ -71,6 +71,8 @@ public class S7_Graphics extends BasicGameState {
     }
     Properties prop=new Properties();
     FileInputStream ip;
+    FileOutputStream ip2;
+    //int lastResolutionChoosen = 0;
     int lastResolutionChoosen;
         
         
@@ -110,9 +112,9 @@ public class S7_Graphics extends BasicGameState {
         g.drawString(choice1, 100, 120);
         try{
             ip = new FileInputStream("src/Game/config.properties");
+            ip2 = new FileOutputStream("src/Game/config.properties");
             prop.load(ip);
-            
-            lastResolutionChoosen = Integer.parseInt(prop.getProperty("lastResolutionChoosen"));
+            //lastResolutionChoosen = Integer.parseInt(prop.getProperty("lastResolutionChoosen"));
             
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
@@ -185,16 +187,16 @@ public class S7_Graphics extends BasicGameState {
             switch (playersResolution) {
                 //PROPERTYES mirar configuracion
                 case R_720P:
+                    
+                    //prop.setProperty("lastResolutionChoosen", "1");
                     prop.setProperty("lastResolutionChoosen", "1");
-            {
+            
                 try {
-                    prop.store(new FileOutputStream("config.properties"), null);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(S7_Graphics.class.getName()).log(Level.SEVERE, null, ex);
+                    ip.close();
                 } catch (IOException ex) {
                     Logger.getLogger(S7_Graphics.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+            
                     break;
                 case R_800P:
                     prop.setProperty("lastResolutionChoosen", "2");

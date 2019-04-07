@@ -9,12 +9,9 @@ import States.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import static java.lang.ProcessBuilder.Redirect.to;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lwjgl.opengl.Display.*;
-import static org.lwjgl.opengl.Display.setResizable;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -37,7 +34,7 @@ public class Game extends StateBasedGame{
     public static final int audio = 8;
     public static final int language = 9;
     
-    
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     
     public Game(String name) {
         super(gamename);
@@ -101,13 +98,13 @@ public class Game extends StateBasedGame{
             int high;
             boolean fullscreen;
             
-            wight = Integer.parseInt(prop.getProperty("width"));
-            high = Integer.parseInt(prop.getProperty("high"));
-            fullscreen = Boolean.parseBoolean(prop.getProperty("fullscreen"));
+            //wight = Integer.parseInt(prop.getProperty("width"));
+            //high = Integer.parseInt(prop.getProperty("high"));
+            //fullscreen = Boolean.parseBoolean(prop.getProperty("fullscreen"));
             
             appgc = new AppGameContainer (new Game(gamename));
             
-            appgc.setDisplayMode(wight,high, fullscreen);
+            appgc.setDisplayMode(800,600, false);
             appgc.start();
         }catch(SlickException e){
             e.printStackTrace();
