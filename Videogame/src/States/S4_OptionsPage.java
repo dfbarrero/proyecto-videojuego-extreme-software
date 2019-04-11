@@ -47,6 +47,7 @@ public class S4_OptionsPage extends BasicGameState{
         playersOptions[3] = "Back";
         font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);
+        lastStage = 4;
     }
 
     @Override
@@ -81,13 +82,13 @@ public class S4_OptionsPage extends BasicGameState{
         if (input.isKeyPressed(Input.KEY_ENTER)) {
             switch (playersChoice) {
                 case GRAFICS:
-                    sbg.enterState(7);
+                    sbg.enterState(10);
                     break;
                 case SOUND:
-                    sbg.enterState(8);
+                    sbg.enterState(10);
                     break;
                 case LANGUAGE:
-                    sbg.enterState(9);
+                    sbg.enterState(10);
                     break;
                 case BACK:
                     sbg.enterState(lastStage);
