@@ -36,7 +36,7 @@ public class S10_NotImplementedYet extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.drawString("THIS STAHE HAS NOT BEEN IMPLEMENTED YET. ",100,100);
+        g.drawString("THIS STATE HAS NOT BEEN IMPLEMENTED YET. ",100,100);
         g.drawString("PRESS ESC TO GO TO THE LAST STAGE",100,250);
     }
 
