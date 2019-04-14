@@ -30,7 +30,7 @@ public class S1_Playing extends BasicGameState {
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in Play Stage",100,100);
+        g.drawString("You're in the Play page",100,100);
     }
 
     @Override
