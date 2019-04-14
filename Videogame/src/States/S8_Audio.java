@@ -31,7 +31,7 @@ public class S8_Audio extends BasicGameState{
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in Audio Stage",100,100);
+        g.drawString("You're in the Audio page",100,100);
     }
 
     @Override

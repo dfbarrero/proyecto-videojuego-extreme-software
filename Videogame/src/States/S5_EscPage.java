@@ -52,7 +52,7 @@ public class S5_EscPage extends BasicGameState{
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in Escape Stage",100,100);
+        g.drawString("You're in the Escape page",100,100);
         g.drawString(Integer.toString(sbg.getCurrentStateID()), 100, 50);
         renderPlayersOptions();
     }

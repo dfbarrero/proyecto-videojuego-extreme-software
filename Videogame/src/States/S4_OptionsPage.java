@@ -52,7 +52,7 @@ public class S4_OptionsPage extends BasicGameState{
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in option page",100,100);
+        g.drawString("You're in the options page",100,100);
         renderPlayersOptions();
         
     }

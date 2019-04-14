@@ -97,7 +97,7 @@ public class S7_Graphics extends BasicGameState {
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        g.drawString("Your in Graphics Stage", 100, 100); //Remove at the time of play
+        g.drawString("You're in the Graphics page", 100, 100); //Remove at the time of play
         
         renderPlayersOptions();
         renderResolutions(playersResolution);

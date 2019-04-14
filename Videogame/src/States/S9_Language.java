@@ -31,7 +31,7 @@ public class S9_Language extends BasicGameState{
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in Language Stage",100,100);
+        g.drawString("You're in the Language page",100,100);
     }
 
     @Override

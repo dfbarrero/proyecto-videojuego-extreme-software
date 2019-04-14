@@ -27,7 +27,7 @@ public class S3_LoadPage extends BasicGameState{
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in load page",100,100);
+        g.drawString("You're in the load page",100,100);
         
     }
 

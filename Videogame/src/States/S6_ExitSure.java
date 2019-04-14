@@ -45,7 +45,7 @@ public class S6_ExitSure extends BasicGameState{
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in sure page",100,100);
+        g.drawString("You're in the exit page",100,100);
         renderExit();
         playersOptionsTTF.drawString(100, 50, "Do you want to exit?", notChosen);
     }

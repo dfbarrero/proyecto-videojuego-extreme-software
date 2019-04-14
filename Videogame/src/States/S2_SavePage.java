@@ -25,7 +25,7 @@ public class S2_SavePage extends BasicGameState{
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Your in save page",100,100);
+        g.drawString("You're in the save page",100,100);
     }
 
     @Override
