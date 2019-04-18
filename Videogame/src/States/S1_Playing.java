@@ -8,6 +8,7 @@ package States;
 import static States.S0_MainMenu.lastStage;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import Map.*
 /**
  *
  * @author razvanvc
@@ -15,8 +16,7 @@ import org.newdawn.slick.state.*;
 
 
 public class S1_Playing extends BasicGameState {
-
-    
+    private Mapa map;
     
     public S1_Playing(int playing) {
     }
@@ -24,19 +24,21 @@ public class S1_Playing extends BasicGameState {
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        
+        map=new Mapa("Tiled/Mapa.tmx", gc);
     }
 
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.drawString("You're in the Play page",100,100);
+        map.renderMap(gc, g, true);
     }
 
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
+        map.Movimiento(delta, gc);
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
