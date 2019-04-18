@@ -31,7 +31,7 @@ public class Mapa {
             this.map = new TiledMap(ruta);
             //Carga de elementos del mapa
             blocks = new ArrayList<>();
-            Character=new Hitbox(gc.getWidth()/2, gc.getHeight()/2, 30, 30);
+            Character=new Hitbox(gc.getWidth()/2+100, gc.getHeight()/2+100, 30, 30);
             cargaMuros();        /*TODO: cargaSaltosEstado */
         } catch (SlickException ex) {
             Logger.getLogger(Mapa.class.getName()).log(Level.SEVERE, null, ex);
