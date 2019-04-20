@@ -32,6 +32,8 @@ public class S1_Playing extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.drawString("You're in the Play page",100,100);
         map.renderMap(gc, g, true);
+        g.setColor(Color.white);
+        interact(g);
     }
 
     @Override
@@ -39,6 +41,7 @@ public class S1_Playing extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
         map.Movimiento(delta, gc);
+        interact=map.interact();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
@@ -48,6 +51,14 @@ public class S1_Playing extends BasicGameState {
     //Return the state of the menu (0)
     public int getID() {
         return 1;
+    }
+    public void interact(Graphics g)
+    {
+        if(interact)
+        {
+            g.drawString("INTERACT", (int) map.getCharacter().getPosx()-20, (int) map.getCharacter().getPosy()+32);
+            interact=false;
+        }
     }
 
 }
