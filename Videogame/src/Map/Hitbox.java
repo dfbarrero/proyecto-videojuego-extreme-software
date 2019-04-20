@@ -3,14 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Play;
+package Map;
 import org.newdawn.slick.geom.Rectangle;
 
 public class Hitbox {
 
     private Rectangle hitbox;
+    private float posx, posy;
 
+    public float getPosx() {
+        return posx;
+    }
+
+    public float getPosy() {
+        return posy;
+    }
     public Hitbox(float x, float y, float width, float height) {
+        posx=x;
+        posy=y;
         hitbox = new Rectangle(x, y, width, height);
     }
 

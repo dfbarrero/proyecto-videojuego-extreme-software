@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="7">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="7">
  <tileset firstgid="1" source="terreno.tsx"/>
+ <layer id="5" name="Iteracciones" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgGAWjYBSMglGADaxgHGgXDG4AALp1zzlABgAA
+  </data>
+ </layer>
  <layer id="1" name="Capa de Patrones 1" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACjNkZGAwHMWjeBSP4lE8iknEAOEdbeBABgAA
+   H4sIAAAAAAAACjNkZGAwHMWjeBSP4iGOnyLhkWDeYMAAR1jgmkAGAAA=
   </data>
  </layer>
  <layer id="2" name="Walls" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACotnYmCIpzKmFqCXedtoZJ4BUM4QiI2QaFLM24bmNkrNQweEzNsBxcSaRwjAzPpMRfNIcR/IvzCMK/xINQ9mjhGJ8aHFyMCgDcQ6jKS5D5d5XkBzvIHYh0jzsNlPSXxgs3+olgcwgC2M8MkRMg9bGOGTo5V/qYkBIo+es0AGAAA=
+   H4sIAAAAAAAACotnYmCIpzKmFqCXedtoZJ4BUM4QiI2QaFLM24bmNkrNQweEzNsBxcSaRwjAzPpMRfNIcR/IvzCMK/xINQ9mjhGJ8aHFyMCgDcQ6jKS5D5d5XkBzvIHYh0jzsNlPSXxgs3+olgfI4AkO8aEcftTEAGFCLqRABgAA
   </data>
  </layer>
  <layer id="3" name="Puentes" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACmNgGAWjgHLgycTAkI4FezGRZ14GUF87FpxNpnmjYBSMAuoDANlh2bJABgAA
+   H4sIAAAAAAAACmNgGAWjgHLgycTAkI4FezGRZ14GUF87FpxNpnmjYGSAIwPtgBEGAOVJSgBABgAA
   </data>
  </layer>
 </map>
