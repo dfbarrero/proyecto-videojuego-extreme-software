@@ -8,7 +8,7 @@ package States;
 import static States.S0_MainMenu.lastStage;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import Map.*
+import Map.*;
 /**
  *
  * @author razvanvc
