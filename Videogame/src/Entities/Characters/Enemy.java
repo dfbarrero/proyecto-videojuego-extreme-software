@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import Map.Mapa;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -21,30 +22,104 @@ public class Enemy extends Character {
     private Mapa map;
     
     
-    public Enemy(String id, float xPos, float yPos, String pCName, SpriteSheet img, float speed, int health, Mapa map)
+    public Enemy(String id, float xPos, float yPos, String name, SpriteSheet img, float speed, int health, Mapa map)
     {
-        super("enemy", xPos, yPos, img, speed, health);
-        this.name = pCName;
+        super(id, xPos, yPos, img, speed, health);
+        this.name = name;
         this.inventory = new Inventory();
-        this.collisionBox = new Rectangle(xPos, yPos, 30, 30);
+        this.collisionBox = new Rectangle(xPos, yPos, 30, 30);//Enemy with a coll. box of 30px squared
     }
     
     @Override
-    public String toString()    //This will return the player in a String format
+    public String toString()    //This will return the enemy in a String format
     {
         return "xPos: "+getxPos()
               +"\nyPos: "+getyPos()
               +"\nID: "+getId()
-              +"\nName: "+name;
+              +"\nName: "+getName()
+              +"\nSpeed: "+getSpeed()
+              +"\nHealth: "+getHp();
     }
 
-    public String getID()
+    @Override
+    public String getId()
     {
         return getId();
     }
     
     public boolean isDead()
     {
-        return health <=0;
+        return getHp()<=0;
+    }
+
+    @Override
+    public void move(float x, float y) {
+        this.xPos = x;
+        this.yPos = y;
+    }
+
+    @Override
+    public float getYPos() {
+        return yPos;
+    }
+
+    @Override
+    public float getXPos() {
+        return xPos;
+    }
+    
+    @Override
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the inventory
+     */
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    /**
+     * @param inventory the inventory to set
+     */
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    /**
+     * @return the collisionBox
+     */
+    public Rectangle getCollisionBox() {
+        return collisionBox;
+    }
+
+    /**
+     * @return the map
+     */
+    public Mapa getMap() {
+        return map;
+    }
+
+    /**
+     * @param map the map to set
+     */
+    public void setMap(Mapa map) {
+        this.map = map;
     }
 }

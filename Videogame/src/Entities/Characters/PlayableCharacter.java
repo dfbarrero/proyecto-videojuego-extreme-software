@@ -109,5 +109,19 @@ public class PlayableCharacter extends Character
     public float getXPos() {
         return xPos;
     }
+
+    /**
+     * @return the map
+     */
+    public Mapa getMap() {
+        return map;
+    }
+
+    /**
+     * @param map the map to set
+     */
+    public void setMap(Mapa map) {
+        this.map = map;
+    }
     
 }
