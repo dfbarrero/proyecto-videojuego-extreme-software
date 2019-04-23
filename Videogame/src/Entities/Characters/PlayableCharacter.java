@@ -8,7 +8,7 @@ package Entities.Characters;
 import Map.Mapa;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
-
+import Map.*;
 /**
  *
  * @author Javier Muñoz
@@ -18,17 +18,18 @@ public class PlayableCharacter extends Character
     //Interaction with NPCs and enemies need to be implemented.
     private String pCName;
     private Inventory inventory;
-    private final Rectangle collisionBox;   //This is the rectangles that represents
+    private Hitbox collisionBox;   //This is the rectangles that represents
     private float speed;                    //the collision box of the char.
-    private Mapa map;
     
-    public PlayableCharacter(String id, float xPos, float yPos, String pCName, SpriteSheet image, float speed, int health, Mapa map)
+    public PlayableCharacter(String id, float xPos, float yPos, String pCName, SpriteSheet image, float speed, int health)
     {
         super(id, xPos, yPos, image, speed, health);
         this.pCName = pCName;
         this.inventory = new Inventory();
-        this.collisionBox = new Rectangle(xPos, yPos, 30, 30);//This is if the character is 30x30 px
+        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 30x30 px
     }
+
+
     
     @Override
     public String toString()    //This will return the player in a String format
@@ -80,7 +81,7 @@ public class PlayableCharacter extends Character
     /**
      * @return the collision box of the character
      */
-    public Rectangle getCollision() {
+    public Hitbox getCollision() {
         return collisionBox;
     }
 
@@ -113,15 +114,6 @@ public class PlayableCharacter extends Character
     /**
      * @return the map
      */
-    public Mapa getMap() {
-        return map;
-    }
 
-    /**
-     * @param map the map to set
-     */
-    public void setMap(Mapa map) {
-        this.map = map;
-    }
     
 }

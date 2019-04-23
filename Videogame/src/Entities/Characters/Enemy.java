@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import Map.Hitbox;
 import Map.Mapa;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
@@ -17,7 +18,7 @@ public class Enemy extends Character {
     //Enemy interactions with the player yet to be implemented.
     private String name;
     private Inventory inventory;
-    private final Rectangle collisionBox;
+    private final Hitbox collisionBox;
     private float speed;
     private Mapa map;
     
@@ -27,7 +28,7 @@ public class Enemy extends Character {
         super(id, xPos, yPos, img, speed, health);
         this.name = name;
         this.inventory = new Inventory();
-        this.collisionBox = new Rectangle(xPos, yPos, 30, 30);//Enemy with a coll. box of 30px squared
+        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//Enemy with a coll. box of 30px squared
     }
     
     @Override
@@ -105,7 +106,7 @@ public class Enemy extends Character {
     /**
      * @return the collisionBox
      */
-    public Rectangle getCollisionBox() {
+    public Hitbox getCollisionBox() {
         return collisionBox;
     }
 
