@@ -21,26 +21,31 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.tiled.TiledMap;
-
+import Entities.Characters.*;
 public class Mapa {
     private double x, y;
     private TiledMap map;
     private ArrayList<Hitbox> blocks;   
-    private Hitbox Character;
+    private PlayableCharacter Character;
+    private ArrayList<NPC> npcs;
+    private Enemy enemy;
     private ArrayList<Hitbox> iteracciones;
-    public Mapa(String ruta, GameContainer gc) {
+    public Mapa(String ruta, GameContainer gc, PlayableCharacter Char, ArrayList<NPC> npcs, Enemy enemy) {
         try {
             this.map = new TiledMap(ruta);
             //Carga de elementos del mapa
+            this.npcs=npcs;
+            this.enemy=enemy;
             blocks = new ArrayList<>();
             iteracciones=new ArrayList<>();
-            Character=new Hitbox(gc.getWidth()/2+100, gc.getHeight()/2+100, 30, 30);
+            this.Character=Char;
             cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
         } catch (SlickException ex) {
             Logger.getLogger(Mapa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     public double getX() {
         return x;
@@ -50,7 +55,7 @@ public class Mapa {
         return y;
     }
 
-    public Hitbox getCharacter() {
+    public PlayableCharacter getCharacter() {
         return Character;
     }
     public TiledMap getMap() {
@@ -90,7 +95,7 @@ public class Mapa {
         }
     }
     public void actualizarPersonaje(float x, float y) {
-        Character.updatePos(x, y);
+        Character.getCollision().updatePos(x, y);
     }
     public void Movimiento(int i, GameContainer gc)
     {
@@ -145,13 +150,13 @@ public class Mapa {
                 grphcs.drawRect(iteracciones.get(i).getRectangulo().getX(), iteracciones.get(i).getRectangulo().getY(), iteracciones.get(i).getRectangulo().getWidth(), iteracciones.get(i).getRectangulo().getHeight());
             }
             grphcs.setColor(Color.black);
-            grphcs.drawRect(Character.getRectangulo().getX(), Character.getRectangulo().getY(), Character.getRectangulo().getHeight(), Character.getRectangulo().getWidth());
+            grphcs.drawRect(Character.getCollision().getRectangulo().getX(), Character.getCollision().getRectangulo().getY(), Character.getCollision().getRectangulo().getHeight(), Character.getCollision().getRectangulo().getWidth());
         }
     public void collisions(int i, GameContainer gc, String dir)
     {
         for(int j=0;j<blocks.size();j++)
         {
-            if(blocks.get(j).getRectangulo().intersects(Character.getRectangulo()))
+            if(blocks.get(j).getRectangulo().intersects(Character.getCollision().getRectangulo()))
             {
                 if(dir.toUpperCase().equals("ABAJO"))
                 {
@@ -185,7 +190,7 @@ public class Mapa {
     {
         for(int j=0;j<iteracciones.size();j++)
         {
-            if(iteracciones.get(j).getRectangulo().intersects(Character.getRectangulo()))
+            if(iteracciones.get(j).getRectangulo().intersects(Character.getCollision().getRectangulo()))
             {
                 return true;
             }
