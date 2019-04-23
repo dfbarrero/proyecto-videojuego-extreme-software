@@ -17,12 +17,12 @@ import org.newdawn.slick.SpriteSheet;
 *depending on it, so make sure to assign the correct ID to every character.
 */
 public abstract class Character implements CharacterInterface{
-    private String id;
-    private float xPos;
-    private float yPos;
-    private SpriteSheet sprite;
-    private float speed;
-    private int hp;
+    protected String id;
+    protected float xPos;
+    protected float yPos;
+    protected SpriteSheet sprite;
+    protected float speed;
+    protected int hp;
     
     public Character(String id, float xPos, float yPos, SpriteSheet sprite, float speed, int hp)
     {
@@ -118,5 +118,6 @@ public abstract class Character implements CharacterInterface{
         this.hp = hp;
     }
     
+    public abstract String toString();
     
 }
