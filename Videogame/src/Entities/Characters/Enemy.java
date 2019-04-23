@@ -26,15 +26,15 @@ public class Enemy extends Character {
     @Override
     public String toString()    //This will return the player in a String format
     {
-        return "xPos: "+xPos
-              +"\nyPos: "+yPos
-              +"\nID: "+id
+        return "xPos: "+getxPos()
+              +"\nyPos: "+getyPos()
+              +"\nID: "+getId()
               +"\nName: "+name;
     }
 
     public String getID()
     {
-        return id;
+        return getId();
     }
     
     public boolean isDead()

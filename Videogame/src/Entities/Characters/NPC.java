@@ -23,9 +23,9 @@ public class NPC extends Character
     @Override
     public String toString()
     {
-        return "xPos: "+xPos
-              +"\nyPos: "+yPos
-              +"\nID: "+id
+        return "xPos: "+getxPos()
+              +"\nyPos: "+getyPos()
+              +"\nID: "+getId()
               +"\nName: "+getName();
     }
 

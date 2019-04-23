@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Entities.Characters;
+
+import org.newdawn.slick.SpriteSheet;
+
 /**
  *
  * @author Javier Muñoz
@@ -14,38 +17,106 @@ package Entities.Characters;
 *depending on it, so make sure to assign the correct ID to every character.
 */
 public abstract class Character implements CharacterInterface{
-    protected String id;
-    protected int xPos;
-    protected int yPos;
+    private String id;
+    private float xPos;
+    private float yPos;
+    private SpriteSheet sprite;
+    private float speed;
+    private int hp;
     
-    public Character(String id, int xPos, int yPos)
+    public Character(String id, float xPos, float yPos, SpriteSheet sprite, float speed, int hp)
     {
         this.id = id;
         this.xPos = xPos;
         this.yPos = yPos;
-    }
-    
-    public void move(int x, int y)
-    {
-        xPos = x;
-        yPos = y;
+        this.hp = hp;
+        this.speed = speed;
+        this.sprite = sprite;
     }
 
-    public String getID() {
+    /**
+     * @return the id
+     */
+    public String getId() {
         return id;
     }
 
-    public void setID(String id) {
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getXPos() {
+    /**
+     * @return the xPos
+     */
+    public float getxPos() {
         return xPos;
     }
 
-    public int getYPos() {
+    /**
+     * @param xPos the xPos to set
+     */
+    public void setxPos(int xPos) {
+        this.xPos = xPos;
+    }
+
+    /**
+     * @return the yPos
+     */
+    public float getyPos() {
         return yPos;
     }
+
+    /**
+     * @param yPos the yPos to set
+     */
+    public void setyPos(int yPos) {
+        this.yPos = yPos;
+    }
+
+    /**
+     * @return the sprite
+     */
+    public SpriteSheet getSprite() {
+        return sprite;
+    }
+
+    /**
+     * @param sprite the sprite to set
+     */
+    public void setSprite(SpriteSheet sprite) {
+        this.sprite = sprite;
+    }
+
+    /**
+     * @return the speed
+     */
+    public float getSpeed() {
+        return speed;
+    }
+
+    /**
+     * @param speed the speed to set
+     */
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    /**
+     * @return the hp
+     */
+    public int getHp() {
+        return hp;
+    }
+
+    /**
+     * @param hp the hp to set
+     */
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
     
-    public abstract String toString();
+    
 }
