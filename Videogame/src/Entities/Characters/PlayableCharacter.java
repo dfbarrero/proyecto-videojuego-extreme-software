@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import Map.Mapa;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -22,6 +23,7 @@ public class PlayableCharacter extends Character
     private final Rectangle collLeft;
     private final Rectangle collRight;
     private float speed;
+    private Mapa map;
     
     public PlayableCharacter(String id, float xPos, float yPos, String pCName, SpriteSheet image, float speed, int health)
     {
