@@ -11,15 +11,15 @@ package Entities.Characters;
  */
 public interface CharacterInterface {
     
-    public String getID();
+    public String getId();
     
-    public void setID(String id);
+    public void setId(String id);
     
-    public void move(int x, int y);
+    public void move(float x, float y);
     
-    public int getYPos();
+    public float getYPos();
     
-    public int getXPos();
+    public float getXPos();
     
     public String toString();
 }
