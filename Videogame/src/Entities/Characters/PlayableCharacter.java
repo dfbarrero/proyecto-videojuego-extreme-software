@@ -18,22 +18,16 @@ public class PlayableCharacter extends Character
     //Interaction with NPCs and enemies need to be implemented.
     private String pCName;
     private Inventory inventory;
-    private final Rectangle collUp;      //These are the rectangles that represent
-    private final Rectangle collDown;    //the collision box of the character
-    private final Rectangle collLeft;
-    private final Rectangle collRight;
-    private float speed;
+    private final Rectangle collisionBox;   //This is the rectangles that represents
+    private float speed;                    //the collision box of the char.
     private Mapa map;
     
-    public PlayableCharacter(String id, float xPos, float yPos, String pCName, SpriteSheet image, float speed, int health)
+    public PlayableCharacter(String id, float xPos, float yPos, String pCName, SpriteSheet image, float speed, int health, Mapa map)
     {
         super(id, xPos, yPos, image, speed, health);
         this.pCName = pCName;
         this.inventory = new Inventory();
-        this.collUp = new Rectangle(xPos+1, yPos+20, 10, 1);    //This is if the character
-        this.collDown = new Rectangle(xPos+1, yPos, 10, 1);     //is 20 pixels tall
-        this.collLeft = new Rectangle(xPos, yPos, 1, 10);       //by 10 pixels wide
-        this.collRight = new Rectangle(xPos+10, yPos, 1, 10);
+        this.collisionBox = new Rectangle(xPos, yPos, 30, 30);//This is if the character is 30x30 px
     }
     
     @Override
@@ -84,31 +78,10 @@ public class PlayableCharacter extends Character
     }
 
     /**
-     * @return the collUp
+     * @return the collision box of the character
      */
-    public Rectangle getCollUp() {
-        return collUp;
-    }
-
-    /**
-     * @return the collDown
-     */
-    public Rectangle getCollDown() {
-        return collDown;
-    }
-
-    /**
-     * @return the collLeft
-     */
-    public Rectangle getCollLeft() {
-        return collLeft;
-    }
-
-    /**
-     * @return the collRight
-     */
-    public Rectangle getCollRight() {
-        return collRight;
+    public Rectangle getCollision() {
+        return collisionBox;
     }
 
     @Override
