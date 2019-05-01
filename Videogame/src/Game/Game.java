@@ -40,7 +40,7 @@ public class Game extends StateBasedGame {
     public static final int language = 9;
     public static final int ni = 10;
 
-    public static int wight;
+    public static int width;
     public static int high;
     public static boolean fullscreen;
 
@@ -109,7 +109,7 @@ public class Game extends StateBasedGame {
             ip = new FileInputStream("src/Game/config.properties");
             prop.load(ip);
 
-            wight = Integer.parseInt(prop.getProperty("width"));
+            width = Integer.parseInt(prop.getProperty("width"));
             high = Integer.parseInt(prop.getProperty("high"));
             fullscreen = Boolean.parseBoolean(prop.getProperty("fullscreen"));
             
