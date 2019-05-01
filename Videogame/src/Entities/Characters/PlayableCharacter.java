@@ -41,7 +41,6 @@ public class PlayableCharacter extends Character
               +"\nHealth: "+getHp();
     }
     /**
-     * 
      * @return if the character is dead.
      */
     public boolean isDead()
@@ -123,10 +122,5 @@ public class PlayableCharacter extends Character
     public Animation getMainCharIdleAnim() {
         return mainCharIdleAnim;
     }
-
-    /**
-     * @return the map
-     */
-
-    
+  
 }
