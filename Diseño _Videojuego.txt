@@ -15,7 +15,29 @@ estallase en una nube de llamas y descontrol. Pasaron varios meses en la UCI, y 
 Finalmente se mete a su consola de Realidad Virtual e introduce el comando de resetear memoria al iniciar el juego. Esto provoca la aparición de fragmentos que a nosotros 
 como jugadores nos cuentan su historia.
 
-CUANDO ACABA EL JUEGO TIENE DOS FINALES, SI SE HAN CONSEGUIDO LOS EASTER EGGS, LA FAMILIA VIVE, Y POR LO CONTRARIO, FALLECE AL NO ENCONTRARSE.
+CUANDO ACABA EL JUEGO TIENE DOS FINALES:
+-SI consigues Easter Eggs, el niño se acuerda de la familia
+-SI NO consigues Easter Eggs, el niño no se acuerda de la familia y se queda a vivir con los abuelos
+____________________________________________________________________________________________________________________________________________________________________________
+
+DESAROLLO DE IDEAS:
+
+- Los amigos del instituto se llaman Karnaugh y Ohm. El primero de ellos es una persona tímida, bajita y muy sensible a todos los aspectos sociales, mientras que Ohm es
+todo lo contrario. Le encanta ser extrovertido, su forma de vestir es extravagante y le encantan los videojuegos como a sus dos mejores amigos, Karnaugh y Git.
+Con estos personajes me gustaría poder recalcar la diferencia que existe entre los tipos de jugadores, para que no haya estereotipos.
+
+- Los abuelos de Git los imagino como personas mayores muy responsables a los que no les ha gustado que su primogénito centrase su vida en los deportes de riesgo. La relación
+con su nieto siempre ha sido muy buena, y después del accidente siempre intentaron apoyarle sin éxito, ya que Git estaba muy aferrado a sus padres.
+Los imagino llevando ropa sencilla y ancha, pero siempre muy cuidada. Pelo blanco ambos y como referencia que el abuelo se llamase Miyagui.
+
+- Al ser un juego básico, la escena final se va a basar en una serie de textos mencionando "ideas" o palabras. Eso nos permitirá no tener que crear el arte.
+Ideas como:
+	- Antes perdido ahora comprometido (con la familia)
+	- Todo pasa por algo (Ahora están mas unidos)
+	- La tormenta acaba siempre con el cielo en calma
+
+
+
 ____________________________________________________________________________________________________________________________________________________________________________
 
 FRAGMENTOS:
@@ -39,7 +61,6 @@ Otras ideas de fragmento:
 - Bocetos de cosas del juego para poder rellenar
 - Fragmentos en puzles opcionales (De Existir)
 - Alguna referencia a otro juego
-
 
 ____________________________________________________________________________________________________________________________________________________________________________
 -Elementos graficos
