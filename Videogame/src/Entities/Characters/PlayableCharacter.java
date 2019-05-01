@@ -9,6 +9,7 @@ import Map.Mapa;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 import Map.*;
+import org.newdawn.slick.Image;
 /**
  *
  * @author Javier Muñoz
@@ -21,15 +22,13 @@ public class PlayableCharacter extends Character
     private Hitbox collisionBox;   //This is the rectangles that represents
     private float speed;                    //the collision box of the char.
     
-    public PlayableCharacter(String id, float xPos, float yPos, String pCName, SpriteSheet image, float speed, int health)
+    public PlayableCharacter(String id, float xPos, float yPos, String pCName, float speed, int health)
     {
-        super(id, xPos, yPos, image, speed, health);
+        super(id, xPos, yPos, speed, health);
         this.pCName = pCName;
         this.inventory = new Inventory();
-        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 30x30 px
+        this.collisionBox = new Hitbox(xPos, yPos, 27, 27);//This is if the character is 30x30 px
     }
-
-
     
     @Override
     public String toString()    //This will return the player in a String format

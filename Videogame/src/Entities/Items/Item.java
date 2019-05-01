@@ -5,6 +5,8 @@
  */
 package Entities.Items;
 
+import Entities.Characters.PlayableCharacter;
+
 /**
  *
  * @author Javier Muñoz
@@ -33,4 +35,8 @@ public abstract class Item
     @Override
     public abstract String toString();
     
+    public void recoger(PlayableCharacter personaje)
+    {
+        personaje.getInventory().addItem(this);
+    }
 }

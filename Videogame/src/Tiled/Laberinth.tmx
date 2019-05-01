@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" source="Laberinth1.tsx"/>
+ <tileset firstgid="193" source="terreno.tsx"/>
+ <tileset firstgid="1217" source="Prueba.tsx"/>
+ <layer id="4" name="Iteracciones" width="64" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3YwQ2AIBAEQCq1E+1Aa5aHFfDgFplJ9r8JF8LRGsA/HF/IUXUeKXOQ0gMAyOBtAABr8/cEMM79CQCQx57LTOYNAABgbWfPVV2i0N3zVJcAALbzAttqxbsAQAAA
+  </data>
+ </layer>
+ <layer id="3" name="Suelo" width="64" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3UsQ2AIBRFURZwJDYyjOSsNFZakEiB4Z2f3P4fIJSSPWdA/Pz8/Pz8/Pz8/Pz8f/Af4f70++fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn/7Y7/z7+2TPj5+fn5+fnX78bf5a/DeLP8F+PEv31jj/Tn/z+U/+/FfHz8/Pzv6cDeykqWwBAAAA=
+  </data>
+ </layer>
+ <layer id="1" name="Walls" width="64" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu2Y22rDMAyGTaGXy5P2RXa9i7HnTHe/lBLmCjk6WPIh1Q+iqmNsffZv03S9pHTf4neLFcmxttly7bPgf+YfyT8818GC/5b8ZMVfWlMLfk9Z8K/ZPt0K62DBD/PasBpnBXWmbB08+al99T47+zzBX/ZmC37oadjmERQ/5PHmb6ngf81H4td6WNp/ZH4PBX85H5Wf8vPnVe/5HvwJzCHJob62+Lk+P0s6Mz9Ho/F7ngWp52fk5yj45fls/LnPtZ6HY5XaWr//aLwg9YnES6PwW2pE/vy/J07/Es+s/tfUDHPtWN9I2wi/f0r9jxT8vByL/Lklv/Zup2o+ateMZc0P22r4H4L3I6wZ/lcqvUvy76PtP1Yr9UzLv9ff+/yXzqkkZua31Aj8Gs9baSZ+jbdrzkJLfqqeFjqaz+P+r6nHQ9R8PfhbBza3N3+pBmpdPNWaH3vPpWrzVGt+bF7Nvc7pU3MmWp7/XJb7Df32jvx5zr17evN7eFpag9f7n1fNGsaj8Hj/5/T14ucwwrwXv/Su4oa0/pb8R+Pn7Quytwtgo8bj1nA2/po8+IO/J/+S/gPjX5B1OBs/peAP/uAP/jPx7xH878d/v7zyc+KM/B48wR/8wR/8Nfx/OZG4SgBAAAA=
+  </data>
+ </layer>
+ <layer id="2" name="Objetos" width="64" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3asQ2DMBAFUApneEZgiGQDKFgAiQySDSJALimcNJyR35N+5eafdHJ1XQeUfFN0A37xTjnUs7NLUI/W5weAWvWP6AaxhsbnB4C7W1MOAGefwv9YegcA4HpzyoErHHcctdxyAAAA8L/nnld0iUDjnim6BADQnA09R6PhAEAAAA==
+  </data>
+ </layer>
+</map>

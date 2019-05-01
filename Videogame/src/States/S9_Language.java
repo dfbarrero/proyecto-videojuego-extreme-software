@@ -5,6 +5,7 @@
  */
 package States;
 
+import static States.S0_MainMenu.lastStage;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;

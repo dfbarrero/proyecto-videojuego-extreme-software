@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 
 /**
@@ -20,18 +21,18 @@ public abstract class Character implements CharacterInterface{
     protected String id;
     protected float xPos;
     protected float yPos;
-    protected SpriteSheet sprite;
+    protected Image sprite;
     protected float speed;
     protected int hp;
     
-    public Character(String id, float xPos, float yPos, SpriteSheet sprite, float speed, int hp)
+    public Character(String id, float xPos, float yPos, float speed, int hp)
     {
         this.id = id;
         this.xPos = xPos;
         this.yPos = yPos;
         this.hp = hp;
         this.speed = speed;
-        this.sprite = sprite;
+        //this.sprite = sprite;
     }
 
     /**
@@ -79,7 +80,7 @@ public abstract class Character implements CharacterInterface{
     /**
      * @return the sprite
      */
-    public SpriteSheet getSprite() {
+    public Image getSprite() {
         return sprite;
     }
 
