@@ -5,11 +5,9 @@
  */
 package Entities.Characters;
 
-import Map.Mapa;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 import Map.*;
-import org.newdawn.slick.Image;
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.SpriteSheet;
 /**
  *
  * @author Javier Muñoz
@@ -20,7 +18,9 @@ public class PlayableCharacter extends Character
     private String pCName;
     private Inventory inventory;
     private Hitbox collisionBox;   //This is the rectangles that represents
-    private float speed;                    //the collision box of the char.
+    private float speed;           //the collision box of the char.
+    private SpriteSheet mainCharSheet;
+    private Animation mainCharIdleAnim;
     
     public PlayableCharacter(String id, float xPos, float yPos, String pCName, float speed, int health)
     {
@@ -108,6 +108,20 @@ public class PlayableCharacter extends Character
     @Override
     public float getXPos() {
         return xPos;
+    }
+
+    /**
+     * @return the mainCharSheet
+     */
+    public SpriteSheet getMainCharSheet() {
+        return mainCharSheet;
+    }
+
+    /**
+     * @return the mainCharIdleAnim
+     */
+    public Animation getMainCharIdleAnim() {
+        return mainCharIdleAnim;
     }
 
     /**
