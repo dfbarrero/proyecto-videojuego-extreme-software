@@ -5,7 +5,7 @@
  <tileset firstgid="1217" source="Prueba.tsx"/>
  <layer id="4" name="Iteracciones" width="64" height="64">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3YwQ2AIBAEQCq1E+1Aa5aHFfDgFplJ9r8JF8LRGsA/HF/IUXUeKXOQ0gMAyOBtAABr8/cEMM79CQCQx57LTOYNAABgbWfPVV2i0N3zVJcAALbzAttqxbsAQAAA
+   H4sIAAAAAAAACu3YwQ2AIBAEQCq1E+1AO7BXeVABD2/RmWT/m3AhHK0BfMM2Qo6q80iZg5QeAEAGbwMAWJu/J4B57k8AgDz2XN5k3gAAANa29xzVJQqdPVd1CWLc1QUA+I0HZuZfygBAAAA=
   </data>
  </layer>
  <layer id="3" name="Suelo" width="64" height="64">
@@ -20,7 +20,7 @@
  </layer>
  <layer id="2" name="Objetos" width="64" height="64">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3asQ2DMBAFUApneEZgiGQDKFgAiQySDSJALimcNJyR35N+5eafdHJ1XQeUfFN0A37xTjnUs7NLUI/W5weAWvWP6AaxhsbnB4C7W1MOAGefwv9YegcA4HpzyoErHHcctdxyAAAA8L/nnld0iUDjnim6BADQnA09R6PhAEAAAA==
+   H4sIAAAAAAAACu3asQ3CMBAF0BRm+IxAkRFgg1CwQKRkkGyAMHJJYWhyjvye9Cs3/6STqxsGoOaVohvwiy2V0M7OLkE9ep8fAFo1XqIbxLp2Pj8AnN2aSgD4tlf+x9o7AADHe6YSOMLnjqOVWw4AAAD+d8u5R5cINOc8okvQjCm6AADdeAOAyzmQAEAAAA==
   </data>
  </layer>
 </map>

@@ -40,7 +40,7 @@ public class Mapa {
             blocks = new ArrayList<>();
             iteracciones=new ArrayList<>();
             this.Character=Char;
-            cargaMuros();        /*TODO: cargaSaltosEstado */
+            //cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
         } catch (SlickException ex) {
             Logger.getLogger(Mapa.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,7 +97,7 @@ public class Mapa {
             for (int j = 0; j < map.getHeight(); j++) {
                 for (int i = 0; i < map.getWidth(); i++) {
                     if (map.getTileId(i, j, collisions) !=0) {
-                        iteracciones.add(new Hitbox((float) ((float) i * 32-3.2), (float) j * 32-3, 40, 40));  //32 = ancho del patron
+                        iteracciones.add(new Hitbox((float) ((float) i * 32-5.5), (float) ((float) j * 32-4), 42, 42));  //32 = ancho del patron
                     }
                 }
             }

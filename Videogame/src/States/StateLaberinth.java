@@ -38,7 +38,7 @@ public class StateLaberinth extends BasicGameState{
     private Enemy enemy;
     private Sword espada;
     private Bow arco;
-    boolean sword=false, bow=false, flechas=false;
+    boolean sword=false, llaveb=false, bow=false, flechas=false;
     private int contfl=0;
     private Key llave;
     public StateLaberinth(int state)
@@ -58,6 +58,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
+        llave=new Key("LLave lab", "1");
         arco=new Bow("409506", 100, 0, "matareyes");
         espada=new Sword("333333", 50, 200, "Sombra");
     }
@@ -104,9 +105,8 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     public void interact(Graphics g, GameContainer gc, StateBasedGame sbg)
     {
         Input input=gc.getInput();
-        if(interact && (!sword || !bow || !flechas))
+        if(interact && (!sword || !bow || !flechas || !llaveb))
         {
-            
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
             if(input.isKeyPressed(Input.KEY_ENTER))
             {
@@ -130,6 +130,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                      llave.recoger(Char);
                      System.out.println("Llave recogida");
+                     llaveb=true;
                 }
                 else if(!flechas)
                 {

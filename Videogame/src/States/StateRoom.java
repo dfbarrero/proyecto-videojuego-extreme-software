@@ -76,7 +76,7 @@ public class StateRoom extends BasicGameState{
         if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-            if(input.isKeyDown(Input.KEY_ENTER))
+            if(input.isKeyPressed(Input.KEY_ENTER))
             {
                 if(map.getX()<=367 && map.getX()>=333 && map.getY()<=45)
                 {

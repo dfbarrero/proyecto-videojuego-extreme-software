@@ -31,14 +31,11 @@ public class S5_EscPage extends BasicGameState{
     private java.awt.Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);
-    private static int actual=0;
+    
     
     public S5_EscPage(int playing) {
     }
-    public void setActual(int actual)
-    {
-        this.actual=actual;
-    }
+
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {

@@ -6,7 +6,7 @@
  <tileset firstgid="674" source="Prueba.tsx"/>
  <layer id="4" name="Iteracciones" width="11" height="11">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACmNgoC6QZ6SN2pEC6hlJ4xMDABWpzsHkAQAA
+   H4sIAAAAAAAACmNgoC6QZ6SN2pEC6hnx88kBAOVaBuLkAQAA
   </data>
  </layer>
  <layer id="1" name="Suelo" width="11" height="11">

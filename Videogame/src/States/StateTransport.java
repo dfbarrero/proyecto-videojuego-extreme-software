@@ -44,12 +44,12 @@ public class StateTransport extends BasicGameState{
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
-        map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
+        map=new Mapa("src/Tiled/Transport.tmx", gc, Char, npcs, enemy);
         int positionx=200, positiony=200;
         map.setX(positionx);
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
-        map.actualizarMuros(positionx,positiony);
+        //map.actualizarMuros(positionx,positiony);
     }
 
     @Override
@@ -58,7 +58,6 @@ public class StateTransport extends BasicGameState{
         map.renderMap(gc, g, true);
         g.setColor(Color.white);
         interact(g, sbg, gc);
-        g.drawString("Transport¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡", 40, 40);
     }
 
     @Override
