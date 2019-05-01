@@ -5,11 +5,7 @@
  */
 package Entities.Characters;
 
-import Map.Mapa;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 import Map.*;
-import org.newdawn.slick.Image;
 /**
  *
  * @author Javier Muñoz
