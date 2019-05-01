@@ -7,6 +7,7 @@ package Entities.Characters;
 
 import Map.*;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 /**
  *
@@ -19,15 +20,30 @@ public class PlayableCharacter extends Character
     private Inventory inventory;
     private Hitbox collisionBox;   //This is the rectangles that represents
     private float speed;           //the collision box of the char.
-    private SpriteSheet mainCharSheet;
+    private SpriteSheet mainCharLeft;
+    private SpriteSheet mainCharIdle;
+    private SpriteSheet mainCharRight;
+    private SpriteSheet mainCharUp;
     private Animation mainCharIdleAnim;
+    private Animation mainCharLeftAnim;
+    private Animation mainCharRightAnim;
+    private Animation mainCharUpAnim;
     
-    public PlayableCharacter(String id, float xPos, float yPos, String pCName, float speed, int health)
+    public PlayableCharacter(String id, float xPos, float yPos, String pCName, float speed, int health) throws SlickException
     {
         super(id, xPos, yPos, speed, health);
         this.pCName = pCName;
         this.inventory = new Inventory();
         this.collisionBox = new Hitbox(xPos, yPos, 20, 20);//This is if the character is 30x30 px
+        mainCharLeft = new SpriteSheet("src/Sprites/WalkLeft.png",30,30);
+        mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",30,30);
+        mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",30,30);
+        mainCharIdle = new SpriteSheet("src/Sprites/Idle.png",30,30);
+        mainCharLeftAnim = new Animation(mainCharLeft,200);
+        mainCharRightAnim = new Animation(mainCharRight,200);
+        mainCharUpAnim = new Animation(mainCharUp,200);
+        mainCharIdleAnim = new Animation(mainCharIdle,200);
+        
     }
     
     @Override
@@ -79,7 +95,7 @@ public class PlayableCharacter extends Character
     /**
      * @return the collision box of the character
      */
-    public Hitbox getCollision() {
+    public Hitbox getCollisionBox() {
         return collisionBox;
     }
 
@@ -110,10 +126,38 @@ public class PlayableCharacter extends Character
     }
 
     /**
-     * @return the mainCharSheet
+     * @return the speed
      */
-    public SpriteSheet getMainCharSheet() {
-        return mainCharSheet;
+    public float getSpeed() {
+        return speed;
+    }
+
+    /**
+     * @return the mainCharLeft
+     */
+    public SpriteSheet getMainCharLeft() {
+        return mainCharLeft;
+    }
+
+    /**
+     * @return the mainCharIdle
+     */
+    public SpriteSheet getMainCharIdle() {
+        return mainCharIdle;
+    }
+
+    /**
+     * @return the mainCharRight
+     */
+    public SpriteSheet getMainCharRight() {
+        return mainCharRight;
+    }
+
+    /**
+     * @return the mainCharUp
+     */
+    public SpriteSheet getMainCharUp() {
+        return mainCharUp;
     }
 
     /**
@@ -122,5 +166,26 @@ public class PlayableCharacter extends Character
     public Animation getMainCharIdleAnim() {
         return mainCharIdleAnim;
     }
-  
+
+    /**
+     * @return the mainCharLeftAnim
+     */
+    public Animation getMainCharLeftAnim() {
+        return mainCharLeftAnim;
+    }
+
+    /**
+     * @return the mainCharRightAnim
+     */
+    public Animation getMainCharRightAnim() {
+        return mainCharRightAnim;
+    }
+
+    /**
+     * @return the mainCharUpAnim
+     */
+    public Animation getMainCharUpAnim() {
+        return mainCharUpAnim;
+    }
+
 }
