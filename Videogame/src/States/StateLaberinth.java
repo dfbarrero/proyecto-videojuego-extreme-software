@@ -38,6 +38,8 @@ public class StateLaberinth extends BasicGameState{
     private Enemy enemy;
     private Sword espada;
     private Bow arco;
+    boolean sword=false, bow=false, flechas=false;
+    private int contfl=0;
     private Key llave;
     public StateLaberinth(int state)
     {
@@ -49,13 +51,15 @@ public class StateLaberinth extends BasicGameState{
         return 21;
     }
 public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
+        Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  75, 100);
         map=new Mapa("src/Tiled/Laberinth.tmx", gc, Char, npcs, enemy);
         int positionx=-625, positiony=-405;
         map.setX(positionx);
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
+        arco=new Bow("409506", 100, 0, "matareyes");
+        espada=new Sword("333333", 50, 200, "Sombra");
     }
 
     @Override
@@ -76,7 +80,9 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         }
         else
         {
-            
+            map.renderMap(gc, g, true);
+            g.setColor(Color.white);
+            interact(g, gc, sbg);
         }
         g.setColor(Color.black);
         g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
@@ -98,26 +104,42 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     public void interact(Graphics g, GameContainer gc, StateBasedGame sbg)
     {
         Input input=gc.getInput();
-        if(interact)
+        if(interact && (!sword || !bow || !flechas))
         {
+            
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
             if(input.isKeyPressed(Input.KEY_ENTER))
             {
-                if(map.getX()<=-50 && map.getX()>=-20 && map.getY()<=-955)
-                {
-                     espada.recoger(Char);
-                }
-                if(map.getY()>=35)
-                {
-                     arco.recoger(Char);
-                }
-                if(map.getY()<=-1390)
-                {
-                     llave.recoger(Char);
-                }
-                if(map.getX()>-210 && map.getX()<-240 && map.getY()<=-470)
+                if(map.getX()<=-205 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
                      fog=false;
+                }
+                else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885 && !sword)
+                {
+                     espada.recoger(Char);
+                     System.out.println("Espada recogida");
+                     sword=true;
+                }
+                else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300 && !bow)
+                {
+                     arco.recoger(Char);
+                     System.out.println("Arco recogida");
+                     bow=true;
+                }
+                else if(map.getY()<=-1380)
+                {
+                     llave.recoger(Char);
+                     System.out.println("Llave recogida");
+                }
+                else if(!flechas)
+                {
+                    arco.addarrows(10);
+                    System.out.println("Arrows areron");
+                    contfl++;
+                    if(contfl>=2)
+                    {
+                        flechas=true;
+                    }
                 }
             }
         }

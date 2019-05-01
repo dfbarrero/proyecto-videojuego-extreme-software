@@ -18,6 +18,10 @@ public class Bow extends Weapon
         this.arrows = arrows;
         this.name = name;
     }
+    public void addarrows(int arr)
+    {
+        this.arrows+=arr;
+    }
     @Override
     public void use()
     {

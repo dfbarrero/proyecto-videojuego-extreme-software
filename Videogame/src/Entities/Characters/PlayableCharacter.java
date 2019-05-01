@@ -27,7 +27,7 @@ public class PlayableCharacter extends Character
         super(id, xPos, yPos, speed, health);
         this.pCName = pCName;
         this.inventory = new Inventory();
-        this.collisionBox = new Hitbox(xPos, yPos, 27, 27);//This is if the character is 30x30 px
+        this.collisionBox = new Hitbox(xPos, yPos, 20, 20);//This is if the character is 30x30 px
     }
     
     @Override

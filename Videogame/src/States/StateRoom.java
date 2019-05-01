@@ -41,7 +41,7 @@ public class StateRoom extends BasicGameState{
         
     }
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  10, 100);
+        Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
         map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
         int positionx=200, positiony=200;
         map.setX(positionx);
@@ -76,7 +76,7 @@ public class StateRoom extends BasicGameState{
         if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-            if(input.isKeyPressed(Input.KEY_ENTER))
+            if(input.isKeyDown(Input.KEY_ENTER))
             {
                 if(map.getX()<=367 && map.getX()>=333 && map.getY()<=45)
                 {
