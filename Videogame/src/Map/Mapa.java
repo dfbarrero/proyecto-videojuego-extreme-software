@@ -104,7 +104,7 @@ public class Mapa {
         }
     }
     public void actualizarPersonaje(float x, float y) {
-        Character.getCollision().updatePos(x, y);
+        Character.getCollisionBox().updatePos(x, y);
     }
     public void Movimiento(int i, GameContainer gc)
     {
@@ -158,13 +158,13 @@ public class Mapa {
                 grphcs.drawRect(iteracciones.get(i).getRectangulo().getX(), iteracciones.get(i).getRectangulo().getY(), iteracciones.get(i).getRectangulo().getWidth(), iteracciones.get(i).getRectangulo().getHeight());
             }
             grphcs.setColor(Color.black);
-            grphcs.drawRect(Character.getCollision().getRectangulo().getX(), Character.getCollision().getRectangulo().getY(), Character.getCollision().getRectangulo().getHeight(), Character.getCollision().getRectangulo().getWidth());
+            grphcs.drawRect(Character.getCollisionBox().getRectangulo().getX(), Character.getCollisionBox().getRectangulo().getY(), Character.getCollisionBox().getRectangulo().getHeight(), Character.getCollisionBox().getRectangulo().getWidth());
         }
     public void collisions(int i, GameContainer gc, String dir)
     {
         for(int j=0;j<blocks.size();j++)
         {
-            if(blocks.get(j).getRectangulo().intersects(Character.getCollision().getRectangulo()))
+            if(blocks.get(j).getRectangulo().intersects(Character.getCollisionBox().getRectangulo()))
             {
                 if(dir.toUpperCase().equals("ABAJO"))
                 {
@@ -198,7 +198,7 @@ public class Mapa {
     {
         for(int j=0;j<iteracciones.size();j++)
         {
-            if(iteracciones.get(j).getRectangulo().intersects(Character.getCollision().getRectangulo()))
+            if(iteracciones.get(j).getRectangulo().intersects(Character.getCollisionBox().getRectangulo()))
             {
                 return true;
             }
