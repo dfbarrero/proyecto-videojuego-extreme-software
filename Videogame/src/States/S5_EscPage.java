@@ -87,7 +87,7 @@ public class S5_EscPage extends BasicGameState{
                     sbg.enterState(6);
                     break;
                 case BACK:
-                    sbg.enterState(1);
+                    sbg.enterState(20);
                     break;
                 case SAVE:
                     sbg.enterState(2);

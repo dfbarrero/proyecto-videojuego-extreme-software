@@ -25,7 +25,11 @@ public class Game extends StateBasedGame {
 
     public static final String gamename = "3xtremE";
     public static final int menu = 0;
-    public static final int playing = 1;
+    public static final int room = 20;
+    public static final int laberinth=21;
+    public static final int puzzle=22;
+    public static final int transport=23;
+    public static final int bossfight=24;
     public static final int loadpage = 2;
     public static final int savepage = 3;
     public static final int optionpage = 4;
@@ -45,7 +49,11 @@ public class Game extends StateBasedGame {
     public Game(String name) {
         super(gamename);
         this.addState((GameState) new S0_MainMenu(menu));
-        this.addState((GameState) new S1_Playing(playing));
+        this.addState((GameState) new StateRoom(room));
+        this.addState((GameState) new StateLaberinth(laberinth));
+        this.addState((GameState) new StatePuzzle(puzzle));
+        this.addState((GameState) new StateTransport(transport));
+        this.addState((GameState) new Bossfight(bossfight));
         this.addState((GameState) new S3_LoadPage(loadpage));
         this.addState((GameState) new S2_SavePage(savepage));
         this.addState((GameState) new S4_OptionsPage(optionpage));
@@ -66,7 +74,11 @@ public class Game extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
         this.getState(menu).init(gc, this);
-        this.getState(playing).init(gc, this);
+        this.getState(room).init(gc, this);
+        this.getState(laberinth).init(gc, this);
+        this.getState(puzzle).init(gc, this);
+        this.getState(transport).init(gc, this);
+        this.getState(bossfight).init(gc, this);
         this.getState(loadpage).init(gc, this);
         this.getState(savepage).init(gc, this);
         this.getState(optionpage).init(gc, this);

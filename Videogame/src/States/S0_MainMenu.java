@@ -92,7 +92,7 @@ public class S0_MainMenu extends BasicGameState{
                     sbg.enterState(6);
                     break;
                 case START:
-                    sbg.enterState(1);
+                    sbg.enterState(20);
                     playingMuscic = false;
                     break;
                 case LOAD:
