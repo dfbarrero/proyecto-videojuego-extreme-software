@@ -68,7 +68,7 @@ ________________________________________________________________________________
 * Boceto de la familia en papel (3 de mayo)
 * Boss Final, humano, grande y que de miedo (1 de mayo)
 * Pueblo inicial y dos primeros mapas, uno de hierba(pradera) y otro de monta–a (1 de mayo)
-* Nivel final y los otros dos niveles, un laberito y el otro a determinar (3 de mayo)
+* Nivel final y los otros dos niveles, un laberito y el otro a determinar[Nivel de escalada] (3 de mayo)
 * Artbook hecho a mano con todos los bocetos y descripci—n de los mismos (7 de mayo)
 * Dise–o de los objetos a recoger (aun por determinar por el equipo de programadores) ( 7 de mayo)
 * Mapa mundial para ver donde estamos con todos los niveles (5 en total). El boceto para el 1 de mayo, y el dise–o final para el 5 de mayo
