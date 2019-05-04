@@ -39,7 +39,7 @@ public class PlayableCharacter extends Character
         animationspeed=100;
         this.pCName = pCName;
         this.inventory = new Inventory();
-        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 30x30 px
+        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 27x30 px
         mainCharLeft = new SpriteSheet("src/Sprites/WalkLeft.png",27,30);
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
