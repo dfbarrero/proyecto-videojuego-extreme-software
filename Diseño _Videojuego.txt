@@ -1,0 +1,75 @@
+﻿-Historia
+
+La historia va a contarse a través de la recolección de objetos (fragementos) al acabar los puzles. Se va a desarrollar la forma de como un niño de 13 años llamado Git (por que
+hace gracia como referencia), el cual siempre ha sido muy aficionado a los deportes de riesgo como su familia, ve truncada su vida debido a que le han salido dos hernias discales
+y eso no le permite continuar con sus actuales aficiones.
+Con el paso del tiempo, en su colegio de educación secundaria, juntos con sus amigos se empezó a aficionar a los juegos MMORPG inmersivos, los cuales le hacían olvidarse
+de su peculiar situación. Esto le permitió continuar con su necesidad de sentir adrenalina de alguna forma, ya que las simulaciones eran su mejor baza para ello.
+
+Los padres de Git, Turin y Alexa (Todo referencias), bien conocidos en el mundo del deporte de riesgo al haber sido los dos mayores campeones en sus respectivas categorías, 
+y la revolución mediática que causó que se casasen, siempre han apoyado a Git a pesar de su evidente imposibilidad de seguirles el ritmo. 
+Todos estos sueños se vieron truncados la última vez que salieron por trabajo a rodar una película de acción, puesto que un fallo en el sistema eléctrico hizo que su vehículo
+estallase en una nube de llamas y descontrol. Pasaron varios meses en la UCI, y el pobre Git se quedó a cargo de sus abuelos paternos.
+
+
+Finalmente se mete a su consola de Realidad Virtual e introduce el comando de resetear memoria al iniciar el juego. Esto provoca la aparición de fragmentos que a nosotros 
+como jugadores nos cuentan su historia.
+
+CUANDO ACABA EL JUEGO TIENE DOS FINALES:
+-SI consigues Easter Eggs, el niño se acuerda de la familia
+-SI NO consigues Easter Eggs, el niño no se acuerda de la familia y se queda a vivir con los abuelos
+____________________________________________________________________________________________________________________________________________________________________________
+
+DESAROLLO DE IDEAS:
+
+- Los amigos del instituto se llaman Karnaugh y Ohm. El primero de ellos es una persona tímida, bajita y muy sensible a todos los aspectos sociales, mientras que Ohm es
+todo lo contrario. Le encanta ser extrovertido, su forma de vestir es extravagante y le encantan los videojuegos como a sus dos mejores amigos, Karnaugh y Git.
+Con estos personajes me gustaría poder recalcar la diferencia que existe entre los tipos de jugadores, para que no haya estereotipos.
+
+- Los abuelos de Git los imagino como personas mayores muy responsables a los que no les ha gustado que su primogénito centrase su vida en los deportes de riesgo. La relación
+con su nieto siempre ha sido muy buena, y después del accidente siempre intentaron apoyarle sin éxito, ya que Git estaba muy aferrado a sus padres.
+Los imagino llevando ropa sencilla y ancha, pero siempre muy cuidada. Pelo blanco ambos y como referencia que el abuelo se llamase Miyagui.
+
+- Al ser un juego básico, la escena final se va a basar en una serie de textos mencionando "ideas" o palabras. Eso nos permitirá no tener que crear el arte.
+Ideas como:
+	- Antes perdido ahora comprometido (con la familia)
+	- Todo pasa por algo (Ahora están mas unidos)
+	- La tormenta acaba siempre con el cielo en calma
+
+
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+FRAGMENTOS:
+
+- Toda la familia haciendo reporte de riesgo
+- Imagen de Git en silla de ruedas
+- Imagen de Git con sus amigos conectando la consola
+- Imagen de los padres de jovenes realizando deporte extremo
+- Imagen de los padres realizando escena del coche
+- Imagen de los padres en la UCI
+- Imagen de Git con sus abuelos
+- Imagen de Git conectando la consola
+ ------
+
+- FINAL 1: LOS PADRES DESPIERTAN
+- FINAL 2: LOS PADRES NO DESPIERTAN
+
+
+Otras ideas de fragmento:
+- Portada de un juego de puzles (screenshot del juego este)
+- Bocetos de cosas del juego para poder rellenar
+- Fragmentos en puzles opcionales (De Existir)
+- Alguna referencia a otro juego
+
+____________________________________________________________________________________________________________________________________________________________________________
+-Elementos graficos
+* Personaje principal (masculino y femenino) Ð No valen los ninjas (1 de mayo)
+* Boceto de la familia en papel (3 de mayo)
+* Boss Final, humano, grande y que de miedo (1 de mayo)
+* Pueblo inicial y dos primeros mapas, uno de hierba(pradera) y otro de monta–a (1 de mayo)
+* Nivel final y los otros dos niveles, un laberito y el otro a determinar[Nivel de escalada] (3 de mayo)
+* Artbook hecho a mano con todos los bocetos y descripci—n de los mismos (7 de mayo)
+* Dise–o de los objetos a recoger (aun por determinar por el equipo de programadores) ( 7 de mayo)
+* Mapa mundial para ver donde estamos con todos los niveles (5 en total). El boceto para el 1 de mayo, y el dise–o final para el 5 de mayo
+* Mas cosas aun por determinar, Entrega primero lo del uno de mayo y luego te voy diciendo mas.
