@@ -36,7 +36,7 @@ public class PlayableCharacter extends Character
     {
         
         super(sprite, id, xPos, yPos, speed, health);
-        animationspeed=100;
+        animationspeed=300;
         this.pCName = pCName;
         this.inventory = new Inventory();
         this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 27x30 px
