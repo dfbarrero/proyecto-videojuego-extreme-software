@@ -25,14 +25,14 @@ public abstract class Character implements CharacterInterface{
     protected float speed;
     protected int hp;
     
-    public Character(String id, float xPos, float yPos, float speed, int hp)
+    public Character(Image sprite, String id, float xPos, float yPos, float speed, int hp)
     {
         this.id = id;
         this.xPos = xPos;
         this.yPos = yPos;
         this.hp = hp;
         this.speed = speed;
-        //this.sprite = sprite;
+        this.sprite = sprite;
     }
 
     /**

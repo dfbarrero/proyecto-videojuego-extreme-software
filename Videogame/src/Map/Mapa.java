@@ -22,6 +22,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.tiled.TiledMap;
 import Entities.Characters.*;
+import org.newdawn.slick.Animation;
 public class Mapa {
     private double x, y;
     private TiledMap map;
@@ -29,12 +30,12 @@ public class Mapa {
     private PlayableCharacter Character;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
+    private Animation animation;
     private ArrayList<Hitbox> iteracciones;
     public Mapa(String ruta, GameContainer gc, PlayableCharacter Char, ArrayList<NPC> npcs, Enemy enemy) {
         try {
             this.map = new TiledMap(ruta);
             //Carga de elementos del mapa
-
             this.npcs=npcs;
             this.enemy=enemy;
             blocks = new ArrayList<>();
@@ -104,7 +105,7 @@ public class Mapa {
         }
     }
     public void actualizarPersonaje(float x, float y) {
-        Character.getCollisionBox().updatePos(x, y);
+        Character.getCollision().updatePos(x, y);
     }
     public void Movimiento(int i, GameContainer gc)
     {
@@ -113,25 +114,31 @@ public class Mapa {
             actualizarMuros(0, +(i*.1f));
             actualizarIt(0, +(i*.1f));
             collisions(i, gc, "ARRIBA");
+            animation=Character.getMainCharUpAnim();
         }
         if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
             y -= i*.1f;  //i=tiempo de update
             actualizarMuros(0, -(i*.1f));
             actualizarIt(0, -(i*.1f));
             collisions(i, gc, "ABAJO");
+            animation=Character.getMainCharRightAnim();
         }
         if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
             x += i*.1f;  //i=tiempo de update
             actualizarMuros(+(i*.1f), 0);
             actualizarIt(+(i*.1f),0);
             collisions(i, gc, "IZQ");
+            animation=Character.getMainCharLeftAnim();
         }
         if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
             x -= i*.1f;  //i=tiempo de update
             actualizarMuros(-(i*.1f), 0);
             actualizarIt(-(i*.1f),0);
             collisions(i, gc, "DCHA");
+            animation=Character.getMainCharRightAnim();
         }
+        else animation=Character.getMainCharIdleAnim();
+       
     }
     public void actualizarMuros(float x, float y)
     {
@@ -158,13 +165,13 @@ public class Mapa {
                 grphcs.drawRect(iteracciones.get(i).getRectangulo().getX(), iteracciones.get(i).getRectangulo().getY(), iteracciones.get(i).getRectangulo().getWidth(), iteracciones.get(i).getRectangulo().getHeight());
             }
             grphcs.setColor(Color.black);
-            grphcs.drawRect(Character.getCollisionBox().getRectangulo().getX(), Character.getCollisionBox().getRectangulo().getY(), Character.getCollisionBox().getRectangulo().getHeight(), Character.getCollisionBox().getRectangulo().getWidth());
+            grphcs.drawRect(Character.getCollision().getRectangulo().getX(), Character.getCollision().getRectangulo().getY(), Character.getCollision().getRectangulo().getHeight(), Character.getCollision().getRectangulo().getWidth());
         }
     public void collisions(int i, GameContainer gc, String dir)
     {
         for(int j=0;j<blocks.size();j++)
         {
-            if(blocks.get(j).getRectangulo().intersects(Character.getCollisionBox().getRectangulo()))
+            if(blocks.get(j).getRectangulo().intersects(Character.getCollision().getRectangulo()))
             {
                 if(dir.toUpperCase().equals("ABAJO"))
                 {
@@ -198,13 +205,46 @@ public class Mapa {
     {
         for(int j=0;j<iteracciones.size();j++)
         {
-            if(iteracciones.get(j).getRectangulo().intersects(Character.getCollisionBox().getRectangulo()))
+            if(iteracciones.get(j).getRectangulo().intersects(Character.getCollision().getRectangulo()))
             {
                 return true;
             }
     }
         return false;
     }
+
+    public ArrayList<NPC> getNpcs() {
+        return npcs;
+    }
+
+    public void setNpcs(ArrayList<NPC> npcs) {
+        this.npcs = npcs;
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    public Animation getAnimation() {
+        return animation;
+    }
+
+    public void setAnimation(Animation animation) {
+        this.animation = animation;
+    }
+
+    public ArrayList<Hitbox> getIteracciones() {
+        return iteracciones;
+    }
+
+    public void setIteracciones(ArrayList<Hitbox> iteracciones) {
+        this.iteracciones = iteracciones;
+    }
+    
 }
    
 

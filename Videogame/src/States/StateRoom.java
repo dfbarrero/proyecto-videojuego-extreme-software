@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -41,7 +42,7 @@ public class StateRoom extends BasicGameState{
         
     }
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  10, 100);
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
         map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
         int positionx=200, positiony=200;
         map.setX(positionx);
@@ -51,11 +52,13 @@ public class StateRoom extends BasicGameState{
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        
         map.renderMap(gc, g, true);
         g.setColor(Color.white);
         interact(g, sbg, gc);
         g.setColor(Color.white);
         g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
+        map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
@@ -66,6 +69,7 @@ public class StateRoom extends BasicGameState{
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
         }
+        map.getAnimation().update(i);
     }
     public int getID() {
         return 20;

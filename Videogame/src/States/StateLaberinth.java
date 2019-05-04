@@ -20,6 +20,7 @@ import org.newdawn.slick.Color;
 import static org.newdawn.slick.Color.black;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -50,8 +51,8 @@ public class StateLaberinth extends BasicGameState{
     public int getID() {
         return 21;
     }
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter("id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 15, 100);
+public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 15, 100);
         map=new Mapa("src/Tiled/Laberinth.tmx", gc, Char, npcs, enemy);
         int positionx=-625, positiony=-405;
         map.setX(positionx);

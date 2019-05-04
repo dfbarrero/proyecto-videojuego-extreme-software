@@ -7,6 +7,7 @@ package Entities.Characters;
 
 import Map.Hitbox;
 import Map.Mapa;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -23,9 +24,9 @@ public class Enemy extends Character {
     private Mapa map;
     
     
-    public Enemy(String id, float xPos, float yPos, String name, SpriteSheet img, float speed, int health, Mapa map)
+    public Enemy(Image sprite, String id, float xPos, float yPos, String name, SpriteSheet img, float speed, int health, Mapa map)
     {
-        super(id, xPos, yPos, speed, health);
+        super(sprite, id, xPos, yPos, speed, health);
         this.name = name;
         this.inventory = new Inventory();
         this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//Enemy with a coll. box of 30px squared
