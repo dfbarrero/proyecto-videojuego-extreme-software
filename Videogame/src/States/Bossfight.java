@@ -40,7 +40,7 @@ public class Bossfight extends BasicGameState{
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
         map=new Mapa("src/Tiled/Bossfight.tmx", gc, Char, npcs, enemy);
-        int positionx=200, positiony=200;
+        int positionx=95, positiony=-275;
         map.setX(positionx);
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
@@ -53,7 +53,8 @@ public class Bossfight extends BasicGameState{
         map.renderMap(gc, g, true);
         g.setColor(Color.white);
         interact(g);
-        g.drawString("Bossfight¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡", 40, 40);
+        g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
+        map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 
     @Override
