@@ -48,7 +48,7 @@ public class StateTransport extends BasicGameState{
         llave=new Key("LaberinthKey", "21");
         Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  30, 100);
         map=new Mapa("src/Tiled/Transport.tmx", gc, Char, npcs, enemy);
-        int positionx=300, positiony=0;
+        int positionx=350, positiony=75;
         map.setX(positionx);
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
@@ -228,7 +228,7 @@ public class StateTransport extends BasicGameState{
                 //Bloque 5
                 else if(map.getX()<=-70 && map.getX()>=-150 && map.getY()<=-119 && map.getY()>=-192)
                 {
-                    llave.recogerllave(Char);
+                    llave.recoger(Char);
                     sbg.enterState(20);
                 }
                 //Bloque 6

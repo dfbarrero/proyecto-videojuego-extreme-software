@@ -92,7 +92,6 @@ public class Game extends StateBasedGame {
         this.getState(audio).init(gc, this);
         this.getState(language).init(gc, this);
         this.getState(ni).init(gc, this);
-
         this.enterState(menu);
     }
 

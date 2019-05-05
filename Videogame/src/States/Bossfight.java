@@ -35,6 +35,10 @@ public class Bossfight extends BasicGameState{
     {
         
     }
+    public void setCharacter(PlayableCharacter Char)
+    {
+        this.Char=Char;
+    }
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {

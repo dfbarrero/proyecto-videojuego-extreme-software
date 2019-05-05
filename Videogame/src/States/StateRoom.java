@@ -41,6 +41,7 @@ public class StateRoom extends BasicGameState{
     {
         
     }
+    
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  30, 100);
         map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
