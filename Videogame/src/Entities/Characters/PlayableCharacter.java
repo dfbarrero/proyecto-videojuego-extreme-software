@@ -26,10 +26,8 @@ public class PlayableCharacter extends Character
     private Hitbox collisionBox;   //This is the rectangles that represents
     private float speed;                    //the collision box of the char.
     private SpriteSheet mainCharLeft;
-    private SpriteSheet mainCharIdle;
     private SpriteSheet mainCharRight;
     private SpriteSheet mainCharUp;
-    private Animation mainCharIdleAnim;
     private Animation mainCharLeftAnim;
     private Animation mainCharRightAnim;
     private Animation mainCharUpAnim;
@@ -45,14 +43,12 @@ public class PlayableCharacter extends Character
         mainCharLeft = new SpriteSheet("src/Sprites/WalkLeft.png",27,30);
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
-        mainCharIdle = new SpriteSheet("src/Sprites/Idle.png",27,30);
         mainCharLeftAnim = new Animation(mainCharLeft,animationspeed);
         mainCharLeftAnim.setPingPong(true);
         mainCharRightAnim = new Animation(mainCharRight,animationspeed);
         mainCharRightAnim.setPingPong(true);
         mainCharUpAnim = new Animation(mainCharUp,animationspeed);
         mainCharUpAnim.setPingPong(true);
-        mainCharIdleAnim = new Animation(mainCharIdle,animationspeed);
     }
     
     @Override
