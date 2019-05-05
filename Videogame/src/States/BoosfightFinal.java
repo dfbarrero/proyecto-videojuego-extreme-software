@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package States;
 
 import Entities.Characters.Enemy;
@@ -24,88 +19,62 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author jgome
  */
-public class StateRoom extends BasicGameState{
+public class BoosfightFinal extends BasicGameState{
     private Mapa map;
     private boolean fog=true;
-    public static final int room = 20;
-    public static final int laberinth=21;
-    public static final int puzzle=22;
-    public static final int transport=23;
-    public static final int bossfight=24;
     private boolean interact=false;
     private PlayableCharacter Char;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
-    
-    public StateRoom(int state)
+    public BoosfightFinal(int state)
     {
         
     }
+    @Override
+    //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  30, 100);
-        map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
-        int positionx=200, positiony=200;
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
+        map=new Mapa("src/Tiled/BossFightFinal.tmx", gc, Char, npcs, enemy);
+        int positionx=95, positiony=-275;
         map.setX(positionx);
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
     }
 
+    @Override
+    //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        
         map.renderMap(gc, g, true);
         g.setColor(Color.white);
-        interact(g, sbg, gc);
-        g.setColor(Color.white);
+        interact(g);
         g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 
+    @Override
+    //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
         map.Movimiento((int) map.getCharacter().getSpeed(), gc);
-        //map.getAnimation().update(i);
         interact=map.interact();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
         }
-        
     }
+    @Override
+    //Return the state of the menu (0)
     public int getID() {
-        return 20;
+        return 25;
     }
-    public void interact(Graphics g, StateBasedGame sbg, GameContainer gc)
+    public void interact(Graphics g)
     {
-        Input input = gc.getInput();
         if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-            if(input.isKeyPressed(Input.KEY_ENTER))
-            {
-                if(map.getX()<=367 && map.getX()>=333 && map.getY()<=45)
-                {
-                     sbg.enterState(laberinth);
-                }
-                if(map.getX()<=280 && map.getX()>=204 && map.getY()<=45)
-                {
-                     sbg.enterState(transport);
-                }
-                if(map.getX()<=142 && map.getX()>=108 && map.getY()<=45)
-                {
-                     sbg.enterState(puzzle);
-                }
-                if(map.getY()>=200)
-                {
-                    if(Char.getKeys().getItems().length<2)
-                     sbg.enterState(24);
-                    else
-                     sbg.enterState(25);
-                }
-            }
             interact=false;
         }
     }
 
 }
-

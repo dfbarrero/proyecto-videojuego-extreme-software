@@ -39,4 +39,8 @@ public abstract class Item
     {
         personaje.getInventory().addItem(this);
     }
+    public void recogerllave(PlayableCharacter personaje)
+    {
+        personaje.getKeys().addItem(this);
+    }
 }

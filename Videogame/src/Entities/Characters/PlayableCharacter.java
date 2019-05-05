@@ -22,6 +22,7 @@ public class PlayableCharacter extends Character
     private int animationspeed;
     private String pCName;
     private Inventory inventory;
+    private Inventory keys;
     private Hitbox collisionBox;   //This is the rectangles that represents
     private float speed;                    //the collision box of the char.
     private SpriteSheet mainCharLeft;
@@ -39,15 +40,16 @@ public class PlayableCharacter extends Character
         animationspeed=100;
         this.pCName = pCName;
         this.inventory = new Inventory();
+        this.keys=new Inventory();
         this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 30x30 px
         mainCharLeft = new SpriteSheet("src/Sprites/WalkLeft.png",27,30);
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
+        mainCharIdle = new SpriteSheet("src/Sprites/Idle.png",27,30);
         mainCharLeftAnim = new Animation(mainCharLeft,animationspeed);
         mainCharRightAnim = new Animation(mainCharRight,animationspeed);
         mainCharUpAnim = new Animation(mainCharUp,animationspeed);
-        mainCharUpAnim.setPingPong(true);
-		
+        mainCharIdleAnim = new Animation(mainCharIdle,animationspeed);
     }
     
     @Override
@@ -92,7 +94,9 @@ public class PlayableCharacter extends Character
     public Inventory getInventory() {
         return inventory;
     }
-
+    public Inventory getKeys() {
+        return keys;
+    }
     /**
      * @param inventory the inventory to set
      */

@@ -30,6 +30,7 @@ public class Game extends StateBasedGame {
     public static final int puzzle=22;
     public static final int transport=23;
     public static final int bossfight=24;
+    public static final int bossfightfinal=25;
     public static final int loadpage = 2;
     public static final int savepage = 3;
     public static final int optionpage = 4;
@@ -63,6 +64,8 @@ public class Game extends StateBasedGame {
         this.addState((GameState) new S8_Audio(audio));
         this.addState((GameState) new S9_Language(language));
         this.addState((GameState) new S10_NotImplementedYet(ni));
+        this.addState((GameState) new BoosfightFinal(bossfightfinal));
+        
     }
 
     /**
@@ -79,6 +82,7 @@ public class Game extends StateBasedGame {
         this.getState(puzzle).init(gc, this);
         this.getState(transport).init(gc, this);
         this.getState(bossfight).init(gc, this);
+        this.getState(bossfightfinal).init(gc, this);
         this.getState(loadpage).init(gc, this);
         this.getState(savepage).init(gc, this);
         this.getState(optionpage).init(gc, this);

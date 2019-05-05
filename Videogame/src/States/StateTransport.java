@@ -228,7 +228,7 @@ public class StateTransport extends BasicGameState{
                 //Bloque 5
                 else if(map.getX()<=-70 && map.getX()>=-150 && map.getY()<=-119 && map.getY()>=-192)
                 {
-                    llave.recoger(Char);
+                    llave.recogerllave(Char);
                     sbg.enterState(20);
                 }
                 //Bloque 6

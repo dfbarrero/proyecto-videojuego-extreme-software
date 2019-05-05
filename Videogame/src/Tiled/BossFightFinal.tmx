@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" source="Prueba.tsx"/>
+ <tileset firstgid="257" source="terreno.tsx"/>
+ <tileset firstgid="1281" source="Laberinth1.tsx"/>
+ <layer id="4" name="Iteracciones" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgGAW0BkWsEDwKRsEoGAXDCQAAx/pzCEAGAAA=
+  </data>
+ </layer>
+ <layer id="1" name="Suelo" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACjNiZWAwGsWjeBSP4lE8iknEAPpKpDdABgAA
+  </data>
+ </layer>
+ <layer id="3" name="Objetos" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3Mtw2AMBRFUTMgYQHCAoQFCAsQSjeECdiDEdiGW7hBQoBsCgo/6TRfX1eI+7nw4CN4+H2zEBFiJB/0UmTIUXzQK1GhRmPY2tCiQ49B3XS3Y8SEGYu66U5idc6kQU9c9Exne7Zne//tHVj+BzdABgAA
+  </data>
+ </layer>
+ <layer id="2" name="Walls" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgGAW0AKfIlMMFbpEpR44bRt1HGIy6jzg5ctww6j7CYLC4DwCx6J1IQAYAAA==
+  </data>
+ </layer>
+</map>

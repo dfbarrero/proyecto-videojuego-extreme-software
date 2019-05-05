@@ -130,7 +130,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 }
                 else if(map.getY()<=-1380)
                 {
-                     llave.recoger(Char);
+                     llave.recogerllave(Char);
                      System.out.println("Llave recogida");
                      llaveb=true;
                 }
