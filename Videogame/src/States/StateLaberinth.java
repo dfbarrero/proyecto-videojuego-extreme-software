@@ -134,6 +134,10 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                      System.out.println("Llave recogida");
                      llaveb=true;
                 }
+                if(map.getX()<=-680 && map.getY()<=-1485)
+                {
+                    sbg.enterState(20);
+                }
                 else if(!flechas)
                 {
                     arco.addarrows(10);
