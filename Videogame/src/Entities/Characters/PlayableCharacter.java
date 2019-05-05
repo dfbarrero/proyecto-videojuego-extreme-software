@@ -140,13 +140,6 @@ public SpriteSheet getMainCharLeft() {
     }
 
     /**
-     * @return the mainCharIdle
-     */
-    public SpriteSheet getMainCharIdle() {
-        return mainCharIdle;
-    }
-
-    /**
      * @return the mainCharRight
      */
     public SpriteSheet getMainCharRight() {
@@ -158,13 +151,6 @@ public SpriteSheet getMainCharLeft() {
      */
     public SpriteSheet getMainCharUp() {
         return mainCharUp;
-    }
-
-    /**
-     * @return the mainCharIdleAnim
-     */
-    public Animation getMainCharIdleAnim() {
-        return mainCharIdleAnim;
     }
 
     /**
