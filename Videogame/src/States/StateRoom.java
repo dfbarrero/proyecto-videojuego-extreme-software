@@ -42,7 +42,7 @@ public class StateRoom extends BasicGameState{
         
     }
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  30, 100);
         map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
         int positionx=200, positiony=200;
         map.setX(positionx);
@@ -64,12 +64,13 @@ public class StateRoom extends BasicGameState{
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
         map.Movimiento((int) map.getCharacter().getSpeed(), gc);
+        //map.getAnimation().update(i);
         interact=map.interact();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
         }
-        map.getAnimation().update(i);
+        
     }
     public int getID() {
         return 20;
@@ -86,7 +87,7 @@ public class StateRoom extends BasicGameState{
                 {
                      sbg.enterState(laberinth);
                 }
-                if(map.getX()<=270 && map.getX()>=204 && map.getY()<=45)
+                if(map.getX()<=280 && map.getX()>=204 && map.getY()<=45)
                 {
                      sbg.enterState(transport);
                 }
