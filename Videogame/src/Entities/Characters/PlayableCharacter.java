@@ -36,19 +36,18 @@ public class PlayableCharacter extends Character
     {
         
         super(sprite, id, xPos, yPos, speed, health);
-        animationspeed=300;
+        animationspeed=100;
         this.pCName = pCName;
         this.inventory = new Inventory();
-        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 27x30 px
+        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 30x30 px
         mainCharLeft = new SpriteSheet("src/Sprites/WalkLeft.png",27,30);
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
         mainCharLeftAnim = new Animation(mainCharLeft,animationspeed);
-        mainCharLeftAnim.setPingPong(true);
         mainCharRightAnim = new Animation(mainCharRight,animationspeed);
-        mainCharRightAnim.setPingPong(true);
         mainCharUpAnim = new Animation(mainCharUp,animationspeed);
         mainCharUpAnim.setPingPong(true);
+		
     }
     
     @Override

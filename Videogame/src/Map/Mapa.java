@@ -109,33 +109,88 @@ public class Mapa {
     }
     public void Movimiento(int i, GameContainer gc)
     {
+        
         if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
             y += i*.1f;  //i=tiempo de update
             actualizarMuros(0, +(i*.1f));
             actualizarIt(0, +(i*.1f));
             collisions(i, gc, "ARRIBA");
             animation=Character.getMainCharUpAnim();
+            if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
+            x -= i*.1f;  //i=tiempo de update
+            actualizarMuros(-(i*.1f), 0);
+            actualizarIt(-(i*.1f),0);
+            collisions(i, gc, "DCHA");
+            animation=Character.getMainCharRightAnim();
+            }else if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
+            x += i*.1f;  //i=tiempo de update
+            actualizarMuros(+(i*.1f), 0);
+            actualizarIt(+(i*.1f),0);
+            collisions(i, gc, "IZQ");
+            animation=Character.getMainCharLeftAnim();  
+            }
         }
-        if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
+        else if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
+            y -= i*.1f;  //i=tiempo de update
+            actualizarMuros(0, -(i*.1f));
+            actualizarIt(0, -(i*.1f));
+            collisions(i, gc, "ABAJO");
+            animation=Character.getMainCharRightAnim();
+            if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
+            x -= i*.1f;  //i=tiempo de update
+            actualizarMuros(-(i*.1f), 0);
+            actualizarIt(-(i*.1f),0);
+            collisions(i, gc, "DCHA");
+            animation=Character.getMainCharRightAnim();
+            }else if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
+            x += i*.1f;  //i=tiempo de update
+            actualizarMuros(+(i*.1f), 0);
+            actualizarIt(+(i*.1f),0);
+            collisions(i, gc, "IZQ");
+            animation=Character.getMainCharLeftAnim();  
+            }
+        }
+        else if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
+            x += i*.1f;  //i=tiempo de update
+            actualizarMuros(+(i*.1f), 0);
+            actualizarIt(+(i*.1f),0);
+            collisions(i, gc, "IZQ");
+            animation=Character.getMainCharLeftAnim();
+            if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
+            y += i*.1f;  //i=tiempo de update
+            actualizarMuros(0, +(i*.1f));
+            actualizarIt(0, +(i*.1f));
+            collisions(i, gc, "ARRIBA");
+            animation=Character.getMainCharUpAnim();
+            }
+            else if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
+            y -= i*.1f;  //i=tiempo de update
+            actualizarMuros(0, -(i*.1f));
+            actualizarIt(0, -(i*.1f));
+            collisions(i, gc, "ABAJO");
+            animation=Character.getMainCharRightAnim();
+            }
+        
+        }
+        else if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
+            x -= i*.1f;  //i=tiempo de update
+            actualizarMuros(-(i*.1f), 0);
+            actualizarIt(-(i*.1f),0);
+            collisions(i, gc, "DCHA");
+            animation=Character.getMainCharRightAnim();
+            if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
+            y += i*.1f;  //i=tiempo de update
+            actualizarMuros(0, +(i*.1f));
+            actualizarIt(0, +(i*.1f));
+            collisions(i, gc, "ARRIBA");
+            animation=Character.getMainCharUpAnim();
+        }else if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
             y -= i*.1f;  //i=tiempo de update
             actualizarMuros(0, -(i*.1f));
             actualizarIt(0, -(i*.1f));
             collisions(i, gc, "ABAJO");
             animation=Character.getMainCharRightAnim();
         }
-        if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            x += i*.1f;  //i=tiempo de update
-            actualizarMuros(+(i*.1f), 0);
-            actualizarIt(+(i*.1f),0);
-            collisions(i, gc, "IZQ");
-            animation=Character.getMainCharLeftAnim();
-        }
-        if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            x -= i*.1f;  //i=tiempo de update
-            actualizarMuros(-(i*.1f), 0);
-            actualizarIt(-(i*.1f),0);
-            collisions(i, gc, "DCHA");
-            animation=Character.getMainCharRightAnim();
         }
         else animation=Character.getMainCharIdleAnim();
        

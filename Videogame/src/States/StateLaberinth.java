@@ -52,7 +52,7 @@ public class StateLaberinth extends BasicGameState{
         return 21;
     }
 public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 15, 100);
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 30, 100);
         map=new Mapa("src/Tiled/Laberinth.tmx", gc, Char, npcs, enemy);
         int positionx=-625, positiony=-405;
         map.setX(positionx);
@@ -88,6 +88,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         }
         g.setColor(Color.black);
         g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
+        map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 
     @Override
