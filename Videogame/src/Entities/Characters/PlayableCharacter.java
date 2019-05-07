@@ -189,13 +189,4 @@ public class PlayableCharacter extends Character
         return mainCharIdle;
     }
 
-    /**
-     * @return the mainCharIdleAnim
-     */
-    public Animation getMainCharIdleAnim() {
-        return mainCharIdleAnim;
-    }
-
-
-    
 }
