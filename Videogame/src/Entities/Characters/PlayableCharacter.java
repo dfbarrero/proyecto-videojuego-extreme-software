@@ -28,9 +28,11 @@ public class PlayableCharacter extends Character
     private SpriteSheet mainCharLeft;
     private SpriteSheet mainCharRight;
     private SpriteSheet mainCharUp;
+    private SpriteSheet mainCharIdle;
     private Animation mainCharLeftAnim;
     private Animation mainCharRightAnim;
     private Animation mainCharUpAnim;
+    private Animation mainCharIdleAnim;
     public PlayableCharacter(Image sprite, String id, float xPos, float yPos, String pCName, float speed, int health) throws SlickException
     {
         
@@ -43,6 +45,7 @@ public class PlayableCharacter extends Character
         mainCharLeft = new SpriteSheet("src/Sprites/WalkLeft.png",27,30);
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
+        mainCharIdle = new SpriteSheet("src/Sprites/Idle.png",27,30);
         mainCharLeftAnim = new Animation(mainCharLeft,animationspeed);
         mainCharLeftAnim.setPingPong(true);
         mainCharRightAnim = new Animation(mainCharRight,animationspeed);
@@ -173,9 +176,21 @@ public SpriteSheet getMainCharLeft() {
     public Animation getMainCharUpAnim() {
         return mainCharUpAnim;
     }
+
     /**
-     * @return the map
+     * @return the mainCharIdle
      */
+    public SpriteSheet getMainCharIdle() {
+        return mainCharIdle;
+    }
+
+    /**
+     * @return the mainCharIdleAnim
+     */
+    public Animation getMainCharIdleAnim() {
+        return mainCharIdleAnim;
+    }
+
 
     
 }
