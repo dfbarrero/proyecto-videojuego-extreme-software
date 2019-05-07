@@ -37,7 +37,7 @@ public class BoosfightFinal extends BasicGameState{
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle (1).png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
         map=new Mapa("src/Tiled/BossFightFinal.tmx", gc, Char, npcs, enemy);
         int positionx=95, positiony=-275;
         map.setX(positionx);
