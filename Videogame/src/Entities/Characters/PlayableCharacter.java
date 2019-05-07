@@ -46,13 +46,13 @@ public class PlayableCharacter extends Character
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
         mainCharIdle = new SpriteSheet("src/Sprites/Idle.png",27,30);
-        mainCharIdleAnim=new Animation(mainCharIdle, animationspeed);
         mainCharLeftAnim = new Animation(mainCharLeft,animationspeed);
         mainCharLeftAnim.setPingPong(true);
         mainCharRightAnim = new Animation(mainCharRight,animationspeed);
         mainCharRightAnim.setPingPong(true);
         mainCharUpAnim = new Animation(mainCharUp,animationspeed);
         mainCharUpAnim.setPingPong(true);
+        mainCharIdleAnim=new Animation(mainCharIdle, animationspeed);
     }
     
     @Override
