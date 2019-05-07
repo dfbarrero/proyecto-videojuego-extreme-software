@@ -46,7 +46,7 @@ public class StateTransport extends BasicGameState{
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         llave=new Key("LaberinthKey", "21");
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  30, 100);
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.2f, 100);
         map=new Mapa("src/Tiled/Transport.tmx", gc, Char, npcs, enemy);
         int positionx=350, positiony=75;
         map.setX(positionx);
@@ -69,7 +69,7 @@ public class StateTransport extends BasicGameState{
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
-        map.Movimiento((int) map.getCharacter().getSpeed(), gc);
+        map.Movimiento(i, gc);
         interact=map.interact();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);

@@ -30,6 +30,7 @@ public class Mapa {
     private PlayableCharacter Character;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
+    private float speed;
     private Animation animation;
     private ArrayList<Hitbox> iteracciones;
     public Mapa(String ruta, GameContainer gc, PlayableCharacter Char, ArrayList<NPC> npcs, Enemy enemy) {
@@ -41,6 +42,7 @@ public class Mapa {
             blocks = new ArrayList<>();
             iteracciones=new ArrayList<>();
             this.Character=Char;
+            speed=Character.getSpeed();
             cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
         } catch (SlickException ex) {
@@ -111,89 +113,88 @@ public class Mapa {
     {
         
         if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-            y += i*.1f;  //i=tiempo de update
-            actualizarMuros(0, +(i*.1f));
-            actualizarIt(0, +(i*.1f));
+            y += i*speed;  //i=tiempo de update
+            actualizarMuros(0, +(i*speed));
+            actualizarIt(0, +(i*speed));
             collisions(i, gc, "ARRIBA");
             animation=Character.getMainCharUpAnim();
             if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            x -= i*.1f;  //i=tiempo de update
-            actualizarMuros(-(i*.1f), 0);
-            actualizarIt(-(i*.1f),0);
+            x -= i*speed;  //i=tiempo de update
+            actualizarMuros(-(i*speed), 0);
+            actualizarIt(-(i*speed),0);
             collisions(i, gc, "DCHA");
             animation=Character.getMainCharRightAnim();
             }else if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            x += i*.1f;  //i=tiempo de update
-            actualizarMuros(+(i*.1f), 0);
-            actualizarIt(+(i*.1f),0);
+            x += i*speed;  //i=tiempo de update
+            actualizarMuros(+(i*speed), 0);
+            actualizarIt(+(i*speed),0);
             collisions(i, gc, "IZQ");
             animation=Character.getMainCharLeftAnim();  
             }
         }
         else if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-            y -= i*.1f;  //i=tiempo de update
-            actualizarMuros(0, -(i*.1f));
-            actualizarIt(0, -(i*.1f));
+            y -= i*speed;  //i=tiempo de update
+            actualizarMuros(0, -(i*speed));
+            actualizarIt(0, -(i*speed));
             collisions(i, gc, "ABAJO");
             animation=Character.getMainCharRightAnim();
             if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            x -= i*.1f;  //i=tiempo de update
-            actualizarMuros(-(i*.1f), 0);
-            actualizarIt(-(i*.1f),0);
+            x -= i*speed;  //i=tiempo de update
+            actualizarMuros(-(i*speed), 0);
+            actualizarIt(-(i*speed),0);
             collisions(i, gc, "DCHA");
             animation=Character.getMainCharRightAnim();
             }else if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            x += i*.1f;  //i=tiempo de update
-            actualizarMuros(+(i*.1f), 0);
-            actualizarIt(+(i*.1f),0);
+            x += i*speed;  //i=tiempo de update
+            actualizarMuros(+(i*speed), 0);
+            actualizarIt(+(i*speed),0);
             collisions(i, gc, "IZQ");
             animation=Character.getMainCharLeftAnim();  
             }
         }
         else if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            x += i*.1f;  //i=tiempo de update
-            actualizarMuros(+(i*.1f), 0);
-            actualizarIt(+(i*.1f),0);
+            x += i*speed;  //i=tiempo de update
+            actualizarMuros(+(i*speed), 0);
+            actualizarIt(+(i*speed),0);
             collisions(i, gc, "IZQ");
             animation=Character.getMainCharLeftAnim();
             if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-            y += i*.1f;  //i=tiempo de update
-            actualizarMuros(0, +(i*.1f));
-            actualizarIt(0, +(i*.1f));
+            y += i*speed;  //i=tiempo de update
+            actualizarMuros(0, +(i*speed));
+            actualizarIt(0, +(i*speed));
             collisions(i, gc, "ARRIBA");
             animation=Character.getMainCharUpAnim();
             }
             else if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-            y -= i*.1f;  //i=tiempo de update
-            actualizarMuros(0, -(i*.1f));
-            actualizarIt(0, -(i*.1f));
+            y -= i*speed;  //i=tiempo de update
+            actualizarMuros(0, -(i*speed));
+            actualizarIt(0, -(i*speed));
             collisions(i, gc, "ABAJO");
             animation=Character.getMainCharRightAnim();
             }
         
         }
         else if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            x -= i*.1f;  //i=tiempo de update
-            actualizarMuros(-(i*.1f), 0);
-            actualizarIt(-(i*.1f),0);
+            x -= i*speed;  //i=tiempo de update
+            actualizarMuros(-(i*speed), 0);
+            actualizarIt(-(i*speed),0);
             collisions(i, gc, "DCHA");
             animation=Character.getMainCharRightAnim();
             if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-            y += i*.1f;  //i=tiempo de update
-            actualizarMuros(0, +(i*.1f));
-            actualizarIt(0, +(i*.1f));
+            y += i*speed;  //i=tiempo de update
+            actualizarMuros(0, +(i*speed));
+            actualizarIt(0, +(i*speed));
             collisions(i, gc, "ARRIBA");
             animation=Character.getMainCharUpAnim();
         }else if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-            y -= i*.1f;  //i=tiempo de update
-            actualizarMuros(0, -(i*.1f));
-            actualizarIt(0, -(i*.1f));
+            y -= i*speed;  //i=tiempo de update
+            actualizarMuros(0, -(i*speed));
+            actualizarIt(0, -(i*speed));
             collisions(i, gc, "ABAJO");
             animation=Character.getMainCharRightAnim();
         }
         }
         else animation=Character.getMainCharIdleAnim();
-       
     }
     public void actualizarMuros(float x, float y)
     {
@@ -230,28 +231,28 @@ public class Mapa {
             {
                 if(dir.toUpperCase().equals("ABAJO"))
                 {
-                    y += i*.1f;  //i=tiempo de update
-                    actualizarMuros(0, (i*.1f));
-                    actualizarIt(0,(i*.1f));
+                    y += i*speed;  //i=tiempo de update
+                    actualizarMuros(0, (i*speed));
+                    actualizarIt(0,(i*speed));
                 }
                 else if(dir.toUpperCase().equals("ARRIBA"))
                 {
-                    y -= i*.1f;  //i=tiempo de update
-                    actualizarMuros(0, -(i*.1f));
-                    actualizarIt(0,-(i*.1f));
+                    y -= i*speed;  //i=tiempo de update
+                    actualizarMuros(0, -(i*speed));
+                    actualizarIt(0,-(i*speed));
                 }
                 else if(dir.toUpperCase().equals("DCHA"))
                 {
-                    x += i*.1f;  //i=tiempo de update
-                    actualizarMuros((i*.1f), 0);
-                    actualizarIt((i*.1f),0);
+                    x += i*speed;  //i=tiempo de update
+                    actualizarMuros((i*speed), 0);
+                    actualizarIt((i*speed),0);
                      
                 }
                 else if(dir.toUpperCase().equals("IZQ"))
                 {
-                    x -= i*.1f;  //i=tiempo de update
-                    actualizarMuros(-(i*.1f), 0);
-                    actualizarIt(-(i*.1f),0);
+                    x -= i*speed;  //i=tiempo de update
+                    actualizarMuros(-(i*speed), 0);
+                    actualizarIt(-(i*speed),0);
                 }
             }
         }

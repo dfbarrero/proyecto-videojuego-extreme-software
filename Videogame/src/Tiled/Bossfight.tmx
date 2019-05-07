@@ -11,17 +11,17 @@
  </layer>
  <layer id="3" name="Suelo" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACjNiZGAwGsWjeBSP4lE8iknEAHY0DzBABgAA
-  </data>
- </layer>
- <layer id="1" name="Objetos" width="20" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3Mtw2AMBRFUYv9CAsQFsCwAGEBQumGsA4jsA23cIOEANkUFH7Sab6+rhD38xEgRPTw+2YxEqTIPujlkChQftCrUKNBa9na0KHHgFHfTLdjwowFq76ZTkF6Z8qiJy56tnM913O9//YOaWcDC0AGAAA=
+   H4sIAAAAAAAACjNiZGAwGsWjeBSP4lGMgfOYUPFAu2ewYQD2ZrdyQAYAAA==
   </data>
  </layer>
  <layer id="2" name="Walls" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACmNgGAW0AKfIlMMFbpEpR44bRt1HGIy6jzg5ctwwWNy3DojXo+ENDIPHfeTIkeMGfHIARggwMEAGAAA=
+   H4sIAAAAAAAACjNiZGAwojKmFhjK5p3Cow+XHD7zbuExD5fcqPsIuwGf3Eh1HzYzKXEfNvOGgvvWAfF6NLxhELkPFyDGfdTCAOtWNNBABgAA
+  </data>
+ </layer>
+ <layer id="1" name="Objetos" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3PtwmAQBiG4cP9DAsYFjAsYFjAUNoYNnAOR3Ab3+IaRUwnaOEHT/NzvHBC7E+HARPWwdszs+HAhfdAz0eAENEDvRgJUmSKrRE5CpSo5O3uJjRo0aGXt7urEWhLtUJPbPRU9/f+3pu9YUV1X//v1d4MXgEI5UAGAAA=
   </data>
  </layer>
 </map>

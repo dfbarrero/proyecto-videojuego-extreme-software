@@ -46,6 +46,7 @@ public class PlayableCharacter extends Character
         mainCharRight = new SpriteSheet("src/Sprites/WalkRight.png",27,30);
         mainCharUp = new SpriteSheet("src/Sprites/WalkUp.png",27,30);
         mainCharIdle = new SpriteSheet("src/Sprites/Idle.png",27,30);
+        mainCharIdleAnim=new Animation(mainCharIdle, animationspeed);
         mainCharLeftAnim = new Animation(mainCharLeft,animationspeed);
         mainCharLeftAnim.setPingPong(true);
         mainCharRightAnim = new Animation(mainCharRight,animationspeed);
@@ -88,6 +89,10 @@ public class PlayableCharacter extends Character
      */
     public void setpCName(String pCName) {
         this.pCName = pCName;
+    }
+
+    public Animation getMainCharIdleAnim() {
+        return mainCharIdleAnim;
     }
 
     /**
@@ -138,7 +143,7 @@ public class PlayableCharacter extends Character
     public float getXPos() {
         return xPos;
     }
-public SpriteSheet getMainCharLeft() {
+	public SpriteSheet getMainCharLeft() {
         return mainCharLeft;
     }
 

@@ -56,7 +56,7 @@ public class StateLaberinth extends BasicGameState{
         this.Char=Char;
     }
 public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 30, 100);
+        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 0.2f, 100);
         map=new Mapa("src/Tiled/Laberinth.tmx", gc, Char, npcs, enemy);
         int positionx=-625, positiony=-405;
         map.setX(positionx);
@@ -99,7 +99,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
-        map.Movimiento((int) map.getCharacter().getSpeed(), gc);
+        map.Movimiento(i, gc);
         interact=map.interact();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            
