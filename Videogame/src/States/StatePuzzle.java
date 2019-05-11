@@ -15,7 +15,13 @@ import static States.StateRoom.bossfight;
 import static States.StateRoom.laberinth;
 import static States.StateRoom.puzzle;
 import static States.StateRoom.transport;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -31,12 +37,14 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class StatePuzzle extends BasicGameState{
     private Mapa map;
+    private ObjectInputStream load;
     private boolean fog=true;
     private boolean interact=false;
     private PlayableCharacter Char;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
     private Key llave;
+    private boolean start=true;
     public StatePuzzle(int state)
     {
         
@@ -44,8 +52,15 @@ public class StatePuzzle extends BasicGameState{
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  50, 100);
-        map=new Mapa("src/Tiled/Habitacion.tmx", gc, Char, npcs, enemy);
+        try {
+            this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        map=new Mapa("src/Tiled/Habitacion.tmx", gc);
         int positionx=200, positiony=200;
         map.setX(positionx);
         map.setY(positiony);
@@ -66,6 +81,20 @@ public class StatePuzzle extends BasicGameState{
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        if(start)
+        {
+            try {
+            Char=(PlayableCharacter) load.readObject();
+            load.close();
+            } catch (IOException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            map.setCharacter(Char);
+            map.setSpeed(Char.getSpeed());
+            start=false;
+        }
         Input input = gc.getInput();
         map.Movimiento((int) map.getCharacter().getSpeed(), gc);
         interact=map.interact();

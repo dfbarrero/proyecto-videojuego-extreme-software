@@ -5,11 +5,13 @@
  */
 package Entities.Items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Javier Muñoz
  */
-public class Key extends Item
+public class Key extends Item implements Serializable
 {
     private String name;
     

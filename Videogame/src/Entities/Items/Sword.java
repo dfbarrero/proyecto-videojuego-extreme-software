@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package Entities.Items;
+
+import java.io.Serializable;
+
 /**
  *
  * @author jgome
  */
-public class Sword extends Weapon
+public class Sword extends Weapon implements Serializable
 {
     private int durability;
     private String name;

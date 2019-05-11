@@ -5,11 +5,13 @@
  */
 package Entities.Items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Javier Muñoz
  */
-public abstract class Weapon extends Item {
+public abstract class Weapon extends Item implements Serializable {
     protected int damage;
     
     public Weapon(String id, int damage)

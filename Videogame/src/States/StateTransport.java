@@ -15,7 +15,15 @@ import static States.StateRoom.bossfight;
 import static States.StateRoom.laberinth;
 import static States.StateRoom.puzzle;
 import static States.StateRoom.transport;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -31,13 +39,15 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class StateTransport extends BasicGameState{
     private Mapa map;
+    private ObjectInputStream load;
     private boolean transport=false;
     private boolean interact=false;
     private PlayableCharacter Char;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
+    private ObjectOutputStream save;
     private Key llave;
-    
+    private boolean start=true;
     public StateTransport(int state)
     {
         
@@ -45,9 +55,24 @@ public class StateTransport extends BasicGameState{
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        start=true;
+        try {
+            this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateTransport.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StateTransport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         llave=new Key("LaberinthKey", "21");
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.2f, 100);
-        map=new Mapa("src/Tiled/Transport.tmx", gc, Char, npcs, enemy);
+        map=new Mapa("src/Tiled/Transport.tmx", gc);
         int positionx=350, positiony=75;
         map.setX(positionx);
         map.setY(positiony);
@@ -68,6 +93,27 @@ public class StateTransport extends BasicGameState{
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        if(start)
+        {
+            try {
+            try {
+            this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
+            } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Char=(PlayableCharacter) load.readObject();
+            load.close();
+            } catch (IOException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            map.setCharacter(Char);
+            map.setSpeed(Char.getSpeed());
+            start=false;
+        }
         Input input = gc.getInput();
         map.Movimiento(i, gc);
         interact=map.interact();
@@ -82,7 +128,7 @@ public class StateTransport extends BasicGameState{
     public int getID() {
         return 23;
     }
-    public void transport(StateBasedGame sbg, GameContainer gc)
+    public void transport(StateBasedGame sbg, GameContainer gc) throws SlickException
     {
         double x, y;
         double tx, ty;
@@ -228,7 +274,13 @@ public class StateTransport extends BasicGameState{
                 //Bloque 5
                 else if(map.getX()<=-70 && map.getX()>=-150 && map.getY()<=-119 && map.getY()>=-192)
                 {
-                    llave.recoger(Char);
+                    llave.recogerllave(Char);
+                    try {
+                    saveChar(Char);
+                    }   catch (IOException ex) {
+                    Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    sbg.getState(20).init(gc, sbg);
                     sbg.enterState(20);
                 }
                 //Bloque 6
@@ -389,5 +441,18 @@ public class StateTransport extends BasicGameState{
             interact=false;
         }
     }
-    
+     public void saveChar(PlayableCharacter Character) throws IOException
+    {
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        save.reset();
+        save.writeObject(Character);
+        save.close();
+    }
 }

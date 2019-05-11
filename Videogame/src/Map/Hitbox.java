@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package Map;
+import java.io.Serializable;
 import org.newdawn.slick.geom.Rectangle;
 
-public class Hitbox {
+public class Hitbox implements Serializable{
 
     private Rectangle hitbox;
     private float posx, posy;

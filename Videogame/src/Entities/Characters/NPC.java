@@ -23,9 +23,9 @@ public class NPC extends Character
     private float speed;
     private Mapa map;
     
-    public NPC(Image sprite, String id, int xPos, int yPos, String name, SpriteSheet img, float speed, int health, Mapa map)
+    public NPC(String id, int xPos, int yPos, String name, SpriteSheet img, float speed, int health, Mapa map)
     {
-        super(sprite, id, xPos, yPos, speed, health);
+        super(id, xPos, yPos, speed, health);
         this.name = name;
         this.inventory = new Inventory();
         this.collisionBox = new Hitbox(xPos, yPos, 30, 30);

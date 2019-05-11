@@ -44,7 +44,6 @@ public class S5_EscPage extends BasicGameState{
         playersOptions[2] = "Options";
         playersOptions[3] = "Quit";
         lastStage = sbg.getCurrentStateID();
-        
         font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);
     }
@@ -87,6 +86,7 @@ public class S5_EscPage extends BasicGameState{
                     sbg.enterState(6);
                     break;
                 case BACK:
+                    if(lastStage!=20)  sbg.getState(lastStage).init(gc, sbg);
                     sbg.enterState(20);
                     break;
                 case SAVE:

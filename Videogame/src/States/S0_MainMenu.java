@@ -5,8 +5,15 @@
  */
 package States;
 
+import Entities.Characters.PlayableCharacter;
 import MusicPlayer.*;
 import java.awt.Font;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -31,10 +38,10 @@ public class S0_MainMenu extends BasicGameState{
     private final Color notChosen = new Color(153, 204, 255);
     private final Color background = new Color(0, 0, 255);
     public static int lastStage;
-    
+    private PlayableCharacter principal;
     private boolean playingMuscic = true;
     public MusicPlayer musicplayer = new MusicPlayer();
-    
+    private ObjectOutputStream save;
     
     public S0_MainMenu(int state) {
     }
@@ -43,8 +50,13 @@ public class S0_MainMenu extends BasicGameState{
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        //play = new Image("res/play button.png");
-        
+        try {
+            //play = new Image("res/play button.png");
+            principal=new PlayableCharacter("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.2f, 100);
+            System.out.println("The speed of te character is: "+principal.getSpeed());
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         playersOptions[0] = "Start";
         playersOptions[1] = "Load";
         playersOptions[2] = "Options";
@@ -53,7 +65,14 @@ public class S0_MainMenu extends BasicGameState{
         playersOptionsTTF = new TrueTypeFont(font, true);
         lastStage = sbg.getCurrentStateID();
         musicplayer.playTrack(1);
-        //musicplayer.setVolume(); Implement function (dont work yet)
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -92,6 +111,11 @@ public class S0_MainMenu extends BasicGameState{
                     sbg.enterState(6);
                     break;
                 case START:
+                    try {
+                    saveChar(principal);
+                    }   catch (IOException ex) {
+                    Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     sbg.enterState(20);
                     playingMuscic = false;
                     break;
@@ -123,5 +147,10 @@ public class S0_MainMenu extends BasicGameState{
                 playersOptionsTTF.drawString(100, i * 50 + 200, playersOptions[i], notChosen);
             }
         }
+    }
+    public void saveChar(PlayableCharacter Character) throws IOException
+    {
+        save.writeObject(Character);
+        save.close();
     }
 }

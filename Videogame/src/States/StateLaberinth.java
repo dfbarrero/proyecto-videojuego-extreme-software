@@ -15,7 +15,15 @@ import static States.StateRoom.bossfight;
 import static States.StateRoom.laberinth;
 import static States.StateRoom.puzzle;
 import static States.StateRoom.transport;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Color;
 import static org.newdawn.slick.Color.black;
 import org.newdawn.slick.GameContainer;
@@ -32,6 +40,7 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class StateLaberinth extends BasicGameState{
     private Mapa map;
+    private ObjectInputStream load;
     private boolean fog=true;
     private boolean interact=false;
     private PlayableCharacter Char;
@@ -42,6 +51,8 @@ public class StateLaberinth extends BasicGameState{
     boolean sword=false, llaveb=false, bow=false, flechas=false;
     private int contfl=0;
     private Key llave;
+    private ObjectOutputStream save;
+    private boolean start=true;
     public StateLaberinth(int state)
     {
         
@@ -56,8 +67,23 @@ public class StateLaberinth extends BasicGameState{
         this.Char=Char;
     }
 public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName", 0.2f, 100);
-        map=new Mapa("src/Tiled/Laberinth.tmx", gc, Char, npcs, enemy);
+    start=true;    
+    try {
+            this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        map=new Mapa("src/Tiled/Laberinth.tmx", gc);
         int positionx=-625, positiony=-405;
         map.setX(positionx);
         map.setY(positiony);
@@ -98,6 +124,27 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        if(start)
+        {
+            try {
+                try {
+            this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
+            } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Char=(PlayableCharacter) load.readObject();
+            load.close();
+            } catch (IOException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            map.setCharacter(Char);
+            map.setSpeed(Char.getSpeed());
+            start=false;
+        }
         Input input = gc.getInput();
         map.Movimiento(i, gc);
         interact=map.interact();
@@ -108,10 +155,10 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         }
     }
     //Return the state of the menu (0)
-    public void interact(Graphics g, GameContainer gc, StateBasedGame sbg)
+    public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         Input input=gc.getInput();
-        if(interact && (!sword || !bow || !flechas || !llaveb))
+        if(interact && (!sword || !bow || !flechas  || !llaveb))
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
             if(input.isKeyPressed(Input.KEY_ENTER))
@@ -132,14 +179,20 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                      System.out.println("Arco recogida");
                      bow=true;
                 }
-                else if(map.getY()<=-1380)
+                else if(map.getY()<=-1380 && map.getY()>=-1474 && !llaveb)
                 {
                      llave.recogerllave(Char);
                      System.out.println("Llave recogida");
                      llaveb=true;
                 }
-                if(map.getX()<=-680 && map.getY()<=-1485)
+                else if(map.getX()<=-680 && map.getY()<=-1485)
                 {
+                    try {
+                    saveChar(Char);
+                    }   catch (IOException ex) {
+                    Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    sbg.getState(20).init(gc, sbg);
                     sbg.enterState(20);
                 }
                 else if(!flechas)
@@ -147,13 +200,23 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                     arco.addarrows(10);
                     System.out.println("Arrows areron");
                     contfl++;
-                    if(contfl>=2)
-                    {
                         flechas=true;
-                    }
                 }
             }
         }
     }
-
+ public void saveChar(PlayableCharacter Character) throws IOException
+    {
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        save.reset();
+        save.writeObject(Character);
+        save.close();
+    }
 }

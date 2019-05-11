@@ -6,12 +6,13 @@
 package Entities.Items;
 
 import Entities.Characters.PlayableCharacter;
+import java.io.Serializable;
 
 /**
  *
  * @author Javier Muñoz
  */
-public abstract class Item
+public abstract class Item implements Serializable
 {
     /*
     *Items can be "weapons" or "keys" depending on their ID and work differently

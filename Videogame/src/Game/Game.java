@@ -5,10 +5,12 @@
  */
 package Game;
 
+import Entities.Characters.PlayableCharacter;
 import States.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import static java.lang.System.gc;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,6 @@ import org.newdawn.slick.state.*;
 public class Game extends StateBasedGame {
 
     private static String OS = System.getProperty("os.name").toLowerCase();
-
     public static final String gamename = "3xtremE";
     public static final int menu = 0;
     public static final int room = 20;
@@ -40,14 +41,13 @@ public class Game extends StateBasedGame {
     public static final int audio = 8;
     public static final int language = 9;
     public static final int ni = 10;
-
     public static int wight;
     public static int high;
     public static boolean fullscreen;
-
+    
     @SuppressWarnings("OverridableMethodCallInConstructor")
 
-    public Game(String name) {
+    public Game(String name) throws SlickException, IOException {
         super(gamename);
         this.addState((GameState) new S0_MainMenu(menu));
         this.addState((GameState) new StateRoom(room));
@@ -65,7 +65,7 @@ public class Game extends StateBasedGame {
         this.addState((GameState) new S9_Language(language));
         this.addState((GameState) new S10_NotImplementedYet(ni));
         this.addState((GameState) new BoosfightFinal(bossfightfinal));
-        
+
     }
 
     /**
@@ -115,7 +115,7 @@ public class Game extends StateBasedGame {
             wight = Integer.parseInt(prop.getProperty("width"));
             high = Integer.parseInt(prop.getProperty("high"));
             fullscreen = Boolean.parseBoolean(prop.getProperty("fullscreen"));
-            
+
             appgc = new AppGameContainer(new Game(gamename));
             appgc.setDisplayMode(800, 600, false);
             appgc.start();

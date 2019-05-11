@@ -5,11 +5,13 @@
  */
 package Entities.Characters;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Javier Muñoz
  */
-public interface CharacterInterface {
+public interface CharacterInterface extends Serializable{
     
     public String getId();
     

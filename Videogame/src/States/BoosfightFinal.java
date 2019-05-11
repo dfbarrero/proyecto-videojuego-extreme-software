@@ -5,7 +5,15 @@ import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
 import Map.Mapa;
 import static States.S0_MainMenu.lastStage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -21,11 +29,14 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class BoosfightFinal extends BasicGameState{
     private Mapa map;
+    private ObjectInputStream load;
     private boolean fog=true;
     private boolean interact=false;
     private PlayableCharacter Char;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
+    private boolean start=true;
+    private ObjectOutputStream save;
     public BoosfightFinal(int state)
     {
         
@@ -37,8 +48,8 @@ public class BoosfightFinal extends BasicGameState{
     @Override
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        Char=new PlayableCharacter(new Image("src/Sprites/Idle.png"),"id",(float) gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.2f, 100);
-        map=new Mapa("src/Tiled/BossFightFinal.tmx", gc, Char, npcs, enemy);
+        start=true;
+        map=new Mapa("src/Tiled/BossFightFinal.tmx", gc);
         int positionx=95, positiony=-275;
         map.setX(positionx);
         map.setY(positiony);
@@ -59,6 +70,27 @@ public class BoosfightFinal extends BasicGameState{
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        if(start)
+        {
+            try {
+                try {
+            this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Char=(PlayableCharacter) load.readObject();
+            load.close();
+            } catch (IOException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            map.setCharacter(Char);
+            map.setSpeed(Char.getSpeed());
+            start=false;
+        }
         Input input = gc.getInput();
         map.Movimiento(i, gc);
         interact=map.interact();
@@ -80,5 +112,9 @@ public class BoosfightFinal extends BasicGameState{
             interact=false;
         }
     }
-
+ public void saveChar(PlayableCharacter Character) throws IOException
+    {
+        save.writeObject(Character);
+        save.close();
+    }
 }

@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import java.io.Serializable;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 
@@ -17,22 +18,20 @@ import org.newdawn.slick.SpriteSheet;
 *Characters can be "npc", "pc" or "enemy" depending on their ID and work differently
 *depending on it, so make sure to assign the correct ID to every character.
 */
-public abstract class Character implements CharacterInterface{
+public abstract class Character implements CharacterInterface, Serializable{
     protected String id;
     protected float xPos;
     protected float yPos;
-    protected Image sprite;
     protected float speed;
     protected int hp;
     
-    public Character(Image sprite, String id, float xPos, float yPos, float speed, int hp)
+    public Character(String id, float xPos, float yPos, float speed, int hp)
     {
         this.id = id;
         this.xPos = xPos;
         this.yPos = yPos;
         this.hp = hp;
         this.speed = speed;
-        this.sprite = sprite;
     }
 
     /**
@@ -80,16 +79,6 @@ public abstract class Character implements CharacterInterface{
     /**
      * @return the sprite
      */
-    public Image getSprite() {
-        return sprite;
-    }
-
-    /**
-     * @param sprite the sprite to set
-     */
-    public void setSprite(SpriteSheet sprite) {
-        this.sprite = sprite;
-    }
 
     /**
      * @return the speed
