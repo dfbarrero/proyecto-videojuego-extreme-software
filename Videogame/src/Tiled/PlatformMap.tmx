@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="200" height="5" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="1">
+ <tileset firstgid="1" source="plataformas.tsx"/>
+ <tileset firstgid="361" source="Prueba.tsx"/>
+ <tileset firstgid="617" source="terreno.tsx"/>
+ <layer id="1" name="fondo" width="200" height="5">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3DMQ0AAAgDsPl3tARxKODlapM2SVVVVR+Oel6pIrERoA8AAA==
+  </data>
+ </layer>
+ <layer id="5" name="Walls" width="200" height="5">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgGAWjYBRQClQYIZga6gmZRYpdMLXYMD30UxvQwm5k87D5j1L7aOHegQr/UTAyAbY0N5oO8QMOVtxynkyE9ROjhpB6aphBS33E6sWnhlw5cu2jpbmE8hOx9lIz3rHJYXMnLjNwiWvgyR+jYBSMAgYGAA0B8xigDwAA
+  </data>
+ </layer>
+ <layer id="6" name="Iteracciones" width="200" height="5">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3TMQ0AMAgAQRYSpNS/wjpgIoHhTsEvHwEAwJTK7QK46/kDWh/nOH4RoA8AAA==
+  </data>
+ </layer>
+</map>
