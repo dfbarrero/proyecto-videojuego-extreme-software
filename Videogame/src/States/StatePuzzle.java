@@ -128,7 +128,7 @@ public class StatePuzzle extends BasicGameState{
         return 22;
     }
 
-    public void interact(Graphics g, StateBasedGame sbg, GameContainer gc) throws IOException
+    public void interact(Graphics g, StateBasedGame sbg, GameContainer gc) throws IOException, SlickException
     {
         Input input = gc.getInput();
         if(interact)
@@ -138,6 +138,7 @@ public class StatePuzzle extends BasicGameState{
             {
                 llave.recogerllave(Char);
                 saveChar(Char);
+                sbg.getState(20).init(gc, sbg);
                 sbg.enterState(20);
             }
             interact=false;

@@ -65,7 +65,7 @@ public class Game extends StateBasedGame {
         this.addState((GameState) new S9_Language(language));
         this.addState((GameState) new S10_NotImplementedYet(ni));
         this.addState((GameState) new BoosfightFinal(bossfightfinal));
-
+        this.addState((GameState) new Fight(100));
     }
 
     /**
@@ -92,7 +92,9 @@ public class Game extends StateBasedGame {
         this.getState(audio).init(gc, this);
         this.getState(language).init(gc, this);
         this.getState(ni).init(gc, this);
+        this.getState(100).init(gc, this);
         this.enterState(menu);
+        
     }
 
     public static void main(String[] args) throws FileNotFoundException {

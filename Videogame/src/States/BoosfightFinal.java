@@ -94,6 +94,11 @@ public class BoosfightFinal extends BasicGameState{
         Input input = gc.getInput();
         map.Movimiento(i, gc);
         interact=map.interact();
+        try {
+            interaction(gc, sbg);
+        } catch (IOException ex) {
+            Logger.getLogger(BoosfightFinal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
@@ -112,8 +117,26 @@ public class BoosfightFinal extends BasicGameState{
             interact=false;
         }
     }
- public void saveChar(PlayableCharacter Character) throws IOException
+    public void interaction(GameContainer gc, StateBasedGame sbg) throws IOException
     {
+        Input input=gc.getInput();
+        if(interact && input.isKeyPressed(Input.KEY_ENTER))
+        {
+            saveChar(Char);
+            sbg.enterState(100);
+        }
+    }
+    public void saveChar(PlayableCharacter Character) throws IOException
+    {
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        save.reset();
         save.writeObject(Character);
         save.close();
     }

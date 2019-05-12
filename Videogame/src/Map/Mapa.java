@@ -40,7 +40,7 @@ public class Mapa {
             //Carga de elementos del mapa
             blocks = new ArrayList<>();
             iteracciones=new ArrayList<>();
-            cargaMuros();        /*TODO: cargaSaltosEstado */
+            //cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
             animations=new CharAnimation();
         } catch (SlickException ex) {
