@@ -40,7 +40,7 @@ public class Mapa {
             //Carga de elementos del mapa
             blocks = new ArrayList<>();
             iteracciones=new ArrayList<>();
-            //cargaMuros();        /*TODO: cargaSaltosEstado */
+            cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
             animations=new CharAnimation();
         } catch (SlickException ex) {
@@ -227,7 +227,6 @@ public class Mapa {
             }
             grphcs.setColor(Color.black);
             grphcs.drawRect(Character.getCollision().getRectangulo().getX(), Character.getCollision().getRectangulo().getY(), Character.getCollision().getRectangulo().getHeight(), Character.getCollision().getRectangulo().getWidth());
-        
         }
     public void collisions(int i, GameContainer gc, String dir)
     {

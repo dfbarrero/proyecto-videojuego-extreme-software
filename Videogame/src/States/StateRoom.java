@@ -134,7 +134,7 @@ public class StateRoom extends BasicGameState{
                 {
                     
                     if(Char.getKeys().getItems().size()<3)
-                      sbg.enterState(25);
+                      sbg.enterState(24);
                     else
                       sbg.enterState(25);
                 }

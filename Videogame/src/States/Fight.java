@@ -5,7 +5,9 @@ import Entities.Characters.Enemy;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
 import Map.Mapa;
+import MusicPlayer.MusicPlayer;
 import static States.S0_MainMenu.lastStage;
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,6 +23,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -29,6 +32,22 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author jgome
  */
 public class Fight extends BasicGameState{
+    public String mouse = "No input yet!";
+    Image play;
+    private int playersChoice = 0;
+    private static final int NOCHOICES = 4;
+    private static final int START = 0;
+    private static final int LOAD = 1;
+    private static final int OPTIONS = 2;
+    private static final int QUIT = 3;
+    private final String[] playersOptions = new String[NOCHOICES];
+    private Font font;
+    private TrueTypeFont playersOptionsTTF;
+    private final Color notChosen = new Color(153, 204, 255);
+    public static int lastStage;
+    private PlayableCharacter principal;
+    private boolean playingMuscic = true;
+    public MusicPlayer musicplayer = new MusicPlayer();
     private Image background;
     private CharAnimation personaje;
     private boolean start;
@@ -50,6 +69,14 @@ public class Fight extends BasicGameState{
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background =new Image("src/Tiled/fight_back.gif");
         mainIdle=new Image("src/Sprites/FightIdle.png");
+        font = new Font("Verdana", Font.ROMAN_BASELINE, 30);
+        start=true;
+        playersOptionsTTF = new TrueTypeFont(font, true);
+        playersOptions[0] = "Espada";
+        playersOptions[1] = "Arco";
+        playersOptions[2] = "Magia";
+        lastStage = sbg.getCurrentStateID();
+        musicplayer.playTrack(1);
     }
 
     @Override
@@ -57,11 +84,20 @@ public class Fight extends BasicGameState{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.setColor(Color.white);
         interact(g);
-        g.drawImage(background, 80, 120);
-        if(!start) g.drawImage(mainIdle, 200, 280);
-        
-        g.drawRect(80, 480, 645, 115);
-        
+        g.drawImage(background, 10, 50);
+        if(!start) g.drawImage(mainIdle, 150, 295);
+        g.setLineWidth(4);
+        g.setColor(Color.lightGray);
+        g.drawRect(80, 460, 645, 200);
+        renderPlayersOptions();
+        g.setColor(Color.red);
+        g.drawString("HP", 80, 410);
+        g.drawString(Integer.toString(Char.getHp())+"%", 200, 410);
+        g.fillRect(80, 430, Char.getHp()*4, 15);
+        g.setColor(Color.orange);
+        g.drawString("Boss HP", 720, 10);
+        g.drawString(Integer.toString(Char.getHp())+"%", 385, 10);
+        g.fillRect(385, 30, Char.getHp()*4, 15);
     }
 
     @Override
@@ -96,5 +132,9 @@ public class Fight extends BasicGameState{
     {
         
     }
-
+    private void renderPlayersOptions() {
+        playersOptionsTTF.drawString(150, 480, playersOptions[0]);
+        playersOptionsTTF.drawString(570, 480, playersOptions[1]);
+        playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+    }
 }
