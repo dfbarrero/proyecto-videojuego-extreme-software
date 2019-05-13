@@ -16,7 +16,7 @@
  </layer>
  <layer id="2" name="Walls" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACjNiZGAwojKmFhjK5p3Cow+XHD7zbuExD5fcqPsIuwGf3Eh1HzYzKXEfNvOGgvvWAfF6NLxhELkPFyDGfdTCAOtWNNBABgAA
+   H4sIAAAAAAAACjNiZGAwojKmFhjK5p3Cow+XHD7zbuExD5fcqPsIuwGf3Eh1HzYzKXEfNvOGgvvWAfF6NLxhELkPFyDGfej4Fh55fHIApKFD4UAGAAA=
   </data>
  </layer>
  <layer id="1" name="Objetos" width="20" height="20">

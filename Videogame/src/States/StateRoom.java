@@ -105,7 +105,7 @@ public class StateRoom extends BasicGameState{
     public int getID() {
         return 20;
     }
-    public void interact(Graphics g, StateBasedGame sbg, GameContainer gc)
+    public void interact(Graphics g, StateBasedGame sbg, GameContainer gc) throws SlickException
     {
         Input input = gc.getInput();
         if(interact)
@@ -134,9 +134,15 @@ public class StateRoom extends BasicGameState{
                 {
                     
                     if(Char.getKeys().getItems().size()<3)
-                      sbg.enterState(24);
-                    else
+                    {
+                      sbg.getState(25).init(gc, sbg);
                       sbg.enterState(25);
+                    }
+                    else
+                    {
+                      sbg.getState(25).init(gc, sbg);
+                      sbg.enterState(25);
+                    }
                 }
             }
             interact=false;

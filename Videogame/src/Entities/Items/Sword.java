@@ -47,4 +47,9 @@ public class Sword extends Weapon implements Serializable
               +"\nDurability: "+durability
               +"\nDamage: "+damage;
     }
+
+    @Override
+    public String name() {
+        return name;
+    }
 }

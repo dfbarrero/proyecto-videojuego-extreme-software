@@ -52,4 +52,7 @@ public class Bow extends Weapon implements Serializable
               +"\nAmmo: "+arrows
               +"\nDamage: "+damage;
     }
+    public String name() {
+        return name+" ("+arrows+")";
+    }
 }

@@ -90,8 +90,8 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
         llave=new Key("LLave lab", "1");
-        arco=new Bow("409506", 100, 0, "matareyes");
-        espada=new Sword("333333", 50, 200, "Sombra");
+        arco=new Bow("Arco", 100, 0, "Arco");
+        espada=new Sword("Espada", 50, 200, "Espada");
     }
 
     @Override
@@ -158,7 +158,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         Input input=gc.getInput();
-        if(interact && (!sword || !bow || !flechas  || !llaveb))
+        if(interact && (!sword || !bow || !flechas  || !llaveb || true))
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
             if(input.isKeyPressed(Input.KEY_ENTER))

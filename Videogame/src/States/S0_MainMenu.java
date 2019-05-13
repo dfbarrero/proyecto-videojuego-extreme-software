@@ -52,7 +52,7 @@ public class S0_MainMenu extends BasicGameState{
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         try {
             //play = new Image("res/play button.png");
-            principal=new PlayableCharacter("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.2f, 100);
+            principal=new PlayableCharacter("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.15f, 100);
             System.out.println("The speed of te character is: "+principal.getSpeed());
         } catch (IOException ex) {
             Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);

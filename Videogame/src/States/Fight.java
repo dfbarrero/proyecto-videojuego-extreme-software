@@ -72,9 +72,7 @@ public class Fight extends BasicGameState{
         font = new Font("Verdana", Font.ROMAN_BASELINE, 30);
         start=true;
         playersOptionsTTF = new TrueTypeFont(font, true);
-        playersOptions[0] = "Espada";
-        playersOptions[1] = "Arco";
-        playersOptions[2] = "Magia";
+        
         lastStage = sbg.getCurrentStateID();
         musicplayer.playTrack(1);
     }
@@ -92,7 +90,7 @@ public class Fight extends BasicGameState{
         renderPlayersOptions();
         g.setColor(Color.red);
         g.drawString("HP", 80, 410);
-        g.drawString(Integer.toString(Char.getHp())+"%", 200, 410);
+        g.drawString(Integer.toString(Char.getHp())+"%", 450, 410);
         g.fillRect(80, 430, Char.getHp()*4, 15);
         g.setColor(Color.orange);
         g.drawString("Boss HP", 720, 10);
@@ -120,7 +118,17 @@ public class Fight extends BasicGameState{
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
             }
+            playersOptions[2] = "Magia";
+            for(int cont=0;cont<Char.getInventory().getItems().size();cont++)
+            {
+                playersOptions[cont]=Char.getInventory().getItems().get(cont).name();
+            }
             start=false;
+        }
+        Input input=gc.getInput();
+        if (input.isKeyPressed(Input.KEY_ESCAPE)) {
+           sbg.enterState(5);
+           lastStage = sbg.getCurrentStateID();
         }
     }
     @Override
@@ -133,8 +141,22 @@ public class Fight extends BasicGameState{
         
     }
     private void renderPlayersOptions() {
-        playersOptionsTTF.drawString(150, 480, playersOptions[0]);
-        playersOptionsTTF.drawString(570, 480, playersOptions[1]);
-        playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+        int max=Char.getInventory().getItems().size();
+        if(max==1)
+        {
+            playersOptionsTTF.drawString(150, 480, playersOptions[0]);
+            playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+        }
+        else if(max==2)
+        {
+            playersOptionsTTF.drawString(150, 480, playersOptions[0]);
+            playersOptionsTTF.drawString(570, 480, playersOptions[1]);
+            playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+        }
+        else
+        {
+            playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+        }
+        
     }
 }

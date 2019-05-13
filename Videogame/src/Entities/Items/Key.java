@@ -26,4 +26,7 @@ public class Key extends Item implements Serializable
     {
         return "This is a key. It has a name tag: "+name;
     }
+    public String name() {
+        return name;
+    }
 }

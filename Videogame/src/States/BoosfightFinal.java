@@ -117,12 +117,13 @@ public class BoosfightFinal extends BasicGameState{
             interact=false;
         }
     }
-    public void interaction(GameContainer gc, StateBasedGame sbg) throws IOException
+    public void interaction(GameContainer gc, StateBasedGame sbg) throws IOException, SlickException
     {
         Input input=gc.getInput();
         if(interact && input.isKeyPressed(Input.KEY_ENTER))
         {
             saveChar(Char);
+            sbg.getState(100).init(gc, sbg);
             sbg.enterState(100);
         }
     }

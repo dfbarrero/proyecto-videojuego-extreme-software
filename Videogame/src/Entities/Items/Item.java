@@ -35,7 +35,7 @@ public abstract class Item implements Serializable
     
     @Override
     public abstract String toString();
-    
+    public abstract String name();
     public void recoger(PlayableCharacter personaje)
     {
         personaje.getInventory().addItem(this);
