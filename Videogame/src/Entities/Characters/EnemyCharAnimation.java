@@ -20,22 +20,31 @@ public class EnemyCharAnimation
     private Animation enemyCharIdleAnim;
     private SpriteSheet enemyCharIdleSmall;
     private Animation enemyCharIdleSmallAnim;
-    private SpriteSheet enemyCharDying;
-    private Animation enemyCharDyingAnim;
+    private SpriteSheet enemyCharAttack;
+    private Animation enemyCharAttackAnim;
     private int animationSpeed;
     private Image[] framesIdle = new Image[50];
     public EnemyCharAnimation() throws SlickException
     {
         animationSpeed = 300;
+        enemyCharAttack = new SpriteSheet("PERSONAJES/BossFinal/attack/attackSpriteSheet50per.png",296,229);
         enemyCharIdle = new SpriteSheet("PERSONAJES/BossFinal/idle/IdleSpreadSheet2ndHalf50per.png",212,229);
+        enemyCharAttackAnim = new Animation(enemyCharAttack, animationSpeed);
         enemyCharIdleAnim = new Animation(enemyCharIdle, animationSpeed);
+        enemyCharIdleAnim.setPingPong(true);
     }
 
     /**
      * @return the enemyCharIdleAnim
      */
-    public Animation getEnemyCharIdleAnim() {
+    public Animation getEnemyCharIdleAnim()
+    {
         return enemyCharIdleAnim;
+    }
+    
+    public Animation getEnemyCharAttackAnim()
+    {
+        return enemyCharAttackAnim;
     }
     
 }
