@@ -163,11 +163,16 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
             if(input.isKeyDown(Input.KEY_ENTER))
             {
-                g.setColor(black);
+                if(fog)
+                {
+                    g.setColor(Color.white);
+                }
+                else g.setColor(black);
+                
                 if(map.getX()<=-205 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
                     if(fog)fog=false;
-                    g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+50);
+                    g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+50);
                 }
                 else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885)
                 {
@@ -177,7 +182,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         System.out.println("Espada recogida");
                         sword=true;
                     }
-                    g.drawString("The sword is in your inventory", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+50);
+                    g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+50);
                 }
                 else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300)
                 {
@@ -190,17 +195,18 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         bow=true;
                         flechas=true;
                     }
-                    g.drawString("The bow is in your inventory", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+50);
+                    g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+50);
                 }
                 else if(map.getY()<=-1380 && map.getY()>=-1474)
                 {
+                    g.setColor(Color.white);
                     if(!llaveb)
                     {
                         llave.recogerllave(Char);
                         System.out.println("Llave recogida");
                         llaveb=true;
                     }
-                    g.drawString("The key is in your inventory", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+50);
+                    g.drawString("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+50);
                 }
                 else if(map.getX()<=-680 && map.getY()<=-1485)
                 {
