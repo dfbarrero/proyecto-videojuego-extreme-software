@@ -155,7 +155,22 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         }
     }
     //Return the state of the menu (0)
-    public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException
+    
+ public void saveChar(PlayableCharacter Character) throws IOException
+    {
+        try {
+            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
+            //musicplayer.setVolume(); Implement function (dont work yet)
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        save.reset();
+        save.writeObject(Character);
+        save.close();
+    }
+ public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         Input input=gc.getInput();
         if(interact)
@@ -171,11 +186,15 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 
                 if(map.getX()<=-205 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
+                     fog=false;
                     if(fog)fog=false;
                     g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+50);
                 }
                 else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885)
                 {
+                     espada.recoger(Char);
+                     System.out.println("Espada recogida");
+                     sword=true;
                     if(!sword)
                     {
                         espada.recoger(Char);
@@ -186,6 +205,9 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 }
                 else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300)
                 {
+                     arco.recoger(Char);
+                     System.out.println("Arco recogida");
+                     bow=true;
                     if(!bow)
                     {
                         arco.recoger(Char);
@@ -200,6 +222,9 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 else if(map.getY()<=-1380 && map.getY()>=-1474)
                 {
                     g.setColor(Color.white);
+                     llave.recogerllave(Char);
+                     System.out.println("Llave recogida");
+                     llaveb=true;
                     if(!llaveb)
                     {
                         llave.recogerllave(Char);
@@ -210,11 +235,6 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 }
                 else if(map.getX()<=-680 && map.getY()<=-1485)
                 {
-                    try {
-                    saveChar(Char);
-                    }   catch (IOException ex) {
-                    Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                     sbg.getState(20).init(gc, sbg);
                     sbg.enterState(20);
                 }
@@ -226,24 +246,11 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                     g.drawString("Arrows acquired! (10)", 350, 500);
                     System.out.println("Arrows areron");
                     contfl++;
+                        flechas=true;
                     flechas=true;
                 }
                 */
             }
         }
-    }
- public void saveChar(PlayableCharacter Character) throws IOException
-    {
-        try {
-            this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
-            //musicplayer.setVolume(); Implement function (dont work yet)
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        save.reset();
-        save.writeObject(Character);
-        save.close();
     }
 }
