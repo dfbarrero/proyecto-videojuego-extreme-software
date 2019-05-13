@@ -5,7 +5,6 @@
  */
 package Entities.Characters;
 
-import java.io.Serializable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
