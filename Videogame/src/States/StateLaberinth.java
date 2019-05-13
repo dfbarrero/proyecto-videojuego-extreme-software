@@ -68,6 +68,7 @@ public class StateLaberinth extends BasicGameState{
     }
 public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     start=true;    
+    fog=true;
     try {
             this.load=new ObjectInputStream(new FileInputStream("src/Archivo/Character.dat"));
         } catch (FileNotFoundException ex) {
@@ -102,7 +103,11 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         {
             map.renderMap(gc, g, true);
             g.setColor(Color.white);
-            interact(g, gc, sbg);
+            try {
+                interact(g, gc, sbg);
+            } catch (IOException ex) {
+                Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+            }
             g.setColor(black);
             g.fillRect(0, 0, gc.getWidth(), (float) (gc.getHeight()/(2.55)));
             g.fillRect(0, 0, (float) (gc.getWidth()/(2.4)), gc.getHeight());
@@ -114,7 +119,11 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         {
             map.renderMap(gc, g, true);
             g.setColor(Color.white);
-            interact(g, gc, sbg);
+            try {
+                interact(g, gc, sbg);
+            } catch (IOException ex) {
+                Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         g.setColor(Color.black);
         g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
@@ -170,87 +179,94 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         save.writeObject(Character);
         save.close();
     }
- public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException
+  public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException, IOException
     {
         Input input=gc.getInput();
         if(interact)
         {
-            g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-            if(input.isKeyDown(Input.KEY_ENTER))
-            {
-                if(fog)
-                {
-                    g.setColor(Color.white);
-                }
-                else g.setColor(black);
-                
+            
                 if(map.getX()<=-205 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
-                     fog=false;
-                    if(fog)fog=false;
-                    g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+50);
-                }
+
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(fog)
+                        {
+                            fog=false;
+                        }
+                        g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
+                    }
+                    if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+                    }
                 else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885)
                 {
-                     espada.recoger(Char);
-                     System.out.println("Espada recogida");
-                     sword=true;
-                    if(!sword)
+                    if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        espada.recoger(Char);
-                        System.out.println("Espada recogida");
-                        sword=true;
+                        if(!sword)
+                        {
+                            espada.recoger(Char);
+                            System.out.println("Sword recogida");
+                            sword=true;
+                        }
+                    g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
                     }
-                    g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+50);
+                    if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300)
                 {
-                     arco.recoger(Char);
-                     System.out.println("Arco recogida");
-                     bow=true;
-                    if(!bow)
+                    if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        arco.recoger(Char);
-                        arco.addarrows(10);
-                        System.out.println("Arco recogido");
-                        contfl++;
-                        bow=true;
-                        flechas=true;
+                        if(!bow)
+                        {
+                            arco.recoger(Char);
+                            System.out.println("Bow recogido");
+                            bow=true;
+                        }
+                    g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
-                    g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+50);
+                    if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getY()<=-1380 && map.getY()>=-1474)
                 {
-                    g.setColor(Color.white);
-                     llave.recogerllave(Char);
-                     System.out.println("Llave recogida");
-                     llaveb=true;
-                    if(!llaveb)
+                    if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        llave.recogerllave(Char);
-                        System.out.println("Llave recogida");
-                        llaveb=true;
+                        if(!llaveb)
+                        {
+                            llave.recogerllave(Char);
+                            System.out.println("Key recogida");
+                            llaveb=true;
+                        }
+                    g.drawString("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
-                    g.drawString("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+50);
+                    if(!llaveb) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getX()<=-680 && map.getY()<=-1485)
                 {
-                    sbg.getState(20).init(gc, sbg);
-                    sbg.enterState(20);
+                    if(input.isKeyPressed(Input.KEY_ENTER))
+                    {
+                            saveChar(Char);
+                            sbg.getState(20).init(gc, sbg);
+                            sbg.enterState(20);
+                    }
+                    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
-                /*
-                else if(!flechas)
+                else
                 {
-                    arco.addarrows(10);
-                    g.setColor(black);
-                    g.drawString("Arrows acquired! (10)", 350, 500);
-                    System.out.println("Arrows areron");
-                    contfl++;
-                        flechas=true;
-                    flechas=true;
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(!flechas)
+                        {
+                            arco.addarrows(10);
+                            g.setColor(black);
+                            
+                            contfl++;
+                            flechas=true;
+                        }
+                        g.drawString("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                    }
+                if(!flechas) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);   
                 }
-                */
             }
         }
     }
-}
+
