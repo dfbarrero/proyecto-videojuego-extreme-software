@@ -24,7 +24,7 @@ public class Enemy extends Character {
     private Mapa map;
     
     
-    public Enemy(String id, float xPos, float yPos, String name, SpriteSheet img, float speed, int health, Mapa map)
+    public Enemy(String id, float xPos, float yPos, String name, float speed, int health)
     {
         super(id, xPos, yPos, speed, health);
         this.name = name;

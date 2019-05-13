@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -34,6 +35,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Fight extends BasicGameState{
     public String mouse = "No input yet!";
     Image play;
+    Enemy boss;
+    int xpos, ypos;
     private int playersChoice = 0;
     private static final int NOCHOICES = 4;
     private static final int START = 0;
@@ -72,7 +75,7 @@ public class Fight extends BasicGameState{
         font = new Font("Verdana", Font.ROMAN_BASELINE, 30);
         start=true;
         playersOptionsTTF = new TrueTypeFont(font, true);
-        
+        this.boss=new Enemy("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.15f, 100);
         lastStage = sbg.getCurrentStateID();
         musicplayer.playTrack(1);
     }
@@ -90,12 +93,13 @@ public class Fight extends BasicGameState{
         renderPlayersOptions();
         g.setColor(Color.red);
         g.drawString("HP", 80, 410);
-        g.drawString(Integer.toString(Char.getHp())+"%", 450, 410);
+        g.drawString(Integer.toString(Char.getHp())+"%", 435, 410);
         g.fillRect(80, 430, Char.getHp()*4, 15);
         g.setColor(Color.orange);
         g.drawString("Boss HP", 720, 10);
         g.drawString(Integer.toString(Char.getHp())+"%", 385, 10);
         g.fillRect(385, 30, Char.getHp()*4, 15);
+        g.drawString(mouse, 40, 40);
     }
 
     @Override
@@ -126,6 +130,9 @@ public class Fight extends BasicGameState{
             start=false;
         }
         Input input=gc.getInput();
+        xpos = Mouse.getX();
+        ypos = Mouse.getY();
+        mouse="x: "+xpos+ " y:"+ypos;
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
@@ -144,19 +151,29 @@ public class Fight extends BasicGameState{
         int max=Char.getInventory().getItems().size();
         if(max==1)
         {
-            playersOptionsTTF.drawString(150, 480, playersOptions[0]);
-            playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+            if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    playersOptionsTTF.drawString(150, 480, playersOptions[0]);
+            else    playersOptionsTTF.drawString(150, 480, playersOptions[0], notChosen);
+            if(xpos>137 && xpos<255 && ypos<74)  playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+            else    playersOptionsTTF.drawString(150, 550, playersOptions[2], notChosen);
         }
         else if(max==2)
         {
-            playersOptionsTTF.drawString(150, 480, playersOptions[0]);
-            playersOptionsTTF.drawString(570, 480, playersOptions[1]);
-            playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+            if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    playersOptionsTTF.drawString(150, 480, playersOptions[0]);
+            else    playersOptionsTTF.drawString(150, 480, playersOptions[0], notChosen);
+            if(xpos>137 && xpos<255 && ypos<74)  playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+            else    playersOptionsTTF.drawString(150, 550, playersOptions[2], notChosen);
+            if(xpos>465 && ypos>74 && ypos<130)    playersOptionsTTF.drawString(570, 480, playersOptions[1]);
+            else    playersOptionsTTF.drawString(570, 480, playersOptions[1], notChosen);
         }
         else
         {
-            playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+            if(xpos>137 && xpos<255 && ypos<74)  playersOptionsTTF.drawString(150, 550, playersOptions[2]);
+            else    playersOptionsTTF.drawString(150, 550, playersOptions[2], notChosen);
         }
+        
+    }
+    private void atacar()
+    {
         
     }
 }
