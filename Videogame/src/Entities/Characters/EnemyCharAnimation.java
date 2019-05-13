@@ -27,7 +27,7 @@ public class EnemyCharAnimation
     public EnemyCharAnimation() throws SlickException
     {
         animationSpeed = 300;
-        enemyCharIdle = new SpriteSheet("PERSONAJES/BossFinal/idle/IdleSpreadSheet2ndHalf.png",424,457);
+        enemyCharIdle = new SpriteSheet("PERSONAJES/BossFinal/idle/IdleSpreadSheet2ndHalf50per.png",212,229);
         enemyCharIdleAnim = new Animation(enemyCharIdle, animationSpeed);
     }
 
