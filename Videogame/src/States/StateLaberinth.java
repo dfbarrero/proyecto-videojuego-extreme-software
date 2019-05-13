@@ -158,32 +158,49 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         Input input=gc.getInput();
-        if(interact && (!sword || !bow || !flechas  || !llaveb || true))
+        if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-            if(input.isKeyPressed(Input.KEY_ENTER))
+            if(input.isKeyDown(Input.KEY_ENTER))
             {
+                g.setColor(black);
                 if(map.getX()<=-205 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
-                     fog=false;
+                    if(fog)fog=false;
+                    g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+50);
                 }
-                else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885 && !sword)
+                else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885)
                 {
-                     espada.recoger(Char);
-                     System.out.println("Espada recogida");
-                     sword=true;
+                    if(!sword)
+                    {
+                        espada.recoger(Char);
+                        System.out.println("Espada recogida");
+                        sword=true;
+                    }
+                    g.drawString("The sword is in your inventory", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+50);
                 }
-                else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300 && !bow)
+                else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300)
                 {
-                     arco.recoger(Char);
-                     System.out.println("Arco recogida");
-                     bow=true;
+                    if(!bow)
+                    {
+                        arco.recoger(Char);
+                        arco.addarrows(10);
+                        System.out.println("Arco recogido");
+                        contfl++;
+                        bow=true;
+                        flechas=true;
+                    }
+                    g.drawString("The bow is in your inventory", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+50);
                 }
-                else if(map.getY()<=-1380 && map.getY()>=-1474 && !llaveb)
+                else if(map.getY()<=-1380 && map.getY()>=-1474)
                 {
-                     llave.recogerllave(Char);
-                     System.out.println("Llave recogida");
-                     llaveb=true;
+                    if(!llaveb)
+                    {
+                        llave.recogerllave(Char);
+                        System.out.println("Llave recogida");
+                        llaveb=true;
+                    }
+                    g.drawString("The key is in your inventory", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+50);
                 }
                 else if(map.getX()<=-680 && map.getY()<=-1485)
                 {
@@ -195,13 +212,17 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                     sbg.getState(20).init(gc, sbg);
                     sbg.enterState(20);
                 }
+                /*
                 else if(!flechas)
                 {
                     arco.addarrows(10);
+                    g.setColor(black);
+                    g.drawString("Arrows acquired! (10)", 350, 500);
                     System.out.println("Arrows areron");
                     contfl++;
-                        flechas=true;
+                    flechas=true;
                 }
+                */
             }
         }
     }
