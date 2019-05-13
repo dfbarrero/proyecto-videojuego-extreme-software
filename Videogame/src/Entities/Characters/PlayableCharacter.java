@@ -5,19 +5,10 @@
  */
 package Entities.Characters;
 
-import Map.Mapa;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 import Map.*;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 /**
  *
@@ -25,10 +16,6 @@ import org.newdawn.slick.SlickException;
  */
 public class PlayableCharacter extends Character implements Serializable
 {
-    //Interaction with NPCs and enemies need to be implemented.
-    
-    
-    private int animationspeed;
     private String pCName;
     private Inventory inventory;
     private Inventory keys;
@@ -45,14 +32,6 @@ public class PlayableCharacter extends Character implements Serializable
         this.speed=speed;
     }
 
-    public int getAnimationspeed() {
-        return animationspeed;
-    }
-
-    public void setAnimationspeed(int animationspeed) {
-        this.animationspeed = animationspeed;
-    }
-
     public Hitbox getCollisionBox() {
         return collisionBox;
     }
@@ -61,10 +40,12 @@ public class PlayableCharacter extends Character implements Serializable
         this.collisionBox = collisionBox;
     }
 
+    @Override
     public float getSpeed() {
         return speed;
     }
 
+    @Override
     public void setSpeed(float speed) {
         this.speed = speed;
     }
@@ -87,10 +68,6 @@ public class PlayableCharacter extends Character implements Serializable
     public boolean isDead()
     {
         return this.getHp()<=0;
-    }
-    public void setAnimS(int speed)
-    {
-        this.animationspeed=speed;
     }
     /**
      * @return the pCName
