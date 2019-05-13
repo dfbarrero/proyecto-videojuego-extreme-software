@@ -25,7 +25,7 @@ import Entities.Characters.*;
 import org.newdawn.slick.Animation;
 public class Mapa {
     private double x, y;
-    private CharAnimation animations;
+    private MainCharAnimation animations;
     private TiledMap map;
     private ArrayList<Hitbox> blocks;   
     private PlayableCharacter Character;
@@ -42,7 +42,7 @@ public class Mapa {
             iteracciones=new ArrayList<>();
             cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
-            animations=new CharAnimation();
+            animations=new MainCharAnimation();
         } catch (SlickException ex) {
             Logger.getLogger(Mapa.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -28,7 +28,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PlatformMap {
     private double x, y;
     boolean subir=false, bajar=false, pressed=false;
-    private CharAnimation animations;
+    private MainCharAnimation animations;
     private TiledMap map;
     private ArrayList<Hitbox> blocks;   
     private PlayableCharacter Character;
@@ -45,7 +45,7 @@ public class PlatformMap {
             iteracciones=new ArrayList<>();
             cargaMuros();        /*TODO: cargaSaltosEstado */
             cargarIteracciones();
-            animations=new CharAnimation();
+            animations=new MainCharAnimation();
         } catch (SlickException ex) {
             Logger.getLogger(Mapa.class.getName()).log(Level.SEVERE, null, ex);
         }

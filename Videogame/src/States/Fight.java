@@ -1,6 +1,6 @@
 package States;
 
-import Entities.Characters.CharAnimation;
+import Entities.Characters.MainCharAnimation;
 import Entities.Characters.Enemy;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
@@ -52,7 +52,7 @@ public class Fight extends BasicGameState{
     private boolean playingMuscic = true;
     public MusicPlayer musicplayer = new MusicPlayer();
     private Image background;
-    private CharAnimation personaje;
+    private MainCharAnimation personaje;
     private boolean start;
     private ObjectInputStream load;
     private PlayableCharacter Char;
