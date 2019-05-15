@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import Entities.Items.Weapon;
 import Map.Hitbox;
 import Map.Mapa;
 import org.newdawn.slick.Image;
@@ -42,7 +43,17 @@ public class Enemy extends Character {
               +"\nSpeed: "+getSpeed()
               +"\nHealth: "+getHp();
     }
-
+    public void atacar(PlayableCharacter enemigo)
+    {
+        int hpr, daño = 0;
+        if(!isDead())
+        {
+            daño=(int)(20*Math.random());
+            hpr=enemigo.getHp()-daño;
+            enemigo.setHp(hpr);
+        }
+        System.out.println("daño afligido="+daño+" || hp restante="+hp);
+    }
     @Override
     public String getId()
     {

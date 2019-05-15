@@ -91,8 +91,8 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
         llave=new Key("LLave lab", "1");
-        arco=new Bow("Arco", 100, 0, "Arco");
-        espada=new Sword("Espada", 50, 200, "Espada");
+        arco=new Bow("Arco", 40, 0, "Arco");
+        espada=new Sword("Espada", 75, 4, "Espada");
     }
 
     @Override

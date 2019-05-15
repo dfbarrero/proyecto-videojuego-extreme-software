@@ -50,6 +50,6 @@ public class Sword extends Weapon implements Serializable
 
     @Override
     public String name() {
-        return name;
+        return name+" ("+durability+")";
     }
 }

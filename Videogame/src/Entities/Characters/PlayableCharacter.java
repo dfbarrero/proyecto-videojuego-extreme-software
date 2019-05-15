@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+import Entities.Items.Weapon;
 import Map.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -64,7 +65,18 @@ public class PlayableCharacter extends Character implements Serializable
      * 
      * @return if the character is dead.
      */
-    
+    public void atacar(Weapon arma, Enemy enemigo)
+    {
+        int hpr, daño = 0;
+        if(arma.available() && !isDead())
+        {
+            daño=(int)(arma.getDamage()*Math.random());
+            hpr=enemigo.getHp()-daño;
+            enemigo.setHp(hpr);
+            arma.use();
+        }
+        System.out.println("daño afligido="+daño+" || hp restante="+hp);
+    }
     public boolean isDead()
     {
         return this.getHp()<=0;
@@ -132,4 +144,5 @@ public class PlayableCharacter extends Character implements Serializable
     public float getXPos() {
         return xPos;
     }
+    
 }

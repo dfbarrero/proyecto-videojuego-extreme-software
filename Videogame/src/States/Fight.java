@@ -5,6 +5,8 @@ import Entities.Characters.Enemy;
 import Entities.Characters.EnemyCharAnimation;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
+import Entities.Items.Magic;
+import Entities.Items.Weapon;
 import Map.Mapa;
 import MusicPlayer.MusicPlayer;
 import static States.S0_MainMenu.lastStage;
@@ -15,10 +17,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -38,6 +42,7 @@ public class Fight extends BasicGameState{
     Image play;
     Enemy boss;
     int xpos, ypos;
+    private Animation bossanim;
     private int playersChoice = 0;
     private static final int NOCHOICES = 4;
     private static final int START = 0;
@@ -45,6 +50,7 @@ public class Fight extends BasicGameState{
     private static final int OPTIONS = 2;
     private static final int QUIT = 3;
     private final String[] playersOptions = new String[NOCHOICES];
+    private final Weapon[] armas=new Weapon[NOCHOICES];
     private Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);
@@ -77,17 +83,18 @@ public class Fight extends BasicGameState{
         font = new Font("Verdana", Font.ROMAN_BASELINE, 30);
         start=true;
         playersOptionsTTF = new TrueTypeFont(font, true);
-        this.boss=new Enemy("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.15f, 100);
+        this.boss=new Enemy("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.15f, 200);
         lastStage = sbg.getCurrentStateID();
         this.bossAnim=new EnemyCharAnimation();
         musicplayer.playTrack(1);
+        playersOptions[2] = "Magia";
+        armas[2]=new Magic("Magic", 10, 10, "Magic");
     }
 
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.setColor(Color.white);
-        interact(g);
         g.drawImage(background, 10, 50);
         if(!start) g.drawImage(mainIdle, 150, 295);
         g.setLineWidth(4);
@@ -96,14 +103,15 @@ public class Fight extends BasicGameState{
         renderPlayersOptions();
         g.setColor(Color.red);
         g.drawString("HP", 80, 410);
-        g.drawString(Integer.toString(Char.getHp())+"%", 435, 410);
+        g.drawString(Integer.toString(Char.getHp()), 435, 410);
         g.fillRect(80, 430, Char.getHp()*4, 15);
         g.setColor(Color.orange);
         g.drawString("Boss HP", 720, 10);
-        g.drawString(Integer.toString(Char.getHp())+"%", 385, 10);
-        g.fillRect(385, 30, Char.getHp()*4, 15);
+        g.drawString(Integer.toString(boss.getHp()), 190, 10);
+        g.fillRect(190, 30, boss.getHp()*3, 15);
         g.drawString(mouse, 40, 40);
-        g.drawAnimation(bossAnim.getEnemyCharIdleAnim(), 475, 180);
+        
+        g.drawAnimation(bossanim, 475, 180);
     }
 
     @Override
@@ -126,17 +134,24 @@ public class Fight extends BasicGameState{
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
             }
-            playersOptions[2] = "Magia";
-            for(int cont=0;cont<Char.getInventory().getItems().size();cont++)
-            {
-                playersOptions[cont]=Char.getInventory().getItems().get(cont).name();
-            }
             start=false;
         }
+        for(int cont=0;cont<Char.getInventory().getItems().size();cont++)
+            {
+                playersOptions[cont]=Char.getInventory().getItems().get(cont).name();
+                armas[cont]=(Weapon) Char.getInventory().getItems().get(cont);
+            }
         Input input=gc.getInput();
         xpos = Mouse.getX();
         ypos = Mouse.getY();
         mouse="x: "+xpos+ " y:"+ypos;
+        animacionCombate(gc);
+        combate(gc);
+        if(Char.isDead() || boss.isDead())
+        {
+            sbg.enterState(20);
+        }
+        
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
@@ -146,10 +161,6 @@ public class Fight extends BasicGameState{
     //Return the state of the menu (0)
     public int getID() {
         return 100;
-    }
-    public void interact(Graphics g)
-    {
-        
     }
     private void renderPlayersOptions() {
         int max=Char.getInventory().getItems().size();
@@ -176,8 +187,61 @@ public class Fight extends BasicGameState{
         }
         
     }
-    private void atacar()
+    public void animacionCombate(GameContainer gc)
     {
+        int max=Char.getInventory().getItems().size();
+        Input input=gc.getInput();
+        if(input.isKeyDown(Input.MOUSE_LEFT_BUTTON) || input.isKeyDown(Input.KEY_ENTER))
+        {
+            if(max==1)
+            {
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)  bossanim=bossAnim.getEnemyCharAttackAnim();  ;
+                if(xpos>137 && xpos<255 && ypos<74) bossanim=bossAnim.getEnemyCharAttackAnim();;
+            }
+            else if(max==2)
+            {
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)   bossanim=bossAnim.getEnemyCharAttackAnim();;
+                if(xpos>137 && xpos<255 && ypos<74)  bossanim=bossAnim.getEnemyCharAttackAnim();;
+                if(xpos>465 && ypos>74 && ypos<130)   bossanim=bossAnim.getEnemyCharAttackAnim();;
+            }
+            else
+            {
+                if(xpos>137 && xpos<255 && ypos<74)  bossanim=bossAnim.getEnemyCharAttackAnim();;
+            }
+        }
+        else 
+        {
+            bossanim=bossAnim.getEnemyCharIdleAnim();
+        }
+    }
+
+    public void combate(GameContainer gc)
+    {
+        int max=Char.getInventory().getItems().size();
+        Input input=gc.getInput();
+        if(input.isKeyPressed(Input.MOUSE_LEFT_BUTTON) || input.isKeyPressed(Input.KEY_ENTER))
+        {
+            if(max==1)
+            {
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    atacar(armas[0]);
+                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2]);
+            }
+            else if(max==2)
+            {
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    atacar(armas[0]);
+                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2]);
+                if(xpos>465 && ypos>74 && ypos<130)   atacar(armas[1]);
+            }
+            else
+            {
+                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2]);
+            }
+        }
+    }
+    private void atacar(Weapon arma)
+    {
+        Char.atacar(arma, boss);
+        boss.atacar(Char);
         
     }
 }
