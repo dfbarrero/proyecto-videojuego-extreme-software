@@ -1,8 +1,10 @@
 package States;
 
 import Entities.Characters.Enemy;
+import Entities.Characters.EnemyCharAnimation;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
+import Map.BossMap;
 import Map.Mapa;
 import static States.S0_MainMenu.lastStage;
 import java.io.FileInputStream;
@@ -28,7 +30,7 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author jgome
  */
 public class BoosfightFinal extends BasicGameState{
-    private Mapa map;
+    private BossMap map;
     private ObjectInputStream load;
     private boolean fog=true;
     private boolean interact=false;
@@ -37,6 +39,7 @@ public class BoosfightFinal extends BasicGameState{
     private Enemy enemy;
     private boolean start=true;
     private ObjectOutputStream save;
+    
     public BoosfightFinal(int state)
     {
         
@@ -49,7 +52,7 @@ public class BoosfightFinal extends BasicGameState{
     //Initialice some stuff (dont know yet)
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         start=true;
-        map=new Mapa("src/Tiled/BossFightFinal.tmx", gc);
+        map=new BossMap("src/Tiled/BossFightFinal.tmx", gc);
         int positionx=95, positiony=-275;
         map.setX(positionx);
         map.setY(positiony);
@@ -65,6 +68,7 @@ public class BoosfightFinal extends BasicGameState{
         interact(g);
         g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
+        
     }
 
     @Override

@@ -5,6 +5,7 @@
  */
 package Entities.Characters;
 
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -26,9 +27,9 @@ public class EnemyCharAnimation
     public EnemyCharAnimation() throws SlickException
     {
         animationSpeed = 300;
-        enemyCharIdleSmall = new SpriteSheet("PERSONAJES/BossFinal/idle/IdleSpreadSheetSmall.png", 54, 59);
-        enemyCharAttack = new SpriteSheet("PERSONAJES/BossFinal/attack/attackSpriteSheet50per.png",296,229);
-        enemyCharIdle = new SpriteSheet("PERSONAJES/BossFinal/idle/IdleSpreadSheet2ndHalf50per.png",212,229);
+        enemyCharIdleSmall = new SpriteSheet("src/BossIdle/IdleSpreadSheetSmall.png", 54, 59);
+        enemyCharAttack = new SpriteSheet("src/BossIdle/attackSpriteSheet50per.png",296,229);
+        enemyCharIdle = new SpriteSheet("src/BossIdle/IdleSpreadSheet2ndHalf.png",212,229);
         enemyCharAttackAnim = new Animation(enemyCharAttack, animationSpeed);
         enemyCharIdleAnim = new Animation(enemyCharIdle, animationSpeed);
         enemyCharIdleSmallAnim = new Animation(enemyCharIdleSmall, animationSpeed);
@@ -52,4 +53,5 @@ public class EnemyCharAnimation
     {
         return enemyCharIdleSmallAnim;
     }
+    
 }

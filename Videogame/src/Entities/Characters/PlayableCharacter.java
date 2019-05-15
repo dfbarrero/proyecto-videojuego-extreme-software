@@ -28,7 +28,7 @@ public class PlayableCharacter extends Character implements Serializable
         this.pCName = pCName;
         this.inventory = new Inventory();
         this.keys=new Inventory();
-        this.collisionBox = new Hitbox(xPos, yPos, 30, 30);//This is if the character is 30x30 px
+        this.collisionBox = new Hitbox(xPos, yPos, 30, 28);//This is if the character is 30x30 px
         this.speed=speed;
     }
 

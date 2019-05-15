@@ -2,6 +2,7 @@ package States;
 
 import Entities.Characters.MainCharAnimation;
 import Entities.Characters.Enemy;
+import Entities.Characters.EnemyCharAnimation;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
 import Map.Mapa;
@@ -54,6 +55,7 @@ public class Fight extends BasicGameState{
     private Image background;
     private MainCharAnimation personaje;
     private boolean start;
+    private EnemyCharAnimation bossAnim;
     private ObjectInputStream load;
     private PlayableCharacter Char;
     private Enemy enemy;
@@ -77,6 +79,7 @@ public class Fight extends BasicGameState{
         playersOptionsTTF = new TrueTypeFont(font, true);
         this.boss=new Enemy("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.15f, 100);
         lastStage = sbg.getCurrentStateID();
+        this.bossAnim=new EnemyCharAnimation();
         musicplayer.playTrack(1);
     }
 
@@ -100,6 +103,7 @@ public class Fight extends BasicGameState{
         g.drawString(Integer.toString(Char.getHp())+"%", 385, 10);
         g.fillRect(385, 30, Char.getHp()*4, 15);
         g.drawString(mouse, 40, 40);
+        g.drawAnimation(bossAnim.getEnemyCharIdleAnim(), 475, 180);
     }
 
     @Override
