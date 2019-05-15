@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -41,6 +42,7 @@ public class Fight extends BasicGameState{
     Image play;
     Enemy boss;
     int xpos, ypos;
+    private Animation bossanim;
     private int playersChoice = 0;
     private static final int NOCHOICES = 4;
     private static final int START = 0;
@@ -108,12 +110,8 @@ public class Fight extends BasicGameState{
         g.drawString(Integer.toString(boss.getHp()), 190, 10);
         g.fillRect(190, 30, boss.getHp()*3, 15);
         g.drawString(mouse, 40, 40);
-        g.drawAnimation(bossAnim.getEnemyCharIdleAnim(), 475, 180);
-        try {
-            combate(gc ,g);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Fight.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        g.drawAnimation(bossanim, 475, 180);
     }
 
     @Override
@@ -147,6 +145,8 @@ public class Fight extends BasicGameState{
         xpos = Mouse.getX();
         ypos = Mouse.getY();
         mouse="x: "+xpos+ " y:"+ypos;
+        animacionCombate(gc);
+        combate(gc);
         if(Char.isDead() || boss.isDead())
         {
             sbg.enterState(20);
@@ -187,32 +187,61 @@ public class Fight extends BasicGameState{
         }
         
     }
-    public void combate(GameContainer gc, Graphics g) throws InterruptedException
+    public void animacionCombate(GameContainer gc)
     {
         int max=Char.getInventory().getItems().size();
         Input input=gc.getInput();
-            if(input.isKeyPressed(Input.MOUSE_LEFT_BUTTON) || input.isKeyPressed(Input.KEY_ENTER))
-            {
+        if(input.isKeyDown(Input.MOUSE_LEFT_BUTTON) || input.isKeyDown(Input.KEY_ENTER))
+        {
             if(max==1)
             {
-                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    atacar(armas[0], g);
-                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2], g);
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)  bossanim=bossAnim.getEnemyCharAttackAnim();  ;
+                if(xpos>137 && xpos<255 && ypos<74) bossanim=bossAnim.getEnemyCharAttackAnim();;
             }
             else if(max==2)
             {
-                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    atacar(armas[0], g);
-                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2], g);
-                if(xpos>465 && ypos>74 && ypos<130)   atacar(armas[1], g);
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)   bossanim=bossAnim.getEnemyCharAttackAnim();;
+                if(xpos>137 && xpos<255 && ypos<74)  bossanim=bossAnim.getEnemyCharAttackAnim();;
+                if(xpos>465 && ypos>74 && ypos<130)   bossanim=bossAnim.getEnemyCharAttackAnim();;
             }
             else
             {
-                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2], g);
+                if(xpos>137 && xpos<255 && ypos<74)  bossanim=bossAnim.getEnemyCharAttackAnim();;
+            }
+        }
+        else 
+        {
+            bossanim=bossAnim.getEnemyCharIdleAnim();
+        }
+    }
+
+    public void combate(GameContainer gc)
+    {
+        int max=Char.getInventory().getItems().size();
+        Input input=gc.getInput();
+        if(input.isKeyPressed(Input.MOUSE_LEFT_BUTTON) || input.isKeyPressed(Input.KEY_ENTER))
+        {
+            if(max==1)
+            {
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    atacar(armas[0]);
+                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2]);
+            }
+            else if(max==2)
+            {
+                if(xpos>137 && xpos<255 && ypos>74 && ypos<130)    atacar(armas[0]);
+                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2]);
+                if(xpos>465 && ypos>74 && ypos<130)   atacar(armas[1]);
+            }
+            else
+            {
+                if(xpos>137 && xpos<255 && ypos<74)  atacar(armas[2]);
             }
         }
     }
-    private void atacar(Weapon arma, Graphics g ) throws InterruptedException
+    private void atacar(Weapon arma)
     {
         Char.atacar(arma, boss);
         boss.atacar(Char);
+        
     }
 }
