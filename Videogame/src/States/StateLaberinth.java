@@ -185,7 +185,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         if(interact)
         {
             
-                if(map.getX()<=-205 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
+                if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
 
                     if(input.isKeyDown(Input.KEY_ENTER))
@@ -198,7 +198,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                     }
                     if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                     }
-                else if(map.getX()>=-60 && map.getX()<=-25 && map.getY()>=-955 && map.getY()<=-885)
+                else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
@@ -212,7 +212,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                     }
                     if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
-                else if(map.getY()>=35 && map.getX()<=-1270 && map.getX()>=-1300)
+                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
@@ -249,6 +249,13 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                             sbg.enterState(20);
                     }
                     g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+                }
+                else if(map.getX()<=-591 && map.getX()>=-658 && map.getY()>=-210)
+                {
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        g.drawString("This is an ancient statue", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                    }
                 }
                 else
                 {

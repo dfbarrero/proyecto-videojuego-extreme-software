@@ -118,15 +118,15 @@ public class StateRoom extends BasicGameState{
                     }   catch (IOException ex) {
                     Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                if(map.getX()<=367 && map.getX()>=333 && map.getY()<=45)
+                if(map.getX()<=365 && map.getX()>=328 && map.getY()<=44)
                 {
                      sbg.enterState(laberinth);
                 }
-                if(map.getX()<=280 && map.getX()>=204 && map.getY()<=45)
+                if(map.getX()<=276 && map.getX()>=198 && map.getY()<=44)
                 {
                      sbg.enterState(transport);
                 }
-                if(map.getX()<=148 && map.getX()>=108 && map.getY()<=49)
+                if(map.getX()<=149 && map.getX()>=108 && map.getY()<=49)
                 {
                      sbg.enterState(puzzle);
                 }

@@ -136,7 +136,7 @@ public class StateTransport extends BasicGameState{
         if(input.isKeyPressed(Input.KEY_ENTER) && interact)
             {
                 //Bloque 1
-                if(map.getX()<=362 && map.getX()>=299 && map.getY()<=-29 && map.getY()>=-91)
+                if(map.getX()<=366 && map.getX()>=299 && map.getY()<=-12 && map.getY()>=-91)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -147,7 +147,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=362 && map.getX()>=299 && map.getY()<=-186 && map.getY()>=-251)
+                else if(map.getX()<=366 && map.getX()>=299 && map.getY()<=-175 && map.getY()>=-251)
                 {
                      x=map.getX();
                     y=map.getY();
@@ -158,7 +158,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=362 && map.getX()>=299 && map.getY()<=-411 && map.getY()>=-476)
+                else if(map.getX()<=366 && map.getX()>=299 && map.getY()<=-400 && map.getY()>=-478)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -169,9 +169,9 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=362 && map.getX()>=299 && map.getY()<=-571 && map.getY()>=-636)
+                else if(map.getX()<=366 && map.getX()>=299 && map.getY()<=-560 && map.getY()>=-638)
                 {
-                     x=map.getX();
+                    x=map.getX();
                     y=map.getY();
                     tx=-180;
                     ty=-600;
@@ -181,9 +181,9 @@ public class StateTransport extends BasicGameState{
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
                 //Bloque 2
-                else if(map.getX()<=250 && map.getX()>=170 && map.getY()<=212 && map.getY()>=130)
+                else if(map.getX()<=244 && map.getX()>=167 && map.getY()<=212 && map.getY()>=130)
                 {
-                     x=map.getX();
+                    x=map.getX();
                     y=map.getY();
                     tx=325;
                     ty=-60;
@@ -192,9 +192,9 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=250 && map.getX()>=170 && map.getY()<=6 && map.getY()>=-57)
+                else if(map.getX()<=244 && map.getX()>=167 && map.getY()<=16 && map.getY()>=-64)
                 {
-                     x=map.getX();
+                    x=map.getX();
                     y=map.getY();
                     tx=70;
                     ty=-27;
@@ -203,7 +203,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=250 && map.getX()>=170 && map.getY()<=-220 && map.getY()>=-293)
+                else if(map.getX()<=244 && map.getX()>=167 && map.getY()<=-203 && map.getY()>=-288)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -214,7 +214,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=250 && map.getX()>=170 && map.getY()<=-468 && map.getY()>=-547)
+                else if(map.getX()<=244 && map.getX()>=167 && map.getY()<=-460 && map.getY()>=-542)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -226,7 +226,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
                 //Bloque 3
-                else if(map.getX()<=108 && map.getX()>=40 && map.getY()<=6 && map.getY()>=-57)
+                else if(map.getX()<=116 && map.getX()>=41 && map.getY()<=16 && map.getY()>=-57)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -237,7 +237,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=108 && map.getX()>=40 && map.getY()<=-212 && map.getY()>=-293)
+                else if(map.getX()<=116 && map.getX()>=41 && map.getY()<=-203 && map.getY()>=-286)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -248,7 +248,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=108 && map.getX()>=40 && map.getY()<=-441 && map.getY()>=-509)
+                else if(map.getX()<=116 && map.getX()>=41 && map.getY()<=-429 && map.getY()>=-512)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -260,7 +260,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
                 //Bloque 4
-                else if(map.getX()<=-14 && map.getX()>=-91 && map.getY()<=-569 && map.getY()>=-637)
+                else if(map.getX()<=-10 && map.getX()>=-75 && map.getY()<=-556 && map.getY()>=-641)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -272,7 +272,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
                 //Bloque 5
-                else if(map.getX()<=-70 && map.getX()>=-150 && map.getY()<=-119 && map.getY()>=-192)
+                else if(map.getX()<=-74 && map.getX()>=-151 && map.getY()<=-111 && map.getY()>=-192)
                 {
                     llave.recogerllave(Char);
                     try {
@@ -284,7 +284,7 @@ public class StateTransport extends BasicGameState{
                     sbg.enterState(20);
                 }
                 //Bloque 6
-                else if(map.getX()<=-148 && map.getX()>=-213 && map.getY()<=-569 && map.getY()>=-637)
+                else if(map.getX()<=-139 && map.getX()>=-215 && map.getY()<=-558 && map.getY()>=-637)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -296,7 +296,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
                 // Bloque 8
-                else if(map.getX()<=-396 && map.getX()>=-473 && map.getY()<=11 && map.getY()>=-60)
+                else if(map.getX()<=-391 && map.getX()>=-473 && map.getY()<=16 && map.getY()>=-60)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -307,7 +307,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-396 && map.getX()>=-473 && map.getY()<=-192 && map.getY()>=-257)
+                else if(map.getX()<=-391 && map.getX()>=-473 && map.getY()<=-175 && map.getY()>=-253)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -318,7 +318,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-396 && map.getX()>=-473 && map.getY()<=-378 && map.getY()>=-443)
+                else if(map.getX()<=-391 && map.getX()>=-473 && map.getY()<=-364 && map.getY()>=-444)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -329,7 +329,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-396 && map.getX()>=-473 && map.getY()<=-503 && map.getY()>=-575)
+                else if(map.getX()<=-391 && map.getX()>=-473 && map.getY()<=-497 && map.getY()>=-572)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -340,7 +340,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-396 && map.getX()>=-473 && map.getY()<=-629 && map.getY()>=-707)
+                else if(map.getX()<=-391 && map.getX()>=-473 && map.getY()<=-623 && map.getY()>=-701)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -351,8 +351,8 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                //Bloque 8
-                else if(map.getX()<=-529 && map.getY()<=-83 && map.getY()>=-159)
+                //Bloque 9
+                else if(map.getX()<=-522 && map.getY()<=-77 && map.getY()>=-157)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -363,7 +363,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-529 && map.getY()<=-368 && map.getY()>=-446)
+                else if(map.getX()<=-522 && map.getY()<=-370 && map.getY()>=-444)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -374,7 +374,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-529 && map.getY()<=-501 && map.getY()>=-571)
+                else if(map.getX()<=-522 && map.getY()<=-497 && map.getY()>=-571)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -385,7 +385,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-529 && map.getY()<=-634 && map.getY()>=-706)
+                else if(map.getX()<=-522 && map.getY()<=-624 && map.getY()>=-702)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -397,7 +397,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
                 //Bloque 7
-                else if(map.getX()<=-278 && map.getX()>=-343 && map.getY()<=199 && map.getY()>=125)
+                else if(map.getX()<=-267 && map.getX()>=-341 && map.getY()<=209 && map.getY()>=125)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -408,7 +408,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-278 && map.getX()>=-343 && map.getY()<=-91 && map.getY()>=-163)
+                else if(map.getX()<=-267 && map.getX()>=-341 && map.getY()<=-81 && map.getY()>=-158)
                 {
                     x=map.getX();
                     y=map.getY();
@@ -419,7 +419,7 @@ public class StateTransport extends BasicGameState{
                     map.actualizarMuros((float)(tx-x),(float)(ty-y));
                     map.actualizarIt((float)(tx-x),(float)(ty-y));
                 }
-                else if(map.getX()<=-278 && map.getX()>=-343 && map.getY()<=-405 && map.getY()>=-482)
+                else if(map.getX()<=-267 && map.getX()>=-341 && map.getY()<=-397 && map.getY()>=-479)
                 {
                     x=map.getX();
                     y=map.getY();

@@ -110,8 +110,8 @@ public class Fight extends BasicGameState{
         g.drawString(Integer.toString(boss.getHp()), 190, 10);
         g.fillRect(190, 30, boss.getHp()*3, 15);
         g.drawString(mouse, 40, 40);
-        
         g.drawAnimation(bossanim, 475, 180);
+        g.setLineWidth(1);
     }
 
     @Override
