@@ -103,7 +103,7 @@ public class TutorialTransport extends BasicGameState{
         Input input=gc.getInput();
         if(input.isKeyPressed(Input.KEY_ENTER))
         {
-            sbg.getState(23).init(gc, sbg);
+            sbg.enterState(23);
         }
         }
     

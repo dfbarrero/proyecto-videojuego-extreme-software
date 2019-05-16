@@ -9,9 +9,12 @@ import Entities.Characters.Enemy;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
 import Entities.Items.*;
-import Game.TextDisplay;
 import Map.Mapa;
 import static States.S0_MainMenu.lastStage;
+import static States.StateRoom.bossfight;
+import static States.StateRoom.laberinth;
+import static States.StateRoom.puzzle;
+import static States.StateRoom.transport;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -25,6 +28,7 @@ import org.newdawn.slick.Color;
 import static org.newdawn.slick.Color.black;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -94,6 +98,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        
         if(fog)
         {
             map.renderMap(gc, g, true);
@@ -188,7 +193,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                       g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
+                        g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
                     }
                     if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                     }
@@ -196,7 +201,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
+                    g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
                     }
                     if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
@@ -204,7 +209,8 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+
+                    g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
                     if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
@@ -227,14 +233,14 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         g.drawString("This is an ancient statue", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
                 }
-                /*else
+                else
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
                         g.drawString("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
                 if(!flechas) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);   
-                }*/
+                }
             }
             interact=false;
         }
@@ -314,4 +320,5 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 }
             }
         }
-}
+  }
+

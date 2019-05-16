@@ -103,7 +103,7 @@ public class TutorialLab extends BasicGameState{
         Input input=gc.getInput();
         if(input.isKeyPressed(Input.KEY_ENTER))
         {
-            sbg.getState(21).init(gc, sbg);
+            sbg.enterState(21);
         }
         }
     
