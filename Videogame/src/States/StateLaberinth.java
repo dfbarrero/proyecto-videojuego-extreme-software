@@ -156,6 +156,11 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         Input input = gc.getInput();
         map.Movimiento(i, gc);
         interact=map.interact();
+        try {
+            interactionup(gc, sbg);
+        } catch (IOException ex) {
+            Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            
            sbg.enterState(5);
@@ -183,16 +188,11 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         Input input=gc.getInput();
         if(interact)
         {
-            
                 if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
 
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        if(fog)
-                        {
-                            fog=false;
-                        }
                         g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
                     }
                     if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
@@ -201,12 +201,6 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        if(!sword)
-                        {
-                            espada.recoger(Char);
-                            System.out.println("Sword recogida");
-                            sword=true;
-                        }
                     g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
                     }
                     if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
@@ -215,12 +209,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        if(!bow)
-                        {
-                            arco.recoger(Char);
-                            System.out.println("Bow recogido");
-                            bow=true;
-                        }
+
                     g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
                     if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
@@ -229,24 +218,12 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        if(!llaveb)
-                        {
-                            llave.recogerllave(Char);
-                            System.out.println("Key recogida");
-                            llaveb=true;
-                        }
                     g.drawString("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
                     if(!llaveb) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getX()<=-680 && map.getY()<=-1485)
                 {
-                    if(input.isKeyPressed(Input.KEY_ENTER))
-                    {
-                            saveChar(Char);
-                            sbg.getState(20).init(gc, sbg);
-                            sbg.enterState(20);
-                    }
                     g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getX()<=-591 && map.getX()>=-658 && map.getY()>=-210)
@@ -260,19 +237,88 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(input.isKeyDown(Input.KEY_ENTER))
                     {
-                        if(!flechas)
-                        {
-                            arco.addarrows(10);
-                            g.setColor(black);
-                            
-                            contfl++;
-                            flechas=true;
-                        }
                         g.drawString("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                     }
                 if(!flechas) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);   
                 }
             }
+            interact=false;
         }
-    }
+  public void interactionup(GameContainer gc, StateBasedGame sbg) throws IOException, SlickException
+  {
+      Input input=gc.getInput();
+      if(interact)
+        {
+            
+                if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
+                {
+
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(fog)
+                        {
+                            fog=false;
+                        }
+                    }
+                    }
+                else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
+                {
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(!sword)
+                        {
+                            espada.recoger(Char);
+                            System.out.println("Sword recogida");
+                            sword=true;
+                        }
+                    }
+                }
+                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
+                {
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(!bow)
+                        {
+                            arco.recoger(Char);
+                            System.out.println("Bow recogido");
+                            bow=true;
+                        }
+                    }
+                }
+                else if(map.getY()<=-1380 && map.getY()>=-1474)
+                {
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(!llaveb)
+                        {
+                            llave.recogerllave(Char);
+                            System.out.println("Key recogida");
+                            llaveb=true;
+                        }
+                    }
+                }
+                else if(map.getX()<=-680 && map.getY()<=-1485)
+                {
+                    if(input.isKeyPressed(Input.KEY_ENTER))
+                    {
+                            saveChar(Char);
+                            sbg.getState(20).init(gc, sbg);
+                            sbg.enterState(20);
+                    }
+                }
+                else
+                {
+                    if(input.isKeyDown(Input.KEY_ENTER))
+                    {
+                        if(!flechas)
+                        {
+                            arco.addarrows(10);
+                            contfl++;
+                            flechas=true;
+                        }
+                    }
+                }
+            }
+        }
+  }
 
