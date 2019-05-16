@@ -10,7 +10,6 @@ import States.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import static java.lang.System.gc;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
