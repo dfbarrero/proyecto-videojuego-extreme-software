@@ -66,7 +66,6 @@ public class StateRoom extends BasicGameState{
         g.setColor(Color.white);
         interact(g, sbg, gc);
         g.setColor(Color.white);
-        g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 
@@ -96,6 +95,7 @@ public class StateRoom extends BasicGameState{
         map.Movimiento(i, gc);
         //map.getAnimation().update(i);
         interact=map.interact();
+        moveStates(sbg, gc);
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
@@ -111,6 +111,14 @@ public class StateRoom extends BasicGameState{
         if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+            interact=false;
+        }
+    }
+    public void moveStates(StateBasedGame sbg, GameContainer gc) throws SlickException
+    {
+        Input input = gc.getInput();
+        if(interact)
+        {
             if(input.isKeyPressed(Input.KEY_ENTER))
             {
                 try {
@@ -145,7 +153,6 @@ public class StateRoom extends BasicGameState{
                     }
                 }
             }
-            interact=false;
         }
     }
  public void saveChar(PlayableCharacter Character) throws IOException
