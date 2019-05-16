@@ -57,14 +57,7 @@ public class TutorialTransport extends BasicGameState{
 
     public String mouse = "No input yet!";
     Image play;
-    private boolean start;
-    private int playersChoice = 0;
-    private static final int NOCHOICES = 4;
-    private static final int START = 0;
-    private static final int LOAD = 1;
-    private static final int OPTIONS = 2;
-    private static final int QUIT = 3;
-    private final String[] playersOptions = new String[NOCHOICES];
+
     private Font font;
     private TrueTypeFont playersOptionsTTF;
     private final Color notChosen = new Color(153, 204, 255);
@@ -91,8 +84,6 @@ public class TutorialTransport extends BasicGameState{
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        if(start)
-        {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(50,100,"Controls: ", notChosen);
             playersOptionsTTF.drawString(150,150,"UP: up arrow/W", notChosen);
@@ -103,7 +94,6 @@ public class TutorialTransport extends BasicGameState{
             playersOptionsTTF.drawString(150,400,"To take the fragment at the end of the map", notChosen);
             playersOptionsTTF.drawString(50,450,"Tips: ", notChosen);
             playersOptionsTTF.drawString(150,500,"To tranposrt press enter when over a platorm", notChosen);
-        }
     }
 
     @Override

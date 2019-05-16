@@ -56,7 +56,6 @@ public class TutorialFight extends BasicGameState{
 
     public String mouse = "No input yet!";
     Image play;
-    private boolean start;
     private int playersChoice = 0;
     private Font font;
     private TrueTypeFont playersOptionsTTF;
@@ -84,8 +83,6 @@ public class TutorialFight extends BasicGameState{
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        if(start)
-        {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(50,100,"Controls: ", notChosen);
             playersOptionsTTF.drawString(150,150,"Place the mouse over the weapon to use", notChosen);
@@ -95,8 +92,6 @@ public class TutorialFight extends BasicGameState{
             playersOptionsTTF.drawString(50,450,"Tips: ", notChosen);
             playersOptionsTTF.drawString(150,500,"if you lose, yo return to your room", notChosen);
             playersOptionsTTF.drawString(150,550,"there you con retry the event", notChosen);
-            
-        }
     }
 
     @Override

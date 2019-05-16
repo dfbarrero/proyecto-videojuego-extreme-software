@@ -127,15 +127,15 @@ public class StateRoom extends BasicGameState{
                     }
                 if(map.getX()<=365 && map.getX()>=328 && map.getY()<=44)
                 {
-                     sbg.enterState(laberinth);
+                     sbg.enterState(51);
                 }
                 if(map.getX()<=276 && map.getX()>=198 && map.getY()<=44)
                 {
-                     sbg.enterState(transport);
+                     sbg.enterState(53);
                 }
                 if(map.getX()<=149 && map.getX()>=108 && map.getY()<=49)
                 {
-                     sbg.enterState(puzzle);
+                     sbg.enterState(52);
                 }
                 if(map.getY()>=200)
                 {

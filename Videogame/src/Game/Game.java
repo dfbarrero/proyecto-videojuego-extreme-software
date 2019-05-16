@@ -72,10 +72,10 @@ public class Game extends StateBasedGame {
         this.addState((GameState) new BoosfightFinal(bossfightfinal));
         this.addState((GameState) new Fight(100));
         this.addState((GameState) new End(end));
-        this.addState((GameState) new End(labTutorial));
-        this.addState((GameState) new End(platformTutorial));
-        this.addState((GameState) new End(transportTutorial));
-        this.addState((GameState) new End(fightTutorial));
+        this.addState((GameState) new TutorialLab(labTutorial));
+        this.addState((GameState) new TutorialPlatform(platformTutorial));
+        this.addState((GameState) new TutorialTransport(transportTutorial));
+        this.addState((GameState) new TutorialFight(fightTutorial));
     }
 
     /**
