@@ -203,36 +203,19 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         {
                 if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
                 {
-
-                    if(in.isKeyDown(Input.KEY_ENTER))
-                    {
-                        g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
-                    }
                     if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-                    }
+                }
                 else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
                 {
-                    if(in.isKeyDown(Input.KEY_ENTER))
-                    {
-                    g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
-                    }
+
                     if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
                 {
-                    if(in.isKeyDown(Input.KEY_ENTER))
-                    {
-
-                    g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
                     if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getY()<=-1380 && map.getY()>=-1474)
                 {
-                    if(in.isKeyDown(Input.KEY_ENTER))
-                    {
-                    g.drawString("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
                     if(!llaveb) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
                 else if(map.getX()<=-680 && map.getY()<=-1485)
@@ -241,17 +224,10 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 }
                 else if(map.getX()<=-591 && map.getX()>=-658 && map.getY()>=-210)
                 {
-                    if(in.isKeyDown(Input.KEY_ENTER))
-                    {
-                        g.drawString("This is an ancient statue", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
+                    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);   
                 }
                 else
                 {
-                    if(in.isKeyDown(Input.KEY_ENTER))
-                    {
-                        g.drawString("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
                 if(!flechas) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);   
                 }
             }
@@ -268,7 +244,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
-                        td.setText("Hola me llamo Perico el de los palotes", 200, 200);
+                        td.setText("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
                         isTextShowing(true);
                         timer.schedule(new TimerTask()
                         {
@@ -287,7 +263,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
-                        td.setText("Hola me llamo Perico el de los palotes", 200, 200);
+                        td.setText("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
                         isTextShowing(true);
                         timer.schedule(new TimerTask()
                         {
@@ -299,7 +275,6 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         if(!sword)
                         {
                             espada.recoger(Char);
-                            System.out.println("Sword recogida");
                             sword=true;
                         }
                     }
@@ -308,7 +283,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
-                        td.setText("Hola me llamo Perico el de los palotes", 200, 200);
+                        td.setText("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                         isTextShowing(true);
                         timer.schedule(new TimerTask()
                         {
@@ -320,7 +295,6 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         if(!bow)
                         {
                             arco.recoger(Char);
-                            System.out.println("Bow recogido");
                             bow=true;
                         }
                     }
@@ -329,7 +303,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
-                        td.setText("Hola me llamo Perico el de los palotes", 200, 200);
+                        td.setText("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
                         isTextShowing(true);
                         timer.schedule(new TimerTask()
                         {
@@ -341,7 +315,6 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         if(!llaveb)
                         {
                             llave.recogerllave(Char);
-                            System.out.println("Key recogida");
                             llaveb=true;
                         }
                     }
@@ -355,19 +328,34 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                             sbg.enterState(20);
                     }
                 }
+                else if(map.getX()<=-550 && map.getX()>=-700 && map.getY()>=-220)
+                {
+                        if(in.isKeyDown(Input.KEY_ENTER))
+                        {
+                            td.setText("This is an ancient statue", (int) map.getCharacter().getXPos()-10, (int) map.getCharacter().getYPos()+45);
+                            isTextShowing(true);
+                            timer.schedule(new TimerTask()
+                            {
+                                public void run()
+                                {
+                                    isTextShowing(false);
+                                }
+                            }, 3000);
+                        }
+                }
                 else
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
-                        td.setText("Hola me llamo Perico el de los palotes", 200, 200);
-                        isTextShowing(true);
-                        timer.schedule(new TimerTask()
-                        {
-                            public void run()
+                        td.setText("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-35, (int) map.getCharacter().getYPos()+45);
+                            isTextShowing(true);
+                            timer.schedule(new TimerTask()
                             {
-                                isTextShowing(false);
-                            }
-                        }, 3000);
+                                public void run()
+                                {
+                                    isTextShowing(false);
+                                }
+                            }, 3000);
                         if(!flechas)
                         {
                             arco.addarrows(10);
@@ -376,9 +364,9 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         }
                     }
                 }
+                }
             }
-        }
-      
+        
     public Input getInput()
     {
         return input;
