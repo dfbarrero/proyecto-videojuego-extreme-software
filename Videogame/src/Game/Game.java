@@ -42,6 +42,10 @@ public class Game extends StateBasedGame {
     public static final int language = 9;
     public static final int ni = 10;
     public static final int end = 50;
+    public static final int labTutorial = 51;
+    public static final int platformTutorial= 52;
+    public static final int transportTutorial = 53;
+    public static final int fightTutorial = 54;
     public static int wight;
     public static int high;
     public static boolean fullscreen;
@@ -67,7 +71,11 @@ public class Game extends StateBasedGame {
         this.addState((GameState) new S10_NotImplementedYet(ni));
         this.addState((GameState) new BoosfightFinal(bossfightfinal));
         this.addState((GameState) new Fight(100));
-        this.addState((GameState) new End(50));
+        this.addState((GameState) new End(end));
+        this.addState((GameState) new End(labTutorial));
+        this.addState((GameState) new End(platformTutorial));
+        this.addState((GameState) new End(transportTutorial));
+        this.addState((GameState) new End(fightTutorial));
     }
 
     /**
@@ -96,6 +104,10 @@ public class Game extends StateBasedGame {
         this.getState(ni).init(gc, this);
         this.getState(100).init(gc, this);
         this.getState(50).init(gc, this);
+        this.getState(labTutorial).init(gc, this);
+        this.getState(platformTutorial).init(gc, this);
+        this.getState(transportTutorial).init(gc, this);
+        this.getState(fightTutorial).init(gc, this);
         this.enterState(menu);
         
     }
