@@ -2,9 +2,10 @@
 <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="33" height="33" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="1">
  <tileset firstgid="1" source="Prueba.tsx"/>
  <tileset firstgid="257" source="Laberinth1.tsx"/>
+ <tileset firstgid="449" source="Fragmentos.tsx"/>
  <layer id="4" name="Iteracciones" width="33" height="33">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3Uuw0AIAhFUdx/B2e1t0ENyCf39BpBHiKAbo7Y80BG+1z/yAlZ8qH11bLv3f7Qu56X+62zCWRzMuPWc++Ro4hsdtwHVXbe7buq1JUNfdMtczgwUQQRAAA=
+   H4sIAAAAAAAACu3UQRIAEAiF4VzZgZzV3iZMUc3/7RnyHhFAN9rf9UBEa65f9IQu+dDmajn3XuwNvTN5s791N4FodjJunXuPHv3oZsX/IMufd3quLPeKhrnpJso0iUwEEQAA
   </data>
  </layer>
  <layer id="3" name="Suelo" width="33" height="33">
@@ -19,7 +20,7 @@
  </layer>
  <layer id="5" name="Objetos" width="33" height="33">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3U0QoAEAwF0Pn/b+Bb5UmtGGtjdE95xKxdRACynO7uB4iIz/WJnCBLeiX1xUl9tep7uzsPajhl1gcN75nUnG+dTYBoVmbceu49cnQjmz/+B6/8ebt1vfKuaNA3WQWUVLa7BBEAAA==
+   H4sIAAAAAAAACu3U0QoAEAwFUPI7fplvlSclGWtjdE95xKxdzgHQkr+7H8Cifq5P5ARZ4su+rR7VV6m+17tjGNdwyqwPHNozyTlfOpsA1qzMuPTca+ToRjZ//A9e+fN263rlXdagb7QCgoXBLgQRAAA=
   </data>
  </layer>
 </map>
