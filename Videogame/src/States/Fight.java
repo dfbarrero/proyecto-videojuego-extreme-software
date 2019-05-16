@@ -147,11 +147,14 @@ public class Fight extends BasicGameState{
         mouse="x: "+xpos+ " y:"+ypos;
         animacionCombate(gc);
         combate(gc);
-        if(Char.isDead() || boss.isDead())
+        if(Char.isDead())
         {
             sbg.enterState(20);
         }
-        
+        else if(boss.isDead())
+        {
+            sbg.enterState(50);
+        }
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();

@@ -150,6 +150,7 @@ public class S0_MainMenu extends BasicGameState{
     }
     public void saveChar(PlayableCharacter Character) throws IOException
     {
+        save.reset();
         save.writeObject(Character);
         save.close();
     }

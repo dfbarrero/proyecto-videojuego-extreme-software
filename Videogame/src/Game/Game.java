@@ -41,6 +41,7 @@ public class Game extends StateBasedGame {
     public static final int audio = 8;
     public static final int language = 9;
     public static final int ni = 10;
+    public static final int end = 50;
     public static int wight;
     public static int high;
     public static boolean fullscreen;
@@ -66,6 +67,7 @@ public class Game extends StateBasedGame {
         this.addState((GameState) new S10_NotImplementedYet(ni));
         this.addState((GameState) new BoosfightFinal(bossfightfinal));
         this.addState((GameState) new Fight(100));
+        this.addState((GameState) new End(50));
     }
 
     /**
@@ -93,6 +95,7 @@ public class Game extends StateBasedGame {
         this.getState(language).init(gc, this);
         this.getState(ni).init(gc, this);
         this.getState(100).init(gc, this);
+        this.getState(50).init(gc, this);
         this.enterState(menu);
         
     }
