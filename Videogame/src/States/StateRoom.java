@@ -142,8 +142,8 @@ public class StateRoom extends BasicGameState{
                     
                     if(Char.getKeys().getItems().size()<3)
                     {
-                      sbg.getState(25).init(gc, sbg);
-                      sbg.enterState(25);
+                      sbg.getState(24).init(gc, sbg);
+                      sbg.enterState(24);
                     }
                     else
                     {
