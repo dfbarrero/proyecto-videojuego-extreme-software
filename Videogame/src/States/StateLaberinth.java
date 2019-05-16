@@ -9,12 +9,9 @@ import Entities.Characters.Enemy;
 import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
 import Entities.Items.*;
+import Game.TextDisplay;
 import Map.Mapa;
 import static States.S0_MainMenu.lastStage;
-import static States.StateRoom.bossfight;
-import static States.StateRoom.laberinth;
-import static States.StateRoom.puzzle;
-import static States.StateRoom.transport;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -22,13 +19,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Color;
 import static org.newdawn.slick.Color.black;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -53,6 +51,9 @@ public class StateLaberinth extends BasicGameState{
     private Key llave;
     private ObjectOutputStream save;
     private boolean start=true;
+    private TextDisplay td = null;
+    private boolean showText = false;
+    private Timer timer = null;
     public StateLaberinth(int state)
     {
         
@@ -66,7 +67,7 @@ public class StateLaberinth extends BasicGameState{
     {
         this.Char=Char;
     }
-public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     start=true;    
     fog=true;
     try {
@@ -84,6 +85,8 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         } catch (IOException ex) {
             Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        td = new TextDisplay(gc);
+        timer = new Timer(true);
         map=new Mapa("src/Tiled/Laberinth.tmx", gc);
         int positionx=-625, positiony=-405;
         map.setX(positionx);
@@ -98,7 +101,10 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        
+        if(isShowText())
+        {
+            td.displayText();
+        }
         if(fog)
         {
             map.renderMap(gc, g, true);
@@ -169,11 +175,10 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     }
     //Return the state of the menu (0)
     
- public void saveChar(PlayableCharacter Character) throws IOException
+    public void saveChar(PlayableCharacter Character) throws IOException
     {
         try {
             this.save=new ObjectOutputStream(new FileOutputStream("src/Archivo/Character.dat"));
-            //musicplayer.setVolume(); Implement function (dont work yet)
         } catch (FileNotFoundException ex) {
             Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -183,142 +188,201 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         save.writeObject(Character);
         save.close();
     }
-  public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException, IOException
+    public void interact(Graphics g, GameContainer gc, StateBasedGame sbg) throws SlickException, IOException
     {
         Input input=gc.getInput();
         if(interact)
         {
-                if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
+            if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
+            {
+                if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+                if(input.isKeyDown(Input.KEY_ENTER))
                 {
+                    td.setText("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
+                    setShowText(true);
+                    timer.schedule(new TimerTask()
+                    {
+                       public void run()
+                       {
+                           setShowText(false);
+                       }
+                    }, 3000);
+                }
 
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        g.drawString("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
-                    }
-                    if(fog) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-                    }
-                else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
+            }
+            else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
+            {
+                if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+                if(input.isKeyDown(Input.KEY_ENTER))
                 {
-                    if(input.isKeyDown(Input.KEY_ENTER))
+                    td.setText("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
+                    setShowText(true);
+                    timer.schedule(new TimerTask()
                     {
-                    g.drawString("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
-                    }
-                    if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-                }
-                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-
-                    g.drawString("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
-                    if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-                }
-                else if(map.getY()<=-1380 && map.getY()>=-1474)
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                    g.drawString("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
-                    if(!llaveb) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-                }
-                else if(map.getX()<=-680 && map.getY()<=-1485)
-                {
-                    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
-                }
-                else if(map.getX()<=-591 && map.getX()>=-658 && map.getY()>=-210)
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        g.drawString("This is an ancient statue", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
-                }
-                else
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        g.drawString("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
-                    }
-                if(!flechas) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);   
+                       public void run()
+                       {
+                           setShowText(false);
+                       }
+                    }, 3000);
                 }
             }
+            else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
+            {
+                if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+                if(input.isKeyDown(Input.KEY_ENTER))
+                {
+                    td.setText("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                    setShowText(true);
+                    timer.schedule(new TimerTask()
+                    {
+                        public void run()
+                        {
+                           setShowText(false);
+                        }
+                    }, 3000);
+                }
+            }
+            else if(map.getY()<=-1380 && map.getY()>=-1474)
+            {
+                if(!llaveb) g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+                if(input.isKeyDown(Input.KEY_ENTER))
+                {
+                    td.setText("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                    setShowText(true);
+                    timer.schedule(new TimerTask()
+                    {
+                       public void run()
+                       {
+                           setShowText(false);
+                       }
+                    }, 3000);
+                }
+            }
+            else if(map.getX()<=-680 && map.getY()<=-1485)
+            {
+                g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+            }
+            else if(map.getX()<=-591 && map.getX()>=-658 && map.getY()>=-210)
+            {
+                if(input.isKeyDown(Input.KEY_ENTER))
+                {
+                    g.drawString("This is an ancient statue", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                }
+            }
+        }
             interact=false;
-        }
-  public void interactionup(GameContainer gc, StateBasedGame sbg) throws IOException, SlickException
-  {
-      Input input=gc.getInput();
-      if(interact)
+    }
+    public void interactionup(GameContainer gc, StateBasedGame sbg) throws IOException, SlickException
+    {
+        Input input=gc.getInput();
+        if(interact)
         {
-            
-                if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
+            if(map.getX()<=-208 && map.getX()>=-245 && map.getY()>=-475 && map.getY()<=-405)
+            {
+                if(input.isKeyDown(Input.KEY_ENTER))
                 {
-
-                    if(input.isKeyDown(Input.KEY_ENTER))
+                    if(fog)
                     {
-                        if(fog)
+                        fog=false;
+                        td.setText("The black fog has lifted!", (int) map.getCharacter().getXPos()-100, (int) map.getCharacter().getYPos()+45);
+                        setShowText(true);
+                        timer.schedule(new TimerTask()
                         {
-                            fog=false;
-                        }
-                    }
-                    }
-                else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        if(!sword)
-                        {
-                            espada.recoger(Char);
-                            System.out.println("Sword recogida");
-                            sword=true;
-                        }
-                    }
-                }
-                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        if(!bow)
-                        {
-                            arco.recoger(Char);
-                            System.out.println("Bow recogido");
-                            bow=true;
-                        }
-                    }
-                }
-                else if(map.getY()<=-1380 && map.getY()>=-1474)
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        if(!llaveb)
-                        {
-                            llave.recogerllave(Char);
-                            System.out.println("Key recogida");
-                            llaveb=true;
-                        }
-                    }
-                }
-                else if(map.getX()<=-680 && map.getY()<=-1485)
-                {
-                    if(input.isKeyPressed(Input.KEY_ENTER))
-                    {
-                            saveChar(Char);
-                            sbg.getState(20).init(gc, sbg);
-                            sbg.enterState(20);
-                    }
-                }
-                else
-                {
-                    if(input.isKeyDown(Input.KEY_ENTER))
-                    {
-                        if(!flechas)
-                        {
-                            arco.addarrows(10);
-                            contfl++;
-                            flechas=true;
-                        }
+                            public void run()
+                            {
+                                setShowText(false);
+                            }
+                        }, 3000);
                     }
                 }
             }
+            else if(map.getX()>=-60 && map.getX()<=-15 && map.getY()>=-957 && map.getY()<=-885)
+            {
+                if(input.isKeyDown(Input.KEY_ENTER))
+                {
+                    if(!sword)
+                    {
+                        espada.recoger(Char);
+                        td.setText("Sword acquired", (int) map.getCharacter().getXPos()-50, (int) map.getCharacter().getYPos()+45);
+                        sword=true;
+                        setShowText(true);
+                        timer.schedule(new TimerTask()
+                        {
+                            public void run()
+                            {
+                                setShowText(false);
+                            }
+                        }, 3000);
+                    }
+                }
+            }
+            else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
+            {
+                if(input.isKeyDown(Input.KEY_ENTER))
+                {
+                    if(!bow)
+                    {
+                        arco.recoger(Char);
+                        td.setText("Bow acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                        setShowText(true);
+                        timer.schedule(new TimerTask()
+                        {
+                            public void run()
+                            {
+                                setShowText(false);
+                            }
+                        }, 3000);
+                        bow=true;
+                        arco.addarrows(10);
+                        contfl++;
+                        flechas=true;
+                    }
+                }
+            }
+            else if(map.getY()<=-1380 && map.getY()>=-1474)
+            {
+                if(input.isKeyDown(Input.KEY_ENTER))
+                {
+                    if(!llaveb)
+                    {
+                        llave.recogerllave(Char);
+                        td.setText("Key acquired", (int) map.getCharacter().getXPos()-40, (int) map.getCharacter().getYPos()+45);
+                        setShowText(true);
+                        timer.schedule(new TimerTask()
+                        {
+                            public void run()
+                            {
+                                setShowText(false);
+                            }
+                        }, 3000);
+                        llaveb=true;
+                    }
+                }
+            }
+            else if(map.getX()<=-680 && map.getY()<=-1485)
+            {
+                if(input.isKeyPressed(Input.KEY_ENTER))
+                {
+                    saveChar(Char);
+                    sbg.getState(20).init(gc, sbg);
+                    sbg.enterState(20);
+                }
+            }
         }
+    }
+
+    /**
+     * @return the showText
+     */
+    public boolean isShowText() {
+        return showText;
+    }
+
+    /**
+     * @param showText the showText to set
+     */
+    public void setShowText(boolean showText) {
+        this.showText = showText;
+    }
   }
 
