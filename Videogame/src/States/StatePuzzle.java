@@ -88,7 +88,6 @@ public class StatePuzzle extends BasicGameState{
         } catch (IOException ex) {
             Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
         }
-        g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 
@@ -130,10 +129,17 @@ public class StatePuzzle extends BasicGameState{
 
     public void interact(Graphics g, StateBasedGame sbg, GameContainer gc) throws IOException, SlickException
     {
-        Input input = gc.getInput();
         if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
+            interact=false;
+        }
+    }
+    public void recogerLlave(StateBasedGame sbg, GameContainer gc) throws SlickException, IOException
+    {
+        Input input = gc.getInput();
+        if(interact)
+        {
             if(input.isKeyPressed(Input.KEY_ENTER))
             {
                 llave.recogerllave(Char);
@@ -141,7 +147,6 @@ public class StatePuzzle extends BasicGameState{
                 sbg.getState(20).init(gc, sbg);
                 sbg.enterState(20);
             }
-            interact=false;
         }
     }
      public void saveChar(PlayableCharacter Character) throws IOException

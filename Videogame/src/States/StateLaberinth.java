@@ -126,7 +126,6 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
             }
         }
         g.setColor(Color.black);
-        g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
     }
 

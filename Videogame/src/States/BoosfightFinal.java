@@ -66,7 +66,6 @@ public class BoosfightFinal extends BasicGameState{
         map.renderMap(gc, g, true);
         g.setColor(Color.white);
         interact(g);
-        g.drawString("the position of the char= x: "+map.getX()+"y: "+map.getY(), 40, 40);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
         
     }

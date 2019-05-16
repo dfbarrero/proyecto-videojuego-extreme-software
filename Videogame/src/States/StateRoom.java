@@ -107,7 +107,6 @@ public class StateRoom extends BasicGameState{
     }
     public void interact(Graphics g, StateBasedGame sbg, GameContainer gc) throws SlickException
     {
-        Input input = gc.getInput();
         if(interact)
         {
             g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
