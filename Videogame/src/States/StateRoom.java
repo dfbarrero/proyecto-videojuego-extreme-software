@@ -10,13 +10,19 @@ import Entities.Characters.NPC;
 import Entities.Characters.PlayableCharacter;
 import Map.Mapa;
 import static States.S0_MainMenu.lastStage;
+import TextDisplay.TextDisplay;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Color;
@@ -33,7 +39,13 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author jgome
  */
 public class StateRoom extends BasicGameState{
+    private TextDisplay td = null;
+    private String texto;
+    private boolean showText = false, read=true;
+    private Input input = null;
+    private Timer timer = null;
     private Mapa map;
+    private Image NPC;
     private ObjectInputStream load;
     private boolean fog=true;
     public static final int room = 20;
@@ -47,6 +59,9 @@ public class StateRoom extends BasicGameState{
     private Enemy enemy;
     private ObjectOutputStream save;
     private boolean start;
+    private File archivo;
+    private FileReader fr;
+    private BufferedReader br;
     public StateRoom(int state)
     {
         
@@ -59,6 +74,16 @@ public class StateRoom extends BasicGameState{
         map.setY(positiony);
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
+        NPC=new Image("src/NPC/Idle.png");
+        td=new TextDisplay(gc);
+        timer = new Timer(true);
+        archivo = new File("src/Archivo/Fragmento3.txt");
+        try {
+            fr = new FileReader (archivo);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        br = new BufferedReader(fr);
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -67,9 +92,20 @@ public class StateRoom extends BasicGameState{
         interact(g, sbg, gc);
         g.setColor(Color.white);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
+        if(read)
+        {
+            g.setColor(Color.black);
+            g.fillRect(0, 475, 800, 600);
+            g.drawImage(NPC, 5, 500);
+            if(isShowText())
+            {
+                td.displayText();
+            }
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        Input in = gc.getInput();
         if(start)
         {
             try {
@@ -89,18 +125,63 @@ public class StateRoom extends BasicGameState{
             }
             map.setCharacter(Char);
             map.setSpeed(Char.getSpeed());
+            map.Movimiento(i, gc);
+            //map.getAnimation().update(i);
+            interact=map.interact();
+            moveStates(sbg, gc);
+            if (in.isKeyPressed(Input.KEY_ESCAPE)) {
+               sbg.enterState(5);
+               lastStage = sbg.getCurrentStateID();
+            }
+            try {
+                    td.setText(br.readLine(), 100, 550);
+                } catch (IOException ex) {
+                    Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+                    read=false;
+                }
+                    isTextShowing(true);
+                    timer.schedule(new TimerTask()
+                    {
+                        public void run()
+                            {
+                                isTextShowing(false);
+                            }
+                    }, 3000);
             start=false;
         }
-        Input input = gc.getInput();
-        map.Movimiento(i, gc);
-        //map.getAnimation().update(i);
-        interact=map.interact();
-        moveStates(sbg, gc);
-        if (input.isKeyPressed(Input.KEY_ESCAPE)) {
-           sbg.enterState(5);
-           lastStage = sbg.getCurrentStateID();
+        if(read)
+        {
+            
+            if(in.isKeyPressed(Input.KEY_ENTER))
+            {
+                try {
+                    texto=br.readLine();
+                    if(texto==null) read=false;
+                    else  td.setText(texto, 100, 550);
+                } catch (IOException ex) {
+                    Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    isTextShowing(true);
+                    timer.schedule(new TimerTask()
+                    {
+                        public void run()
+                            {
+                                isTextShowing(false);
+                            }
+                    }, 3000);
+            }
         }
-        
+        else
+        {
+            map.Movimiento(i, gc);
+            //map.getAnimation().update(i);
+            interact=map.interact();
+            moveStates(sbg, gc);
+            if (in.isKeyPressed(Input.KEY_ESCAPE)) {
+               sbg.enterState(5);
+               lastStage = sbg.getCurrentStateID();
+            }
+        }
     }
     public int getID() {
         return 20;
@@ -115,10 +196,10 @@ public class StateRoom extends BasicGameState{
     }
     public void moveStates(StateBasedGame sbg, GameContainer gc) throws SlickException
     {
-        Input input = gc.getInput();
+        Input in = gc.getInput();
         if(interact)
         {
-            if(input.isKeyPressed(Input.KEY_ENTER))
+            if(in.isKeyPressed(Input.KEY_ENTER))
             {
                 try {
                     saveChar(Char);
@@ -167,6 +248,20 @@ public class StateRoom extends BasicGameState{
         save.reset();
         save.writeObject(Character);
         save.close();
+    }
+ public Input getInput()
+    {
+        return input;
+    }
+    
+    public void isTextShowing(boolean newValue)
+    {
+        showText = newValue;
+    }
+    
+    public boolean isShowText()
+    {
+        return showText;
     }
 }
 

@@ -175,7 +175,7 @@ public class PlatformMap {
     }
     public void renderMap(GameContainer gc, Graphics grphcs, boolean ver_hitbox) {
         map.render((int) this.x, (int) this.y, 0, 0, gc.getWidth(), gc.getHeight());
-        for (int i=0;i<blocks.size();i++) {
+        /**for (int i=0;i<blocks.size();i++) {
                 grphcs.setColor(Color.black);
                 grphcs.drawRect(blocks.get(i).getRectangulo().getX(), blocks.get(i).getRectangulo().getY(), blocks.get(i).getRectangulo().getWidth(), blocks.get(i).getRectangulo().getHeight());
             }
@@ -186,7 +186,8 @@ public class PlatformMap {
             grphcs.setColor(Color.black);
             grphcs.drawRect(Character.getCollision().getRectangulo().getX(), Character.getCollision().getRectangulo().getY(), Character.getCollision().getRectangulo().getHeight(), Character.getCollision().getRectangulo().getWidth());
         
-        }
+        */
+    }
     public boolean collisions(int i, GameContainer gc, String dir,  StateBasedGame sbg) throws SlickException
     {
         boolean collision=false;

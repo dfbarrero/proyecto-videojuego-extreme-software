@@ -32,11 +32,17 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import Entities.Characters.PlayableCharacter;
 import MusicPlayer.*;
+import TextDisplay.TextDisplay;
 import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lwjgl.input.Mouse;
@@ -48,7 +54,12 @@ import org.newdawn.slick.state.*;
  * @author razvanvc
  */
 public class End extends BasicGameState{
-
+private TextDisplay td = null;
+    private String texto;
+    private boolean showText = false, read=true;
+    private Input input = null;
+    private Timer timer = null;
+    private Image NPC;
     public String mouse = "No input yet!";
     Image play;
     private boolean start;
@@ -67,6 +78,9 @@ public class End extends BasicGameState{
     private PlayableCharacter principal;
     private boolean playingMuscic = true;
     public MusicPlayer musicplayer = new MusicPlayer();
+    private File archivo;
+    private FileReader fr;
+    private BufferedReader br;
     private ObjectOutputStream save;
     
     public End(int state) {
@@ -100,18 +114,34 @@ public class End extends BasicGameState{
         } catch (IOException ex) {
             Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        NPC=new Image("src/NPC/Idle.png");
+        td=new TextDisplay(gc);
+        timer = new Timer(true);
+        archivo = new File("src/Archivo/Final.txt");
+        try {
+            fr = new FileReader (archivo);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        br = new BufferedReader(fr);
     }
 
     @Override
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString(mouse, 950, 10);//muestra la posicion de raton
-        if(start)
-        {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(225,200,"Congratulations", notChosen);
             playersOptionsTTF.drawString(150,240,"you ave finished the game", notChosen);
             playersOptionsTTF.drawString(150,450,"press enter to restart", notChosen);
+             if(read)
+        {
+            g.setColor(Color.black);
+            g.fillRect(0, 475, 800, 600);
+            g.drawImage(NPC, 5, 500);
+            if(isShowText())
+            {
+                td.displayText();
+            }
         }
     }
 
@@ -121,9 +151,32 @@ public class End extends BasicGameState{
         //Consigue la posicion del raton
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
-        Input input=gc.getInput();
-        mouse = xpos + " " + ypos; //cambia la variable de la posicion del raton
-        if(input.isKeyPressed(Input.KEY_ENTER))
+        Input in=gc.getInput();
+        if(read)
+        {
+            
+            if(in.isKeyPressed(Input.KEY_ENTER))
+            {
+                try {
+                    texto=br.readLine();
+                } catch (IOException ex) {
+                    Logger.getLogger(End.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(texto==null) read=false;
+                else  td.setText(texto, 100, 550);
+                    isTextShowing(true);
+                    timer.schedule(new TimerTask()
+                    {
+                        public void run()
+                            {
+                                isTextShowing(false);
+                            }
+                    }, 3000);
+            }
+        }
+        else
+        {
+        if(in.isKeyPressed(Input.KEY_ENTER))
         {
             sbg.getState(20).init(gc, sbg);
             sbg.getState(21).init(gc, sbg);
@@ -134,6 +187,7 @@ public class End extends BasicGameState{
             sbg.enterState(0);
         }
         }
+    }
     
     @Override
     //Return the state of the menu (0)
@@ -146,6 +200,20 @@ public class End extends BasicGameState{
         save.reset();
         save.writeObject(Character);
         save.close();
+    }
+    public Input getInput()
+    {
+        return input;
+    }
+    
+    public void isTextShowing(boolean newValue)
+    {
+        showText = newValue;
+    }
+    
+    public boolean isShowText()
+    {
+        return showText;
     }
 }
 

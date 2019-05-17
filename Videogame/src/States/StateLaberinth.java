@@ -16,9 +16,12 @@ import static States.StateRoom.laberinth;
 import static States.StateRoom.puzzle;
 import static States.StateRoom.transport;
 import TextDisplay.TextDisplay;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -43,12 +46,17 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class StateLaberinth extends BasicGameState{
     private Mapa map;
+    private File archivo;
+    private FileReader fr;
+    private BufferedReader br;
+    private Image NPC;
     private ObjectInputStream load;
     private boolean fog=true;
     private boolean interact=false;
     private PlayableCharacter Char;
     private ArrayList<NPC> npcs;
     private Enemy enemy;
+    private String texto;
     private Sword espada;
     private Bow arco;
     boolean sword=false, llaveb=false, bow=false, flechas=false;
@@ -57,7 +65,7 @@ public class StateLaberinth extends BasicGameState{
     private ObjectOutputStream save;
     private boolean start=true;
     private TextDisplay td = null;
-    private boolean showText = false;
+    private boolean showText = false, read=false;
     private Input input = null;
     private Timer timer = null;
     public StateLaberinth(int state)
@@ -102,6 +110,16 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         llave=new Key("LLave lab", "1");
         arco=new Bow("Arco", 40, 0, "Arco");
         espada=new Sword("Espada", 75, 4, "Espada");
+        NPC=new Image("src/NPC/Idle.png");
+        td=new TextDisplay(gc);
+        timer = new Timer(true);
+        archivo = new File("src/Archivo/Fragmento1.txt");
+        try {
+            fr = new FileReader (archivo);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        br = new BufferedReader(fr);
     }
 
     @Override
@@ -134,6 +152,16 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(read)
+        {
+            g.setColor(Color.black);
+            g.fillRect(0, 475, 800, 600);
+            g.drawImage(NPC, 5, 500);
+            if(isShowText())
+            {
+                td.displayText();
+            }
+        }
         if(isShowText())
         {
             td.displayText();
@@ -145,6 +173,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        Input in = gc.getInput();
         if(start)
         {
             try {
@@ -164,20 +193,51 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
             }
             map.setCharacter(Char);
             map.setSpeed(Char.getSpeed());
+            map.Movimiento(i, gc);
+            interact=map.interact();
+            try {
+                interactionup(gc, sbg);
+            } catch (IOException ex) {
+                Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+            }
             start=false;
         }
-        Input input = gc.getInput();
-        map.Movimiento(i, gc);
-        interact=map.interact();
-        try {
-            interactionup(gc, sbg);
-        } catch (IOException ex) {
-            Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+        if(read)
+        {
+            
+            if(in.isKeyPressed(Input.KEY_ENTER))
+            {
+                try {
+                    texto=br.readLine();
+                    if(texto==null) read=false;
+                    else  td.setText(texto, 100, 550);
+                } catch (IOException ex) {
+                    Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    isTextShowing(true);
+                    timer.schedule(new TimerTask()
+                    {
+                        public void run()
+                            {
+                                isTextShowing(false);
+                            }
+                    }, 3000);
+            }
         }
-        if (input.isKeyPressed(Input.KEY_ESCAPE)) {
-           
-           sbg.enterState(5);
-           lastStage = sbg.getCurrentStateID();
+        else
+        {
+            map.Movimiento(i, gc);
+            interact=map.interact();
+            try {
+                interactionup(gc, sbg);
+            } catch (IOException ex) {
+                Logger.getLogger(StateLaberinth.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (in.isKeyPressed(Input.KEY_ESCAPE)) {
+
+               sbg.enterState(5);
+               lastStage = sbg.getCurrentStateID();
+            }
         }
     }
     //Return the state of the menu (0)
@@ -316,6 +376,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         {
                             llave.recogerllave(Char);
                             llaveb=true;
+                            read=true;
                         }
                     }
                 }

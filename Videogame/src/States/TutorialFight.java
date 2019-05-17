@@ -101,7 +101,7 @@ public class TutorialFight extends BasicGameState{
         Input input=gc.getInput();
         if(input.isKeyPressed(Input.KEY_ENTER))
         {
-            sbg.enterState(24);
+            sbg.enterState(100);
         }
         }
     

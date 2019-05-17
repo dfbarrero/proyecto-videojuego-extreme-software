@@ -25,7 +25,7 @@ public class TextDisplay
     
     public TextDisplay(GameContainer gc)
     {
-        font = new Font("Verdana", Font.PLAIN, 12);
+        font = new Font("Verdana", Font.PLAIN, 15);
         ttf = new TrueTypeFont(font, true);
         this.gc = gc;
     }
