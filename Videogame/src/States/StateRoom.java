@@ -117,6 +117,8 @@ public class StateRoom extends BasicGameState{
                 Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
             Char=(PlayableCharacter) load.readObject();
+            Char.setHp(100);
+            Char.setDead(false);
             load.close();
             } catch (IOException ex) {
                 Logger.getLogger(StatePuzzle.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,13 +142,13 @@ public class StateRoom extends BasicGameState{
                     read=false;
                 }
                     isTextShowing(true);
-                    timer.schedule(new TimerTask()
-                    {
-                        public void run()
-                            {
-                                isTextShowing(false);
-                            }
-                    }, 3000);
+//                    timer.schedule(new TimerTask()
+//                    {
+//                        public void run()
+//                            {
+//                                isTextShowing(false);
+//                            }
+//                    }, 3000);
             start=false;
         }
         if(read)
@@ -162,17 +164,18 @@ public class StateRoom extends BasicGameState{
                     Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     isTextShowing(true);
-                    timer.schedule(new TimerTask()
-                    {
-                        public void run()
-                            {
-                                isTextShowing(false);
-                            }
-                    }, 3000);
+//                    timer.schedule(new TimerTask()
+//                    {
+//                        public void run()
+//                            {
+//                                isTextShowing(false);
+//                            }
+//                    }, 3000);
             }
         }
         else
         {
+            isTextShowing(false);
             map.Movimiento(i, gc);
             //map.getAnimation().update(i);
             interact=map.interact();

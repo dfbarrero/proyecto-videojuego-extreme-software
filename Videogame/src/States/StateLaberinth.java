@@ -108,8 +108,8 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         map.actualizarIt(positionx,positiony);
         map.actualizarMuros(positionx,positiony);
         llave=new Key("LLave lab", "1");
-        arco=new Bow("Arco", 40, 0, "Arco");
-        espada=new Sword("Espada", 75, 4, "Espada");
+        arco=new Bow("Arco", 35, 0, "Arco");
+        espada=new Sword("Espada", 50, 4, "Espada");
         NPC=new Image("src/NPC/Idle.png");
         td=new TextDisplay(gc);
         timer = new Timer(true);
@@ -393,7 +393,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                         if(in.isKeyDown(Input.KEY_ENTER))
                         {
-                            td.setText("This is an ancient statue", (int) map.getCharacter().getXPos()-10, (int) map.getCharacter().getYPos()+45);
+                            td.setText("It's an ancient statue", (int) map.getCharacter().getXPos()-85, (int) map.getCharacter().getYPos()+45);
                             isTextShowing(true);
                             timer.schedule(new TimerTask()
                             {
@@ -408,7 +408,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
-                        td.setText("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-35, (int) map.getCharacter().getYPos()+45);
+                        td.setText("Arrows acquired (+10)", (int) map.getCharacter().getXPos()-85, (int) map.getCharacter().getYPos()+45);
                             isTextShowing(true);
                             timer.schedule(new TimerTask()
                             {

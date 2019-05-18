@@ -131,8 +131,8 @@ private TextDisplay td = null;
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(225,200,"Congratulations", notChosen);
-            playersOptionsTTF.drawString(150,240,"you ave finished the game", notChosen);
-            playersOptionsTTF.drawString(150,450,"press enter to restart", notChosen);
+            playersOptionsTTF.drawString(150,240,"you have finished the game", notChosen);
+            playersOptionsTTF.drawString(150,350,"press enter to restart", notChosen);
              if(read)
         {
             g.setColor(Color.black);

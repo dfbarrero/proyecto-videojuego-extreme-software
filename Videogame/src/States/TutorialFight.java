@@ -85,13 +85,13 @@ public class TutorialFight extends BasicGameState{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(50,100,"Controls: ", notChosen);
-            playersOptionsTTF.drawString(150,150,"Place the mouse over the weapon to use", notChosen);
+            playersOptionsTTF.drawString(150,150,"Place the mouse over the weapon you want to use", notChosen);
             playersOptionsTTF.drawString(150,200,"Press enter to use the weapon", notChosen);
             playersOptionsTTF.drawString(50,350,"Purpose: ", notChosen);
-            playersOptionsTTF.drawString(150,400,"to down the boss hp to 0", notChosen);
+            playersOptionsTTF.drawString(150,400,"To kill the big bad wolf", notChosen);
             playersOptionsTTF.drawString(50,450,"Tips: ", notChosen);
-            playersOptionsTTF.drawString(150,500,"if you lose, yo return to your room", notChosen);
-            playersOptionsTTF.drawString(150,550,"there you con retry the event", notChosen);
+            playersOptionsTTF.drawString(150,500,"if you lose, you return to your room", notChosen);
+            playersOptionsTTF.drawString(150,550,"there, you can try again.", notChosen);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class TutorialFight extends BasicGameState{
         {
             sbg.enterState(100);
         }
-        }
+    }
     
     @Override
     //Return the state of the menu (0)

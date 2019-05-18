@@ -86,9 +86,10 @@ public class Fight extends BasicGameState{
         this.boss=new Enemy("id",(float)gc.getWidth()/2,(float) gc.getHeight()/2, "pCName",  0.15f, 200);
         lastStage = sbg.getCurrentStateID();
         this.bossAnim=new EnemyCharAnimation();
+        this.bossanim = bossAnim.getEnemyCharIdleAnim();
         musicplayer.playTrack(1);
         playersOptions[2] = "Magia";
-        armas[2]=new Magic("Magic", 10, 10, "Magic");
+        armas[2]=new Magic("Magic", 20, 10, "Magic");
     }
 
     @Override

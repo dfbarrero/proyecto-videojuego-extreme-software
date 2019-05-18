@@ -48,7 +48,7 @@ public class Enemy extends Character {
         int hpr, daño = 0;
         if(!isDead())
         {
-            daño=(int)(20*Math.random());
+            daño=(int)(30+5*Math.random());
             hpr=enemigo.getHp()-daño;
             enemigo.setHp(hpr);
         }

@@ -17,6 +17,7 @@ import org.newdawn.slick.SlickException;
  */
 public class PlayableCharacter extends Character implements Serializable
 {
+    private boolean dead;
     private String pCName;
     private Inventory inventory;
     private Inventory keys;
@@ -26,6 +27,7 @@ public class PlayableCharacter extends Character implements Serializable
     public PlayableCharacter(String id, float xPos, float yPos, String pCName, float speed, int health) throws SlickException, FileNotFoundException, IOException
     {
         super(id, xPos, yPos, speed, health);
+        this.dead = false;
         this.pCName = pCName;
         this.inventory = new Inventory();
         this.keys=new Inventory();
@@ -70,7 +72,7 @@ public class PlayableCharacter extends Character implements Serializable
         int hpr, daño = 0;
         if(arma.available() && !isDead())
         {
-            daño=(int)(arma.getDamage()*Math.random());
+            daño=(int)(arma.getDamage()+Math.random()*10);
             hpr=enemigo.getHp()-daño;
             enemigo.setHp(hpr);
             arma.use();
@@ -79,7 +81,12 @@ public class PlayableCharacter extends Character implements Serializable
     }
     public boolean isDead()
     {
-        return this.getHp()<=0;
+        return dead;
+    }
+    
+    public void setDead(boolean value)
+    {
+        this.dead = value;
     }
     /**
      * @return the pCName
