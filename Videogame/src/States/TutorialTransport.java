@@ -86,14 +86,14 @@ public class TutorialTransport extends BasicGameState{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(50,100,"Controls: ", notChosen);
-            playersOptionsTTF.drawString(150,150,"UP: up arrow/W", notChosen);
-            playersOptionsTTF.drawString(150,200,"DOWN: down arrow/S", notChosen);
-            playersOptionsTTF.drawString(150,250,"RIGHT: right arrow/D", notChosen);
-            playersOptionsTTF.drawString(150,300,"LEFT: left arrow/A", notChosen);
+            playersOptionsTTF.drawString(150,150,"UP: up arrow / W", notChosen);
+            playersOptionsTTF.drawString(150,200,"DOWN: down arrow / S", notChosen);
+            playersOptionsTTF.drawString(150,250,"RIGHT: right arrow / D", notChosen);
+            playersOptionsTTF.drawString(150,300,"LEFT: left arrow / A", notChosen);
             playersOptionsTTF.drawString(50,350,"Purpose: ", notChosen);
-            playersOptionsTTF.drawString(150,400,"To take the fragment at the end of the map", notChosen);
+            playersOptionsTTF.drawString(150,400,"Get the last key fragment at the end of the map", notChosen);
             playersOptionsTTF.drawString(50,450,"Tips: ", notChosen);
-            playersOptionsTTF.drawString(150,500,"To tranposrt press enter when over a platorm", notChosen);
+            playersOptionsTTF.drawString(150,500,"Try to press enter on top of the pressure plates...", notChosen);
     }
 
     @Override

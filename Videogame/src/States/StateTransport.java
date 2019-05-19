@@ -166,13 +166,13 @@ public class StateTransport extends BasicGameState{
                     Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     isTextShowing(true);
-                    timer.schedule(new TimerTask()
-                    {
-                        public void run()
-                            {
-                                isTextShowing(false);
-                            }
-                    }, 3000);
+//                    timer.schedule(new TimerTask()
+//                    {
+//                        public void run()
+//                            {
+//                                isTextShowing(false);
+//                            }
+//                    }, 3000);
             }
         }
         else

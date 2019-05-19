@@ -85,12 +85,12 @@ public class TutorialPlatform extends BasicGameState{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
             g.setLineWidth(4);
             playersOptionsTTF.drawString(50,100,"Controls: ", notChosen);
-            playersOptionsTTF.drawString(150,150,"Jump: up arrow/W", notChosen);
-            playersOptionsTTF.drawString(50,350,"Purpose: ", notChosen);
-            playersOptionsTTF.drawString(150,400,"To take the fragment at the end of the map", notChosen);
-            playersOptionsTTF.drawString(50,450,"Tips: ", notChosen);
-            playersOptionsTTF.drawString(150,500,"The right movement is automatic", notChosen);
-            playersOptionsTTF.drawString(150,550,"you lose if you touch something in the left or down part", notChosen);
+            playersOptionsTTF.drawString(150,150,"Jump: up arrow / W", notChosen);
+            playersOptionsTTF.drawString(50,250,"Purpose: ", notChosen);
+            playersOptionsTTF.drawString(150,300,"Get the final key fragment at the end of the map", notChosen);
+            playersOptionsTTF.drawString(50,350,"Tips: ", notChosen);
+            playersOptionsTTF.drawString(150,400,"Be careful not to hit the obstacles!", notChosen);
+            playersOptionsTTF.drawString(150,450,"You'll get back to the beginning if you do.", notChosen);
 
     }
 

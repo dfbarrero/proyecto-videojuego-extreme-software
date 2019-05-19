@@ -81,6 +81,7 @@ public class PlayableCharacter extends Character implements Serializable
     }
     public boolean isDead()
     {
+        dead = hp == 0;
         return dead;
     }
     

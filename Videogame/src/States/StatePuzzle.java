@@ -11,10 +11,6 @@ import Entities.Characters.PlayableCharacter;
 import Entities.Items.Key;
 import Map.*;
 import static States.S0_MainMenu.lastStage;
-import static States.StateRoom.bossfight;
-import static States.StateRoom.laberinth;
-import static States.StateRoom.puzzle;
-import static States.StateRoom.transport;
 import TextDisplay.TextDisplay;
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,7 +23,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Color;
@@ -165,13 +160,13 @@ public class StatePuzzle extends BasicGameState{
                     Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     isTextShowing(true);
-                    timer.schedule(new TimerTask()
-                    {
-                        public void run()
-                            {
-                                isTextShowing(false);
-                            }
-                    }, 3000);
+//                    timer.schedule(new TimerTask()
+//                    {
+//                        public void run()
+//                            {
+//                                isTextShowing(false);
+//                            }
+//                    }, 3000);
             }
         }
         else

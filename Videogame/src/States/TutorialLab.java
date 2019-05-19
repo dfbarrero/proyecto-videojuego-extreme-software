@@ -90,7 +90,7 @@ public class TutorialLab extends BasicGameState{
             playersOptionsTTF.drawString(150,220,"RIGHT: right arrow / D", notChosen);
             playersOptionsTTF.drawString(150,270,"LEFT: left arrow / A", notChosen);
             playersOptionsTTF.drawString(50,320,"Purpose: ", notChosen);
-            playersOptionsTTF.drawString(150,370,"To take the key fragment at the end of the map", notChosen);
+            playersOptionsTTF.drawString(150,370,"Get the key at the end of the map", notChosen);
             playersOptionsTTF.drawString(50,420,"Tips: ", notChosen);
             playersOptionsTTF.drawString(150,470,"There might be a way to get rid of the black fog", notChosen);
             playersOptionsTTF.drawString(150,520,"You may also find useful weapons for later!", notChosen);
