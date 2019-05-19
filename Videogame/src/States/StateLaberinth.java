@@ -215,13 +215,13 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                     Logger.getLogger(StateRoom.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     isTextShowing(true);
-                    timer.schedule(new TimerTask()
+                    /*timer.schedule(new TimerTask()
                     {
                         public void run()
                             {
                                 isTextShowing(false);
                             }
-                    }, 3000);
+                    }, 3000);*/
             }
         }
         else
