@@ -5,12 +5,8 @@
  */
 package Entities.Characters;
 
-import Entities.Items.Weapon;
 import Map.Hitbox;
 import Map.Mapa;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 
 /**
  *
@@ -57,7 +53,7 @@ public class Enemy extends Character {
     @Override
     public String getId()
     {
-        return getId();
+        return id;
     }
     
     public boolean isDead()
