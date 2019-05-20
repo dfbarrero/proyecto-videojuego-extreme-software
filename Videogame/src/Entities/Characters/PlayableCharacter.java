@@ -65,8 +65,7 @@ public class PlayableCharacter extends Character implements Serializable
     }
     /**
      * 
-     * @param arma that is going to be used
-     * @param enemigo that is going to be attacked
+     * @return if the character is dead.
      */
     public void atacar(Weapon arma, Enemy enemigo)
     {
@@ -82,7 +81,7 @@ public class PlayableCharacter extends Character implements Serializable
     }
     public boolean isDead()
     {
-        dead = hp == 0;
+        dead = hp <= 0;
         return dead;
     }
     

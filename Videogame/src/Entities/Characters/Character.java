@@ -6,6 +6,8 @@
 package Entities.Characters;
 
 import java.io.Serializable;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *

@@ -233,7 +233,6 @@ public class BossMap {
     }
     public void renderMap(GameContainer gc, Graphics grphcs, boolean ver_hitbox) {
         map.render((int) this.x, (int) this.y, 0, 0, gc.getWidth(), gc.getHeight());
-        grphcs.drawAnimation(bossAnim.getEnemyCharIdleSmallAnim(), bossx, bossy);
         /**for (int i=0;i<blocks.size();i++) {
                 grphcs.setColor(Color.black);
                 grphcs.drawRect(blocks.get(i).getRectangulo().getX(), blocks.get(i).getRectangulo().getY(), blocks.get(i).getRectangulo().getWidth(), blocks.get(i).getRectangulo().getHeight());
@@ -246,6 +245,10 @@ public class BossMap {
             grphcs.drawRect(Character.getCollision().getRectangulo().getX(), Character.getCollision().getRectangulo().getY(), Character.getCollision().getRectangulo().getHeight(), Character.getCollision().getRectangulo().getWidth());
         */
         }
+    public void renderBoss(GameContainer gc, Graphics grphcs, boolean ver_hitbox)
+    {
+        grphcs.drawAnimation(bossAnim.getEnemyCharIdleSmallAnim(), bossx, bossy);
+    }
     public void collisions(int i, GameContainer gc, String dir)
     {
         for(int j=0;j<blocks.size();j++)
@@ -255,25 +258,31 @@ public class BossMap {
                 if(dir.toUpperCase().equals("ABAJO"))
                 {
                     y += i*speed;  //i=tiempo de update
+                    bossy+=i*speed;
                     actualizarMuros(0, (i*speed));
                     actualizarIt(0,(i*speed));
                 }
                 else if(dir.toUpperCase().equals("ARRIBA"))
                 {
                     y -= i*speed;  //i=tiempo de update
+                    bossy-=i*speed;
                     actualizarMuros(0, -(i*speed));
                     actualizarIt(0,-(i*speed));
                 }
                 else if(dir.toUpperCase().equals("DCHA"))
                 {
+                    
                     x += i*speed;  //i=tiempo de update
+                    bossx+=i*speed;
                     actualizarMuros((i*speed), 0);
                     actualizarIt((i*speed),0);
                      
                 }
                 else if(dir.toUpperCase().equals("IZQ"))
                 {
+                    
                     x -= i*speed;  //i=tiempo de update
+                    bossx-=i*speed;
                     actualizarMuros(-(i*speed), 0);
                     actualizarIt(-(i*speed),0);
                 }

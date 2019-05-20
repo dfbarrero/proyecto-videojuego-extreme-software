@@ -10,15 +10,15 @@
  </layer>
  <layer id="1" name="Suelo" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACjNiZWAwGsWjeBSP4lE8iknEAPpKpDdABgAA
+   H4sIAAAAAAAACjNiZWAwGsUoOA+KB6t5o3gUj+JRPBgwAKCuobFABgAA
   </data>
  </layer>
  <layer id="2" name="Walls" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACmNlZWBgpTLGBbDJEVI/VM07hce8U2SYdwuPebfIdB8uQK77cIFR9xE2b9R9hOVG3UfYDfjk8JXZt/DI45MDAKJ+oIBABgAA
+   H4sIAAAAAAAACmNlZWBgpTLGBbDJEVI/VM07haQ3jxWCYXpOkWHeLTzuu0Wm+3ABct2HC4y6j7B5o+4jLDfqPsJuwCeHr8y+hUcenxwA4B1IIkAGAAA=
   </data>
  </layer>
- <layer id="3" name="Objetos" width="20" height="20" visible="0">
+ <layer id="3" name="Objetos" width="20" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAACjNiZWAwwoN9GRgY/IDYH4gDGPCrhWFcACQXC6TjgDgeiBMYCKsnJJ8LpPOAOB+IC6hgXi2QrgPieiBuoNC8k0DcC8R9QNwPxBOgYuSadxOI5wLxPCCeD8QLoGLkmjcDiNcxouIZFJjHgMU8fGDUvFHzRs2jv3m4ymwQjW4eshw2DAAlj1PRQAYAAA==
   </data>

@@ -20,7 +20,7 @@ public class Inventory implements Serializable
     
     public Inventory()
     {
-        items = new ArrayList<>();
+        items = new ArrayList<Item>();
     }
     public void addItem(Item item)//This method adds the item to the first free
                                   //slot in the inventory. If the inventory is full
