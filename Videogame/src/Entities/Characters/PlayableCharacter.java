@@ -65,7 +65,8 @@ public class PlayableCharacter extends Character implements Serializable
     }
     /**
      * 
-     * @return if the character is dead.
+     * @param arma that is going to be used
+     * @param enemigo that is going to be attacked
      */
     public void atacar(Weapon arma, Enemy enemigo)
     {
