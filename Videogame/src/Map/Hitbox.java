@@ -6,7 +6,10 @@
 package Map;
 import java.io.Serializable;
 import org.newdawn.slick.geom.Rectangle;
-
+/**
+ *
+ * @author jgome
+ */
 public class Hitbox implements Serializable{
 
     private Rectangle hitbox;
