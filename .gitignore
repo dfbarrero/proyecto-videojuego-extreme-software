@@ -3,3 +3,4 @@
 /Videogame/build/
 *.properties
 Videogame/src/Archivo/Character.dat
+*.vpp
