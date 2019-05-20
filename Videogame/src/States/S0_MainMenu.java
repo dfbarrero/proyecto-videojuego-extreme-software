@@ -58,7 +58,7 @@ public class S0_MainMenu extends BasicGameState{
             Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         playersOptions[0] = "Start";
-        playersOptions[1] = "Load";
+        playersOptions[1] = "Load (NOT AVAILABLE)";
         playersOptions[2] = "Options";
         playersOptions[3] = "Quit";
         font = new Font("Verdana", Font.BOLD, 25);

@@ -41,9 +41,9 @@ public class S4_OptionsPage extends BasicGameState{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        playersOptions[0] = "Grafics";
-        playersOptions[1] = "Sound";
-        playersOptions[2] = "Language";
+        playersOptions[0] = "Grafics (NOT AVAILABLE)";
+        playersOptions[1] = "Sound (NOT AVAILABLE)";
+        playersOptions[2] = "Language (NOT AVAILABLE)";
         playersOptions[3] = "Back";
         font = new Font("Verdana", Font.BOLD, 25);
         playersOptionsTTF = new TrueTypeFont(font, true);

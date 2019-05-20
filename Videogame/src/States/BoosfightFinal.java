@@ -67,7 +67,7 @@ public class BoosfightFinal extends BasicGameState{
         g.setColor(Color.white);
         interact(g);
         map.getAnimation().draw(Char.getXPos(), Char.getYPos());
-        
+        map.renderBoss(gc, g, true);
     }
 
     @Override

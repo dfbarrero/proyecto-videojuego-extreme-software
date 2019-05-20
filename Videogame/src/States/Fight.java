@@ -118,7 +118,7 @@ public class Fight extends BasicGameState{
     @Override
     //Make possible the movement
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-       if(start)
+        if(start)
         {
             try {
             try {
@@ -137,17 +137,6 @@ public class Fight extends BasicGameState{
             }
             start=false;
         }
-        for(int cont=0;cont<Char.getInventory().getItems().size();cont++)
-            {
-                playersOptions[cont]=Char.getInventory().getItems().get(cont).name();
-                armas[cont]=(Weapon) Char.getInventory().getItems().get(cont);
-            }
-        Input input=gc.getInput();
-        xpos = Mouse.getX();
-        ypos = Mouse.getY();
-        mouse="x: "+xpos+ " y:"+ypos;
-        animacionCombate(gc);
-        combate(gc);
         if(Char.isDead())
         {
             sbg.enterState(20);
@@ -156,6 +145,17 @@ public class Fight extends BasicGameState{
         {
             sbg.enterState(50);
         }
+        for(int cont=0;cont<Char.getInventory().getItems().size();cont++)
+            {
+                playersOptions[cont]=Char.getInventory().getItems().get(cont).name();
+                armas[cont]=(Weapon) Char.getInventory().getItems().get(cont);
+            }
+        Input input=gc.getInput();
+        xpos = Mouse.getX();
+        ypos = Mouse.getY();
+        animacionCombate(gc);
+        combate(gc);
+        
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
            sbg.enterState(5);
            lastStage = sbg.getCurrentStateID();
@@ -195,7 +195,7 @@ public class Fight extends BasicGameState{
     {
         int max=Char.getInventory().getItems().size();
         Input input=gc.getInput();
-        if(input.isKeyDown(Input.MOUSE_LEFT_BUTTON) || input.isKeyDown(Input.KEY_ENTER))
+        if(input.isMouseButtonDown(0) || input.isKeyDown(Input.KEY_ENTER))
         {
             if(max==1)
             {
@@ -223,7 +223,7 @@ public class Fight extends BasicGameState{
     {
         int max=Char.getInventory().getItems().size();
         Input input=gc.getInput();
-        if(input.isKeyPressed(Input.MOUSE_LEFT_BUTTON) || input.isKeyPressed(Input.KEY_ENTER))
+        if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON) || input.isKeyPressed(Input.KEY_ENTER) )
         {
             if(max==1)
             {
@@ -246,6 +246,5 @@ public class Fight extends BasicGameState{
     {
         Char.atacar(arma, boss);
         boss.atacar(Char);
-        
     }
 }
