@@ -7,9 +7,7 @@ package Entities.Characters;
 
 import Map.Hitbox;
 import Map.Mapa;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 
 /**
  *
