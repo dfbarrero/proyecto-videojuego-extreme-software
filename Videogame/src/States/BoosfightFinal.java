@@ -126,7 +126,7 @@ public class BoosfightFinal extends BasicGameState{
         if(interact && input.isKeyPressed(Input.KEY_ENTER))
         {
             saveChar(Char);
-            sbg.getState(54).init(gc, sbg);
+            sbg.getState(100).init(gc, sbg);
             sbg.enterState(54);
         }
     }
