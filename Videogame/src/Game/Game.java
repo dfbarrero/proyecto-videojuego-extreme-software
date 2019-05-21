@@ -24,7 +24,7 @@ import org.newdawn.slick.state.*;
 public class Game extends StateBasedGame {
 
     private static String OS = System.getProperty("os.name").toLowerCase();
-    public static final String gamename = "3xtremE";
+    public static final String gamename = "RemindMe";
     public static final int menu = 0;
     public static final int room = 20;
     public static final int laberinth=21;
