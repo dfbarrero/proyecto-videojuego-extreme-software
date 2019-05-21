@@ -56,18 +56,11 @@ private TextDisplay td = null;
     private Input input = null;
     private Timer timer = null;
     private Image NPC;
-    public String mouse = "No input yet!";
     Image play;
     private boolean start;
     private int playersChoice = 0;
-    private static final int NOCHOICES = 4;
-    private static final int START = 0;
-    private static final int LOAD = 1;
-    private static final int OPTIONS = 2;
-    private static final int QUIT = 3;
-    private final String[] playersOptions = new String[NOCHOICES];
-    private Font font;
-    private TrueTypeFont playersOptionsTTF;
+    private Font font, font2;
+    private TrueTypeFont playersOptionsTTF, playersOptions;
     private final Color notChosen = new Color(153, 204, 255);
     private final Color background = new Color(0, 0, 255);
     public static int lastStage;
@@ -94,12 +87,10 @@ private TextDisplay td = null;
         } catch (IOException ex) {
             Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        playersOptions[0] = "Start";
-        playersOptions[1] = "Load";
-        playersOptions[2] = "Options";
-        playersOptions[3] = "Quit";
         font = new Font("Italica", Font.ROMAN_BASELINE, 40);
+        font2= new Font("Italic", Font.ITALIC, 20);
         playersOptionsTTF = new TrueTypeFont(font, true);
+        playersOptions = new TrueTypeFont(font2, true);
         lastStage = sbg.getCurrentStateID();
         musicplayer.playTrack(1);
         try {
@@ -126,9 +117,9 @@ private TextDisplay td = null;
     //Draws things on the screen
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
             g.setLineWidth(4);
-            playersOptionsTTF.drawString(225,200,"Congratulations", notChosen);
+            playersOptionsTTF.drawString(250,200,"Congratulations", notChosen);
             playersOptionsTTF.drawString(150,240,"you have finished the game", notChosen);
-            playersOptionsTTF.drawString(150,350,"press enter to restart", notChosen);
+            playersOptions.drawString(350,500,"press enter to restart", notChosen);
              if(read)
         {
             g.setColor(Color.black);

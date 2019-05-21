@@ -109,7 +109,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         map.actualizarMuros(positionx,positiony);
         llave=new Key("LLave lab", "1");
         arco=new Bow("Arco", 35, 0, "Arco");
-        espada=new Sword("Espada", 50, 7, "Espada");
+        espada=new Sword("Espada", 50, 3, "Espada");
         NPC=new Image("src/NPC/Idle.png");
         td=new TextDisplay(gc);
         timer = new Timer(true);
