@@ -270,7 +270,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
                     if(!sword)  g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
-                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
+                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1350)
                 {
                     if(!bow)    g.drawString("INTERACT", (int) map.getCharacter().getXPos()-20, (int) map.getCharacter().getYPos()+32);
                 }
@@ -339,7 +339,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         }
                     }
                 }
-                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1300)
+                else if(map.getY()>=26 && map.getX()<=-1264 && map.getX()>=-1350)
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {
@@ -359,7 +359,7 @@ public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
                         }
                     }
                 }
-                else if(map.getY()<=-1380 && map.getY()>=-1474)
+                else if(map.getY()<=-1360 && map.getY()>=-1480)
                 {
                     if(in.isKeyDown(Input.KEY_ENTER))
                     {

@@ -49,6 +49,10 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+/**
+ *
+ * @author razvanvc
+ */
 public class TutorialPlatform extends BasicGameState{
 
     public String mouse = "No input yet!";

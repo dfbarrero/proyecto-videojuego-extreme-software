@@ -209,7 +209,7 @@ public class StateRoom extends BasicGameState{
                     }   catch (IOException ex) {
                     Logger.getLogger(S0_MainMenu.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                if(map.getX()<=365 && map.getX()>=328 && map.getY()<=44)
+                if(map.getX()<=380 && map.getX()>=328 && map.getY()<=44)
                 {
                      sbg.enterState(51);
                 }
